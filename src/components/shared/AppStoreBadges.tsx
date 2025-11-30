@@ -45,7 +45,7 @@ export function AppStoreBadges({
           variant="ghost"
           disabled
           className={cn(
-            "flex items-center gap-2 bg-black/20 text-white/60 cursor-not-allowed hover:bg-black/20 hover:text-white/60",
+            "flex items-center gap-2 bg-conteo-dark text-white/70 cursor-not-allowed hover:bg-conteo-dark hover:text-white/70",
             styles.container
           )}
         >
@@ -79,7 +79,7 @@ export function AppStoreBadges({
           variant="ghost"
           disabled
           className={cn(
-            "flex items-center gap-2 bg-black/20 text-white/60 cursor-not-allowed hover:bg-black/20 hover:text-white/60",
+            "flex items-center gap-2 bg-conteo-dark text-white/70 cursor-not-allowed hover:bg-conteo-dark hover:text-white/70",
             styles.container
           )}
         >

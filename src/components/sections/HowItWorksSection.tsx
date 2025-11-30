@@ -1,10 +1,17 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { MousePointerClick, Wand2, BookOpen } from "lucide-react";
+import {
+  MousePointerClick,
+  Wand2,
+  BookOpen,
+  Sparkles,
+  Star,
+} from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
+import { MagicalSparkles } from "@/components/shared/MagicalBackground";
 
 const steps = [
   {
@@ -16,6 +23,7 @@ const steps = [
     color: "from-pink-500 to-rose-500",
     bgColor: "bg-pink-50",
     iconColor: "text-pink-500",
+    glowColor: "rgba(236, 72, 153, 0.4)",
   },
   {
     number: 2,
@@ -26,6 +34,7 @@ const steps = [
     color: "from-conteo-secondary to-indigo-600",
     bgColor: "bg-conteo-light",
     iconColor: "text-conteo-secondary",
+    glowColor: "rgba(106, 90, 224, 0.4)",
   },
   {
     number: 3,
@@ -36,6 +45,7 @@ const steps = [
     color: "from-conteo-accent to-lime-400",
     bgColor: "bg-lime-50",
     iconColor: "text-lime-600",
+    glowColor: "rgba(201, 245, 96, 0.4)",
   },
 ];
 
@@ -78,6 +88,18 @@ export function HowItWorksSection() {
       ref={sectionRef}
       className="relative bg-white py-24 overflow-hidden"
     >
+      {/* Magical background */}
+      <div className="absolute inset-0 pointer-events-none">
+        <MagicalSparkles count={12} className="opacity-20" />
+      </div>
+
+      {/* Animated gradient orbs */}
+      <div className="absolute top-0 left-1/4 w-64 h-64 bg-pink-200/20 rounded-full blur-3xl animate-orb-float" />
+      <div
+        className="absolute bottom-0 right-1/4 w-80 h-80 bg-conteo-accent/10 rounded-full blur-3xl animate-orb-float delay-700"
+        style={{ animationDirection: "reverse" }}
+      />
+
       {/* Decorative background pattern */}
       <div className="absolute inset-0 opacity-[0.02]">
         <div
@@ -100,6 +122,7 @@ export function HowItWorksSection() {
             variant="secondary"
             className="bg-conteo-accent/20 text-conteo-dark border-none px-4 py-1.5 text-sm mb-4"
           >
+            <Sparkles className="w-3 h-3 mr-1 inline animate-twinkle" />
             Simple comme 1, 2, 3
           </Badge>
           <h2
@@ -108,8 +131,12 @@ export function HowItWorksSection() {
           >
             Comment ça{" "}
             <span className="relative inline-block">
-              <span className="text-conteo-accent">marche</span>
-              <span className="absolute -top-1 -right-4 text-2xl">✨</span>
+              <span className="shimmer-text">marche</span>
+              <Sparkles className="absolute -top-2 -right-8 w-8 h-8 text-conteo-accent animate-rotate-glow" />
+              <Star
+                className="absolute -bottom-2 -left-4 w-5 h-5 text-conteo-secondary animate-twinkle delay-500"
+                fill="currentColor"
+              />
             </span>{" "}
             ?
           </h2>
@@ -121,11 +148,14 @@ export function HowItWorksSection() {
 
         {/* Steps */}
         <div className="relative max-w-5xl mx-auto">
-          {/* Progress line */}
-          <Progress
-            value={((activeStep + 1) / steps.length) * 100}
-            className="absolute top-24 left-0 right-0 h-1 hidden md:block bg-linear-to-r from-pink-200 via-conteo-secondary/30 to-lime-200 [&>div]:bg-linear-to-r [&>div]:from-pink-500 [&>div]:via-conteo-secondary [&>div]:to-conteo-accent [&>div]:transition-all [&>div]:duration-500"
-          />
+          {/* Animated progress line */}
+          <div className="absolute top-24 left-0 right-0 h-1 hidden md:block">
+            <div className="absolute inset-0 bg-linear-to-r from-pink-200 via-conteo-secondary/30 to-lime-200 rounded-full" />
+            <Progress
+              value={((activeStep + 1) / steps.length) * 100}
+              className="h-1 bg-transparent [&>div]:bg-linear-to-r [&>div]:from-pink-500 [&>div]:via-conteo-secondary [&>div]:to-conteo-accent [&>div]:transition-all [&>div]:duration-500 [&>div]:shadow-lg [&>div]:shadow-conteo-secondary/30"
+            />
+          </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
             {steps.map((step, index) => (
@@ -171,38 +201,59 @@ function StepCard({
     >
       {/* Number badge + Icon container */}
       <div className="relative mb-6">
-        {/* Glow effect when active */}
+        {/* Animated glow effect when active */}
         <div
           className={cn(
-            "absolute inset-0 rounded-[1.75rem] blur-xl transition-opacity duration-500",
-            `bg-linear-to-br ${step.color}`,
-            isActive ? "opacity-50" : "opacity-0"
+            "absolute -inset-4 rounded-[2rem] blur-2xl transition-all duration-500",
+            isActive ? "opacity-60" : "opacity-0"
           )}
+          style={{ background: step.glowColor }}
         />
+
+        {/* Orbiting sparkles when active */}
+        {isActive && (
+          <>
+            <div
+              className="absolute inset-0 animate-orbit"
+              style={{ animationDuration: "4s" }}
+            >
+              <Star
+                className="w-3 h-3 text-conteo-accent"
+                fill="currentColor"
+              />
+            </div>
+            <div
+              className="absolute inset-0 animate-orbit"
+              style={{ animationDuration: "6s", animationDelay: "-2s" }}
+            >
+              <Sparkles className="w-2 h-2 text-conteo-secondary" />
+            </div>
+          </>
+        )}
 
         {/* Main icon container */}
         <div
           className={cn(
             "relative w-24 h-24 rounded-[1.75rem] flex items-center justify-center transition-all duration-500",
             step.bgColor,
-            isActive ? "scale-110 shadow-lg" : "scale-100"
+            isActive ? "scale-110 shadow-2xl" : "scale-100"
           )}
         >
           <Icon
             className={cn(
               "w-10 h-10 transition-all duration-500",
               step.iconColor,
-              isActive && "animate-bounce"
+              isActive && "animate-magical-bounce"
             )}
           />
         </div>
 
-        {/* Number badge */}
+        {/* Number badge with glow */}
         <div
           className={cn(
             "absolute -top-2 -left-2 w-10 h-10 rounded-full flex items-center justify-center font-heading font-extrabold text-lg transition-all duration-500",
             isActive
-              ? `bg-linear-to-br ${step.color} text-white shadow-lg scale-110`
+              ? `bg-linear-to-br ${step.color} text-white shadow-lg scale-110 animate-glow-pulse`
               : "bg-conteo-accent text-conteo-dark"
           )}
         >
@@ -211,13 +262,22 @@ function StepCard({
 
         {/* Pulse ring when active */}
         {isActive && (
-          <div
-            className={cn(
-              "absolute inset-0 rounded-[1.75rem] border-2 animate-ping",
-              `border-${step.iconColor.replace("text-", "")}`
-            )}
-            style={{ animationDuration: "1.5s" }}
-          />
+          <>
+            <div
+              className="absolute inset-0 rounded-[1.75rem] border-2 border-current animate-ping"
+              style={{
+                animationDuration: "1.5s",
+                borderColor: step.glowColor,
+              }}
+            />
+            <div
+              className="absolute inset-0 rounded-[1.75rem] border border-current animate-ping delay-300"
+              style={{
+                animationDuration: "2s",
+                borderColor: step.glowColor,
+              }}
+            />
+          </>
         )}
       </div>
 

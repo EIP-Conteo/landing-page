@@ -323,3 +323,408 @@
   opacity: 0.03;
   pointer-events: none;
 }
+
+/* ============================================
+   ENHANCED MAGICAL ANIMATIONS
+   ============================================ */
+
+/* Shooting star animation */
+@keyframes shooting-star {
+  0% {
+    transform: translateX(0) translateY(0);
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(300px) translateY(300px);
+    opacity: 0;
+  }
+}
+
+.shooting-star {
+  background: #c9f560;
+  border-radius: 50%;
+  animation: shooting-star 2s ease-out infinite;
+  animation-fill-mode: both;
+  box-shadow: 0 0 10px 2px rgba(201, 245, 96, 0.5);
+}
+
+.shooting-star::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-100%, -50%) rotate(45deg);
+  transform-origin: right center;
+  width: 80px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(201, 245, 96, 0.8));
+}
+
+/* Sparkle float animation */
+@keyframes sparkle-float {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg) scale(1);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-30px) rotate(180deg) scale(1.2);
+    opacity: 0.8;
+  }
+  90% {
+    opacity: 1;
+  }
+}
+
+.animate-sparkle-float {
+  animation: sparkle-float 4s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+/* Orb floating animation */
+@keyframes orb-float {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+  50% {
+    transform: translate(-20px, -30px) scale(0.9);
+  }
+  75% {
+    transform: translate(40px, 20px) scale(1.05);
+  }
+}
+
+.animate-orb-float {
+  animation: orb-float 20s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* Star twinkling animation */
+@keyframes twinkle-star {
+  0%, 100% {
+    opacity: 0.2;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+.animate-twinkle-star {
+  animation: twinkle-star 3s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+/* Dust rising animation */
+@keyframes dust-rise {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.8;
+  }
+  90% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(-100vh) translateX(var(--drift, 0px));
+    opacity: 0;
+  }
+}
+
+.animate-dust-rise {
+  animation: dust-rise 20s linear infinite;
+  will-change: transform, opacity;
+}
+
+/* Cursor sparkle animation */
+@keyframes cursor-sparkle {
+  0% {
+    transform: translate(-50%, -50%) scale(1) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(0) rotate(180deg);
+    opacity: 0;
+  }
+}
+
+.animate-cursor-sparkle {
+  animation: cursor-sparkle 0.8s ease-out forwards;
+}
+
+/* Animated mesh gradient background */
+@keyframes mesh-shift {
+  0%, 100% {
+    background-position: 0% 0%, 100% 100%, 50% 50%;
+  }
+  25% {
+    background-position: 100% 0%, 0% 100%, 80% 20%;
+  }
+  50% {
+    background-position: 100% 100%, 0% 0%, 20% 80%;
+  }
+  75% {
+    background-position: 0% 100%, 100% 0%, 50% 50%;
+  }
+}
+
+.bg-mesh-gradient {
+  background:
+    radial-gradient(ellipse at 0% 0%, rgba(106, 90, 224, 0.15) 0%, transparent 50%),
+    radial-gradient(ellipse at 100% 100%, rgba(201, 245, 96, 0.1) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 50%, rgba(106, 90, 224, 0.08) 0%, transparent 40%);
+  background-size: 100% 100%;
+  animation: mesh-shift 30s ease-in-out infinite;
+}
+
+/* Rainbow shimmer effect */
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+.shimmer-text {
+  background: linear-gradient(
+    90deg,
+    #c9f560 0%,
+    #6a5ae0 25%,
+    #c9f560 50%,
+    #6a5ae0 75%,
+    #c9f560 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 3s linear infinite;
+}
+
+/* Pulsing glow ring */
+@keyframes glow-pulse {
+  0%, 100% {
+    box-shadow:
+      0 0 20px rgba(201, 245, 96, 0.4),
+      0 0 40px rgba(201, 245, 96, 0.2),
+      0 0 60px rgba(201, 245, 96, 0.1);
+  }
+  50% {
+    box-shadow:
+      0 0 40px rgba(201, 245, 96, 0.6),
+      0 0 80px rgba(201, 245, 96, 0.4),
+      0 0 120px rgba(201, 245, 96, 0.2);
+  }
+}
+
+.animate-glow-pulse {
+  animation: glow-pulse 3s ease-in-out infinite;
+}
+
+/* Magical bounce */
+@keyframes magical-bounce {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  25% {
+    transform: translateY(-10px) scale(1.02);
+  }
+  50% {
+    transform: translateY(-5px) scale(1.01);
+  }
+  75% {
+    transform: translateY(-8px) scale(1.015);
+  }
+}
+
+.animate-magical-bounce {
+  animation: magical-bounce 3s ease-in-out infinite;
+}
+
+/* Rotate and glow */
+@keyframes rotate-glow {
+  0% {
+    transform: rotate(0deg);
+    filter: drop-shadow(0 0 5px rgba(201, 245, 96, 0.5));
+  }
+  50% {
+    filter: drop-shadow(0 0 20px rgba(201, 245, 96, 0.8));
+  }
+  100% {
+    transform: rotate(360deg);
+    filter: drop-shadow(0 0 5px rgba(201, 245, 96, 0.5));
+  }
+}
+
+.animate-rotate-glow {
+  animation: rotate-glow 8s linear infinite;
+}
+
+/* Wave animation for text */
+@keyframes wave {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.wave-text > span {
+  display: inline-block;
+  animation: wave 1s ease-in-out infinite;
+}
+
+.wave-text > span:nth-child(1) { animation-delay: 0s; }
+.wave-text > span:nth-child(2) { animation-delay: 0.1s; }
+.wave-text > span:nth-child(3) { animation-delay: 0.2s; }
+.wave-text > span:nth-child(4) { animation-delay: 0.3s; }
+.wave-text > span:nth-child(5) { animation-delay: 0.4s; }
+.wave-text > span:nth-child(6) { animation-delay: 0.5s; }
+.wave-text > span:nth-child(7) { animation-delay: 0.6s; }
+.wave-text > span:nth-child(8) { animation-delay: 0.7s; }
+
+/* Scroll indicator bounce */
+@keyframes scroll-bounce {
+  0%, 100% {
+    transform: translateY(0);
+    opacity: 0.4;
+  }
+  50% {
+    transform: translateY(8px);
+    opacity: 1;
+  }
+}
+
+.animate-scroll-bounce {
+  animation: scroll-bounce 2s ease-in-out infinite;
+}
+
+/* Card magical hover */
+.magical-card {
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+}
+
+.magical-card::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(135deg, #c9f560, #6a5ae0, #c9f560);
+  border-radius: inherit;
+  opacity: 0;
+  z-index: -1;
+  transition: opacity 0.5s;
+  background-size: 200% 200%;
+  animation: gradient-shift 3s ease infinite;
+}
+
+.magical-card:hover::before {
+  opacity: 1;
+}
+
+.magical-card:hover {
+  transform: translateY(-12px) scale(1.02);
+  box-shadow:
+    0 30px 60px -20px rgba(106, 90, 224, 0.3),
+    0 0 40px rgba(201, 245, 96, 0.2);
+}
+
+/* Button magical effect */
+.btn-magical {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-magical::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+  border-radius: 50%;
+}
+
+.btn-magical:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.btn-magical:hover {
+  transform: scale(1.05);
+  box-shadow:
+    0 10px 40px -10px rgba(201, 245, 96, 0.5),
+    0 0 20px rgba(201, 245, 96, 0.3);
+}
+
+.btn-magical:active {
+  transform: scale(0.98);
+}
+
+/* Text reveal animation */
+@keyframes text-reveal {
+  0% {
+    clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+  }
+  100% {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+}
+
+.animate-text-reveal {
+  animation: text-reveal 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Floating character animation */
+@keyframes character-float {
+  0%, 100% {
+    transform: translateY(0) rotate(-5deg);
+  }
+  25% {
+    transform: translateY(-15px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(5deg);
+  }
+  75% {
+    transform: translateY(-20px) rotate(2deg);
+  }
+}
+
+.animate-character-float {
+  animation: character-float 6s ease-in-out infinite;
+}
+
+/* Parallax layers */
+.parallax-slow {
+  transform: translateZ(-2px) scale(3);
+}
+
+.parallax-medium {
+  transform: translateZ(-1px) scale(2);
+}
+
+.parallax-fast {
+  transform: translateZ(0);
+}
