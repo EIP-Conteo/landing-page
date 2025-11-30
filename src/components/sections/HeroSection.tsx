@@ -22,7 +22,6 @@ export function HeroSection() {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    // Use requestAnimationFrame to avoid synchronous setState in effect
     const frame = requestAnimationFrame(() => {
       setIsLoaded(true);
     });
@@ -32,7 +31,7 @@ export function HeroSection() {
   return (
     <section className="relative bg-conteo-dark min-h-screen overflow-hidden">
       {/* Static gradient background - no animation for perf */}
-      <div className="absolute inset-0 bg-gradient-to-br from-conteo-dark via-[#1e1e35] to-conteo-dark opacity-50" />
+      <div className="absolute inset-0 bg-linear-to-br from-conteo-dark via-[#1e1e35] to-conteo-dark opacity-50" />
 
       {/* Minimal floating elements */}
       <FloatingElements variant="stars" density="low" />
@@ -149,20 +148,10 @@ export function HeroSection() {
 
           {/* Static decorative characters */}
           <div className="absolute -left-12 top-1/4 w-20 h-20 hidden lg:block">
-            <Image
-              src={cowReading}
-              alt=""
-              fill
-              className="object-contain"
-            />
+            <Image src={cowReading} alt="" fill className="object-contain" />
           </div>
           <div className="absolute -right-8 bottom-1/3 w-16 h-16 hidden lg:block">
-            <Image
-              src={foxGaming}
-              alt=""
-              fill
-              className="object-contain"
-            />
+            <Image src={foxGaming} alt="" fill className="object-contain" />
           </div>
         </div>
       </div>

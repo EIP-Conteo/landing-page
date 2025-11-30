@@ -5,7 +5,6 @@ import { Star, Quote, Heart } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
-// Avatar placeholders - could be replaced with real avatars
 const avatars = [
   "https://www.figma.com/api/mcp/asset/df1375c2-c9bd-49e5-9531-5b96e0b1ef3a", // baby character as avatar
   "https://www.figma.com/api/mcp/asset/8fd7630f-36b5-457d-9cba-8cb7398524b6", // frog
@@ -67,7 +66,6 @@ export function TestimonialsSection() {
     return () => observer.disconnect();
   }, []);
 
-  // Auto-rotate testimonials
   useEffect(() => {
     if (!isVisible) return;
 
@@ -84,7 +82,7 @@ export function TestimonialsSection() {
       className="relative bg-conteo-dark py-24 overflow-hidden"
     >
       {/* Background decorations */}
-      <div className="absolute inset-0 bg-gradient-to-br from-conteo-dark via-[#1e1e35] to-conteo-dark opacity-50" />
+      <div className="absolute inset-0 bg-linear-to-br from-conteo-dark via-[#1e1e35] to-conteo-dark opacity-50" />
 
       {/* Floating quote marks */}
       <div className="absolute top-20 left-10 opacity-5">
@@ -141,10 +139,7 @@ export function TestimonialsSection() {
           )}
         >
           {stats.map((stat, index) => (
-            <div
-              key={index}
-              className="flex items-center gap-3 group"
-            >
+            <div key={index} className="flex items-center gap-3 group">
               <div className="w-12 h-12 rounded-2xl bg-conteo-secondary/20 flex items-center justify-center group-hover:scale-110 group-hover:bg-conteo-secondary/30 transition-all duration-300">
                 <stat.icon className="w-6 h-6 text-conteo-accent" />
               </div>
@@ -165,7 +160,8 @@ export function TestimonialsSection() {
             {testimonials.map((testimonial, index) => {
               const isActive = index === activeIndex;
               const isPrev =
-                index === (activeIndex - 1 + testimonials.length) % testimonials.length;
+                index ===
+                (activeIndex - 1 + testimonials.length) % testimonials.length;
               const isNext = index === (activeIndex + 1) % testimonials.length;
 
               return (
@@ -174,13 +170,18 @@ export function TestimonialsSection() {
                   className={cn(
                     "absolute inset-0 transition-all duration-700 ease-out cursor-pointer",
                     isActive && "z-30 scale-100 opacity-100 translate-x-0",
-                    isPrev && "z-20 scale-95 opacity-40 -translate-x-8 md:-translate-x-16",
-                    isNext && "z-20 scale-95 opacity-40 translate-x-8 md:translate-x-16",
+                    isPrev &&
+                      "z-20 scale-95 opacity-40 -translate-x-8 md:-translate-x-16",
+                    isNext &&
+                      "z-20 scale-95 opacity-40 translate-x-8 md:translate-x-16",
                     !isActive && !isPrev && !isNext && "z-10 scale-90 opacity-0"
                   )}
                   onClick={() => setActiveIndex(index)}
                 >
-                  <TestimonialCard testimonial={testimonial} isActive={isActive} />
+                  <TestimonialCard
+                    testimonial={testimonial}
+                    isActive={isActive}
+                  />
                 </div>
               );
             })}
@@ -212,16 +213,26 @@ export function TestimonialsSection() {
         >
           <span className="text-white/40 text-sm">Disponible sur</span>
           <div className="flex items-center gap-2 px-4 py-2 bg-white/5 rounded-xl">
-            <svg className="w-6 h-6 text-white" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09l.01-.01zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/>
+            <svg
+              className="w-6 h-6 text-white"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+            >
+              <path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09l.01-.01zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z" />
             </svg>
             <span className="text-white/70 text-sm font-medium">App Store</span>
           </div>
           <div className="flex items-center gap-2 px-4 py-2 bg-white/5 rounded-xl">
-            <svg className="w-6 h-6 text-white" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.198l2.807 1.626a1 1 0 010 1.73l-2.808 1.626L15.206 12l2.492-2.491zM5.864 2.658L16.802 8.99l-2.303 2.303-8.635-8.635z"/>
+            <svg
+              className="w-6 h-6 text-white"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+            >
+              <path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.198l2.807 1.626a1 1 0 010 1.73l-2.808 1.626L15.206 12l2.492-2.491zM5.864 2.658L16.802 8.99l-2.303 2.303-8.635-8.635z" />
             </svg>
-            <span className="text-white/70 text-sm font-medium">Google Play</span>
+            <span className="text-white/70 text-sm font-medium">
+              Google Play
+            </span>
           </div>
         </div>
       </div>
@@ -232,10 +243,10 @@ export function TestimonialsSection() {
 function TestimonialCard({
   testimonial,
   isActive,
-}: {
+}: Readonly<{
   testimonial: (typeof testimonials)[0];
   isActive: boolean;
-}) {
+}>) {
   return (
     <div
       className={cn(
@@ -272,7 +283,7 @@ function TestimonialCard({
         {/* Quote */}
         <p
           className={cn(
-            "font-sans text-lg leading-relaxed flex-grow transition-all duration-500",
+            "font-sans text-lg leading-relaxed grow transition-all duration-500",
             isActive ? "text-white/90" : "text-white/50"
           )}
         >

@@ -15,11 +15,11 @@ export function StepCard({
   title,
   description,
   className,
-}: StepCardProps) {
+}: Readonly<StepCardProps>) {
   return (
     <div className={cn("flex flex-col items-center text-center", className)}>
       <div className="relative mb-4">
-        <div className="w-20 h-20 bg-conteo-light rounded-[1.5rem] flex items-center justify-center text-conteo-secondary">
+        <div className="w-20 h-20 bg-conteo-light rounded-3xl flex items-center justify-center text-conteo-secondary">
           {icon}
         </div>
         <div className="absolute -top-2 -left-2 w-8 h-8 bg-conteo-accent rounded-full flex items-center justify-center font-heading font-extrabold text-conteo-dark text-sm">

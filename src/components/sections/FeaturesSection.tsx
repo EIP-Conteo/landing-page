@@ -5,13 +5,10 @@ import { Users, Sparkles, Volume2, ImageIcon } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
-// Character assets from Figma
 const teddyBear =
   "https://www.figma.com/api/mcp/asset/caa3a5ee-a235-431e-a9a7-3a5181358cfc";
 const frog =
   "https://www.figma.com/api/mcp/asset/8fd7630f-36b5-457d-9cba-8cb7398524b6";
-const baby =
-  "https://www.figma.com/api/mcp/asset/df1375c2-c9bd-49e5-9531-5b96e0b1ef3a";
 
 const features = [
   {
@@ -76,10 +73,10 @@ export function FeaturesSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative bg-gradient-to-b from-conteo-light to-white overflow-hidden"
+      className="relative bg-linear-to-b from-conteo-light to-white overflow-hidden"
     >
       {/* Background decoration */}
-      <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-conteo-dark to-transparent opacity-5" />
+      <div className="absolute top-0 left-0 w-full h-32 bg-linear-to-b from-conteo-dark to-transparent opacity-5" />
 
       {/* Static decorative characters */}
       <div className="absolute -left-16 top-32 w-32 h-32 opacity-20 hidden lg:block">
@@ -153,11 +150,11 @@ function FeatureCard({
   feature,
   index,
   isVisible,
-}: {
+}: Readonly<{
   feature: (typeof features)[0];
   index: number;
   isVisible: boolean;
-}) {
+}>) {
   const Icon = feature.icon;
 
   return (
@@ -172,7 +169,7 @@ function FeatureCard({
       <div
         className={cn(
           "absolute inset-0 rounded-[2rem] opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10",
-          `bg-gradient-to-br ${feature.gradient}`
+          `bg-linear-to-br ${feature.gradient}`
         )}
         style={{ padding: "2px" }}
       >
@@ -183,7 +180,7 @@ function FeatureCard({
       <div
         className={cn(
           "absolute inset-0 rounded-[2rem] opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-20 blur-xl",
-          `bg-gradient-to-br ${feature.gradient}`
+          `bg-linear-to-br ${feature.gradient}`
         )}
       />
 

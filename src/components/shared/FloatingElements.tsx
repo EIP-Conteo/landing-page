@@ -18,36 +18,35 @@ interface StarData {
   size: "sm" | "md";
 }
 
+const DENSITY_COUNTS = {
+  low: 4,
+  medium: 6,
+  high: 10,
+} as const;
+
 export function FloatingElements({
   variant = "mixed",
   density = "medium",
   className,
-}: FloatingElementsProps) {
+}: Readonly<FloatingElementsProps>) {
   const [stars, setStars] = useState<StarData[]>([]);
   const [mounted, setMounted] = useState(false);
 
-  // Reduced counts for better performance
-  const counts = {
-    low: 4,
-    medium: 6,
-    high: 10,
-  };
-
   useEffect(() => {
-    const starCount = counts[density];
+    const starCount = DENSITY_COUNTS[density];
 
     const frame = requestAnimationFrame(() => {
       if (variant === "stars" || variant === "mixed") {
-        const generatedStars: StarData[] = Array.from({ length: starCount }).map(
-          (_, i) => ({
-            id: `star-${i}`,
-            left: Math.random() * 100,
-            top: Math.random() * 100,
-            delay: Math.random() * 5,
-            duration: 3 + Math.random() * 2,
-            size: Math.random() > 0.5 ? "sm" : "md",
-          })
-        );
+        const generatedStars: StarData[] = Array.from({
+          length: starCount,
+        }).map((_, i) => ({
+          id: `star-${i}`,
+          left: Math.random() * 100,
+          top: Math.random() * 100,
+          delay: Math.random() * 5,
+          duration: 3 + Math.random() * 2,
+          size: Math.random() > 0.5 ? "sm" : "md",
+        }));
         setStars(generatedStars);
       }
       setMounted(true);
@@ -93,14 +92,13 @@ export function FloatingElements({
   );
 }
 
-// Simplified decorative blob - no animation for better perf
 export function DecorativeBlob({
   className,
   color = "accent",
-}: {
+}: Readonly<{
   className?: string;
   color?: "accent" | "secondary";
-}) {
+}>) {
   const colors = {
     accent: "from-conteo-accent/15 to-conteo-accent/5",
     secondary: "from-conteo-secondary/15 to-conteo-secondary/5",
@@ -109,7 +107,7 @@ export function DecorativeBlob({
   return (
     <div
       className={cn(
-        "absolute bg-gradient-to-br rounded-full blur-2xl",
+        "absolute bg-linear-to-br rounded-full blur-2xl",
         colors[color],
         className
       )}
@@ -117,11 +115,10 @@ export function DecorativeBlob({
   );
 }
 
-// Magic sparkle burst for interactions
-export function SparkleGroup({ className }: { className?: string }) {
+export function SparkleGroup({ className }: Readonly<{ className?: string }>) {
   return (
     <div className={cn("absolute", className)}>
-      {[...Array(6)].map((_, i) => (
+      {[new Array(6)].map((_, i) => (
         <svg
           key={i}
           className="absolute w-3 h-3 text-conteo-accent animate-sparkle"

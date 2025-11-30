@@ -13,7 +13,11 @@ const sizes = {
   lg: { box: "w-28 h-28", text: "text-4xl" },
 };
 
-export function Logo({ size = "md", className, showText = true }: LogoProps) {
+export function Logo({
+  size = "md",
+  className,
+  showText = true,
+}: Readonly<LogoProps>) {
   const { box, text } = sizes[size];
 
   return (

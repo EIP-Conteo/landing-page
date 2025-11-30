@@ -59,7 +59,6 @@ export function HowItWorksSection() {
     return () => observer.disconnect();
   }, []);
 
-  // Auto-cycle through steps - slower for better perf
   useEffect(() => {
     if (!isVisible) return;
 
@@ -172,13 +171,13 @@ function StepCard({
   isVisible,
   isActive,
   onClick,
-}: {
+}: Readonly<{
   step: (typeof steps)[0];
   index: number;
   isVisible: boolean;
   isActive: boolean;
   onClick: () => void;
-}) {
+}>) {
   const Icon = step.icon;
 
   return (
@@ -196,7 +195,7 @@ function StepCard({
         <div
           className={cn(
             "absolute inset-0 rounded-[1.75rem] blur-xl transition-opacity duration-500",
-            `bg-gradient-to-br ${step.color}`,
+            `bg-linear-to-br ${step.color}`,
             isActive ? "opacity-50" : "opacity-0"
           )}
         />
@@ -223,7 +222,7 @@ function StepCard({
           className={cn(
             "absolute -top-2 -left-2 w-10 h-10 rounded-full flex items-center justify-center font-heading font-extrabold text-lg transition-all duration-500",
             isActive
-              ? `bg-gradient-to-br ${step.color} text-white shadow-lg scale-110`
+              ? `bg-linear-to-br ${step.color} text-white shadow-lg scale-110`
               : "bg-conteo-accent text-conteo-dark"
           )}
         >
