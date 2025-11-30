@@ -21,7 +21,7 @@ export function Logo({
   const { box, text } = sizes[size];
 
   return (
-    <div className={cn("flex flex-col items-center gap-2", className)}>
+    <div className={cn("flex flex-col items-center", className)}>
       <div className={cn("relative", box)}>
         <Image
           src="/logo.png"
