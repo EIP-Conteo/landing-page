@@ -114,25 +114,3 @@ export function DecorativeBlob({
     />
   );
 }
-
-export function SparkleGroup({ className }: Readonly<{ className?: string }>) {
-  return (
-    <div className={cn("absolute", className)}>
-      {[new Array(6)].map((_, i) => (
-        <svg
-          key={i}
-          className="absolute w-3 h-3 text-conteo-accent animate-sparkle"
-          style={{
-            left: `${50 + Math.cos((i * Math.PI) / 3) * 30}%`,
-            top: `${50 + Math.sin((i * Math.PI) / 3) * 30}%`,
-            animationDelay: `${i * 0.2}s`,
-          }}
-          viewBox="0 0 24 24"
-          fill="currentColor"
-        >
-          <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z" />
-        </svg>
-      ))}
-    </div>
-  );
-}

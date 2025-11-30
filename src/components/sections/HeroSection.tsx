@@ -9,6 +9,7 @@ import {
 import { PhoneDemo } from "@/components/shared/PhoneDemo";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { Sparkle, ArrowDown } from "lucide-react";
 
 // Local assets
 const decorativeCircle = "/images/figma/decorative/circle.svg";
@@ -73,13 +74,7 @@ export function HeroSection() {
             <span className="relative inline-block">
               <span className="gradient-text">magiques</span>
               {/* Sparkle decoration */}
-              <svg
-                className="absolute -top-4 -right-6 w-8 h-8 text-conteo-accent animate-twinkle"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-              >
-                <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z" />
-              </svg>
+              <Sparkle className="absolute -top-4 -right-6 w-8 h-8 text-conteo-accent animate-twinkle fill-current" />
             </span>{" "}
             <br />
             créées par votre enfant
@@ -162,19 +157,7 @@ export function HeroSection() {
         <span className="text-white/30 text-xs uppercase tracking-widest">
           Découvrir
         </span>
-        <svg
-          className="w-5 h-5 text-white/40"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M19 14l-7 7m0 0l-7-7m7 7V3"
-          />
-        </svg>
+        <ArrowDown className="w-5 h-5 text-white/40" strokeWidth={2} />
       </div>
     </section>
   );
