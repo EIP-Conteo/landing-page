@@ -76,7 +76,7 @@ export function FeaturesSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative bg-gradient-to-b from-conteo-light to-white py-24 overflow-hidden"
+      className="relative bg-gradient-to-b from-conteo-light to-white overflow-hidden"
     >
       {/* Background decoration */}
       <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-conteo-dark to-transparent opacity-5" />
