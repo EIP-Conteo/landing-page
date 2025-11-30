@@ -4,6 +4,14 @@ import { cn } from "@/lib/utils";
 import { Users, Sparkles, Volume2, ImageIcon } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
+import { Badge } from "@/components/ui/badge";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 
 const teddyBear = "/images/figma/avatars/teddy.png";
 const frog = "/images/figma/avatars/frog.png";
@@ -94,9 +102,12 @@ export function FeaturesSection() {
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           )}
         >
-          <span className="inline-block px-4 py-1.5 bg-conteo-secondary/10 text-conteo-secondary text-sm font-medium rounded-full mb-4">
+          <Badge
+            variant="secondary"
+            className="bg-conteo-secondary/10 text-conteo-secondary border-none px-4 py-1.5 text-sm mb-4"
+          >
             Fonctionnalités
-          </span>
+          </Badge>
           <h2
             id="features-title"
             className="font-heading font-extrabold text-3xl md:text-4xl lg:text-5xl text-conteo-dark mb-4"
@@ -136,14 +147,6 @@ export function FeaturesSection() {
             />
           ))}
         </div>
-
-        {/* Bottom CTA */}
-        <div
-          className={cn(
-            "text-center mt-16 transition-all duration-1000 delay-700",
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-          )}
-        ></div>
       </div>
     </section>
   );
@@ -161,9 +164,9 @@ function FeatureCard({
   const Icon = feature.icon;
 
   return (
-    <div
+    <Card
       className={cn(
-        "group relative bg-white p-6 rounded-[2rem] transition-all duration-700 card-hover",
+        "group relative border-none bg-white rounded-[2rem] transition-all duration-700 hover:shadow-xl",
         isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
       )}
       style={{ transitionDelay: `${index * 150}ms` }}
@@ -187,23 +190,25 @@ function FeatureCard({
         )}
       />
 
-      {/* Icon */}
-      <div
-        className={cn(
-          "w-14 h-14 rounded-2xl flex items-center justify-center mb-5 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3",
-          feature.iconBg
-        )}
-      >
-        <Icon className={cn("w-7 h-7", feature.iconColor)} />
-      </div>
-
-      {/* Content */}
-      <h3 className="font-sans font-semibold text-xl text-conteo-dark mb-3 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-linear-to-r group-hover:from-conteo-dark group-hover:to-conteo-secondary transition-all duration-300">
-        {feature.title}
-      </h3>
-      <p className="font-sans text-conteo-text-muted text-sm leading-relaxed">
-        {feature.description}
-      </p>
-    </div>
+      <CardHeader className="pb-0">
+        {/* Icon */}
+        <div
+          className={cn(
+            "w-14 h-14 rounded-2xl flex items-center justify-center mb-2 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3",
+            feature.iconBg
+          )}
+        >
+          <Icon className={cn("w-7 h-7", feature.iconColor)} />
+        </div>
+        <CardTitle className="font-sans text-xl text-conteo-dark group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-linear-to-r group-hover:from-conteo-dark group-hover:to-conteo-secondary transition-all duration-300">
+          {feature.title}
+        </CardTitle>
+      </CardHeader>
+      <CardContent className="pt-0">
+        <CardDescription className="text-conteo-text-muted text-sm leading-relaxed">
+          {feature.description}
+        </CardDescription>
+      </CardContent>
+    </Card>
   );
 }

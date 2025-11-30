@@ -1,8 +1,11 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { MousePointerClick, Wand2, BookOpen } from "lucide-react";
+import { MousePointerClick, Wand2, BookOpen, ChevronRight } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Progress } from "@/components/ui/progress";
 
 const steps = [
   {
@@ -94,9 +97,12 @@ export function HowItWorksSection() {
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           )}
         >
-          <span className="inline-block px-4 py-1.5 bg-conteo-accent/20 text-conteo-dark text-sm font-medium rounded-full mb-4">
+          <Badge
+            variant="secondary"
+            className="bg-conteo-accent/20 text-conteo-dark border-none px-4 py-1.5 text-sm mb-4"
+          >
             Simple comme 1, 2, 3
-          </span>
+          </Badge>
           <h2
             id="how-it-works-title"
             className="font-heading font-extrabold text-3xl md:text-4xl lg:text-5xl text-conteo-dark mb-4"
@@ -116,13 +122,10 @@ export function HowItWorksSection() {
 
         {/* Steps */}
         <div className="relative max-w-5xl mx-auto">
-          {/* Connection line */}
-          <div className="absolute top-24 left-0 right-0 h-1 bg-linear-to-r from-pink-200 via-conteo-secondary/30 to-lime-200 rounded-full hidden md:block" />
-
-          {/* Progress indicator on line */}
-          <div
-            className="absolute top-24 left-0 h-1 bg-linear-to-r from-pink-500 via-conteo-secondary to-conteo-accent rounded-full hidden md:block transition-all duration-500"
-            style={{ width: `${((activeStep + 1) / steps.length) * 100}%` }}
+          {/* Progress line */}
+          <Progress
+            value={((activeStep + 1) / steps.length) * 100}
+            className="absolute top-24 left-0 right-0 h-1 hidden md:block bg-linear-to-r from-pink-200 via-conteo-secondary/30 to-lime-200 [&>div]:bg-linear-to-r [&>div]:from-pink-500 [&>div]:via-conteo-secondary [&>div]:to-conteo-accent [&>div]:transition-all [&>div]:duration-500"
           />
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
@@ -146,24 +149,15 @@ export function HowItWorksSection() {
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           )}
         >
-          <div className="inline-flex items-center gap-3 bg-conteo-dark text-white px-6 py-3 rounded-full btn-magnetic cursor-pointer hover:bg-conteo-dark/90">
+          <Button
+            size="lg"
+            className="bg-conteo-dark text-white rounded-full px-6 py-3 h-auto hover:bg-conteo-dark/90 btn-magnetic"
+          >
             <span className="font-medium">Essayer maintenant</span>
-            <div className="w-6 h-6 rounded-full bg-conteo-accent flex items-center justify-center">
-              <svg
-                className="w-3 h-3 text-conteo-dark"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={3}
-                  d="M9 5l7 7-7 7"
-                />
-              </svg>
+            <div className="w-6 h-6 rounded-full bg-conteo-accent flex items-center justify-center ml-3">
+              <ChevronRight className="w-4 h-4 text-conteo-dark" />
             </div>
-          </div>
+          </Button>
         </div>
       </div>
     </section>

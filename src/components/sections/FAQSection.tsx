@@ -8,6 +8,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { Badge } from "@/components/ui/badge";
 
 const faqs = [
   {
@@ -77,9 +78,12 @@ export function FAQSection() {
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           )}
         >
-          <span className="inline-block px-4 py-1.5 bg-conteo-secondary/10 text-conteo-secondary text-sm font-medium rounded-full mb-4">
+          <Badge
+            variant="secondary"
+            className="bg-conteo-secondary/10 text-conteo-secondary border-none px-4 py-1.5 text-sm mb-4"
+          >
             Questions fréquentes
-          </span>
+          </Badge>
           <h2
             id="faq-title"
             className="font-heading font-extrabold text-3xl md:text-4xl lg:text-5xl text-conteo-dark mb-4"

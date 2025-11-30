@@ -3,6 +3,7 @@
 import { Logo } from "@/components/shared/Logo";
 import { AppStoreBadges } from "@/components/shared/AppStoreBadges";
 import { Heart } from "lucide-react";
+import { Separator } from "@/components/ui/separator";
 
 export function Footer() {
   return (
@@ -36,7 +37,8 @@ export function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="border-t border-white/10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <Separator className="bg-white/10 mb-6" />
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="font-sans text-white/30 text-xs text-center sm:text-left">
             © {new Date().getFullYear()} Contéo. Tous droits réservés.
           </p>
