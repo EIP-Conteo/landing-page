@@ -1,10 +1,9 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { MousePointerClick, Wand2, BookOpen, ChevronRight } from "lucide-react";
+import { MousePointerClick, Wand2, BookOpen } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 
 const steps = [
@@ -140,24 +139,6 @@ export function HowItWorksSection() {
               />
             ))}
           </div>
-        </div>
-
-        {/* Bottom visual cue */}
-        <div
-          className={cn(
-            "text-center mt-16 transition-all duration-1000 delay-500",
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-          )}
-        >
-          <Button
-            size="lg"
-            className="bg-conteo-dark text-white rounded-full px-6 py-3 h-auto hover:bg-conteo-dark/90 btn-magnetic"
-          >
-            <span className="font-medium">Essayer maintenant</span>
-            <div className="w-6 h-6 rounded-full bg-conteo-accent flex items-center justify-center ml-3">
-              <ChevronRight className="w-4 h-4 text-conteo-dark" />
-            </div>
-          </Button>
         </div>
       </div>
     </section>
