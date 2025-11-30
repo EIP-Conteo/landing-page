@@ -113,11 +113,11 @@ export function HowItWorksSection() {
         {/* Steps */}
         <div className="relative max-w-5xl mx-auto">
           {/* Connection line */}
-          <div className="absolute top-24 left-0 right-0 h-1 bg-gradient-to-r from-pink-200 via-conteo-secondary/30 to-lime-200 rounded-full hidden md:block" />
+          <div className="absolute top-24 left-0 right-0 h-1 bg-linear-to-r from-pink-200 via-conteo-secondary/30 to-lime-200 rounded-full hidden md:block" />
 
           {/* Progress indicator on line */}
           <div
-            className="absolute top-24 left-0 h-1 bg-gradient-to-r from-pink-500 via-conteo-secondary to-conteo-accent rounded-full hidden md:block transition-all duration-500"
+            className="absolute top-24 left-0 h-1 bg-linear-to-r from-pink-500 via-conteo-secondary to-conteo-accent rounded-full hidden md:block transition-all duration-500"
             style={{ width: `${((activeStep + 1) / steps.length) * 100}%` }}
           />
 
