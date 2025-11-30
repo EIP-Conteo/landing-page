@@ -5,10 +5,8 @@ import { Users, Sparkles, Volume2, ImageIcon } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
-const teddyBear =
-  "https://www.figma.com/api/mcp/asset/caa3a5ee-a235-431e-a9a7-3a5181358cfc";
-const frog =
-  "https://www.figma.com/api/mcp/asset/8fd7630f-36b5-457d-9cba-8cb7398524b6";
+const teddyBear = "/images/figma/avatars/teddy.png";
+const frog = "/images/figma/avatars/frog.png";
 
 const features = [
   {

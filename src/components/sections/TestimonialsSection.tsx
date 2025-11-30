@@ -6,9 +6,9 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
 const avatars = [
-  "https://www.figma.com/api/mcp/asset/df1375c2-c9bd-49e5-9531-5b96e0b1ef3a", // baby character as avatar
-  "https://www.figma.com/api/mcp/asset/8fd7630f-36b5-457d-9cba-8cb7398524b6", // frog
-  "https://www.figma.com/api/mcp/asset/caa3a5ee-a235-431e-a9a7-3a5181358cfc", // teddy
+  "/images/figma/avatars/baby.png",
+  "/images/figma/avatars/frog.png",
+  "/images/figma/avatars/teddy.png",
 ];
 
 const testimonials = [

@@ -11,38 +11,32 @@ const characters = [
   {
     id: "cow-sleeping",
     name: "Vache endormie",
-    image:
-      "https://www.figma.com/api/mcp/asset/c5b9d3b4-7a1a-4b70-9a8f-1a4bd0e6d557",
+    image: "/images/figma/characters/cow-sleeping.png",
   },
   {
     id: "cow-reading",
     name: "Vache lisant",
-    image:
-      "https://www.figma.com/api/mcp/asset/9eb77f7c-5daa-4811-823f-64848eab0a8d",
+    image: "/images/figma/characters/cow-reading.png",
   },
   {
     id: "fox-gaming",
     name: "Renard joueur",
-    image:
-      "https://www.figma.com/api/mcp/asset/2da934e4-d7d9-404b-b817-3a1d4d152d3d",
+    image: "/images/figma/characters/fox-gaming.png",
   },
   {
     id: "cracked-egg",
     name: "Oeuf magique",
-    image:
-      "https://www.figma.com/api/mcp/asset/57111a20-a052-4fd5-8d22-31b0e98be13d",
+    image: "/images/figma/characters/cracked-egg.png",
   },
   {
     id: "teddy-bear",
     name: "Ours en peluche",
-    image:
-      "https://www.figma.com/api/mcp/asset/22d6da8a-9282-4eb4-adb3-8b582fa4df52",
+    image: "/images/figma/characters/teddy-bear.png",
   },
   {
     id: "frog",
     name: "Grenouille",
-    image:
-      "https://www.figma.com/api/mcp/asset/647c4cd6-920c-4805-877d-383bb662b31d",
+    image: "/images/figma/characters/frog.png",
   },
 ];
 
@@ -51,38 +45,32 @@ const objects = [
   {
     id: "key",
     name: "Clé",
-    image:
-      "https://www.figma.com/api/mcp/asset/5105d1e4-459c-44bc-ace9-fdfd56f21c83",
+    image: "/images/figma/objects/key.png",
   },
   {
     id: "sword",
     name: "Épée",
-    image:
-      "https://www.figma.com/api/mcp/asset/b3666a8a-8af7-4dbb-9eeb-8b935418f699",
+    image: "/images/figma/objects/sword.png",
   },
   {
     id: "shield",
     name: "Bouclier",
-    image:
-      "https://www.figma.com/api/mcp/asset/f7b6962f-060b-4540-abf5-ebb2bbb442e3",
+    image: "/images/figma/objects/shield.png",
   },
   {
     id: "treasure",
     name: "Trésor",
-    image:
-      "https://www.figma.com/api/mcp/asset/f75379fd-ee4d-4038-985e-63fae7bd12c4",
+    image: "/images/figma/objects/treasure.png",
   },
   {
     id: "wand",
     name: "Baguette",
-    image:
-      "https://www.figma.com/api/mcp/asset/3fa20148-0afc-491b-9ae4-0f42700b86e6",
+    image: "/images/figma/objects/wand.png",
   },
   {
     id: "map",
     name: "Carte",
-    image:
-      "https://www.figma.com/api/mcp/asset/796a5c39-fa1d-48d0-8c31-76f9f9a86bc0",
+    image: "/images/figma/objects/map.png",
   },
 ];
 
@@ -91,38 +79,32 @@ const landscapes = [
   {
     id: "barn",
     name: "Ferme",
-    image:
-      "https://www.figma.com/api/mcp/asset/c21ea3b2-a47b-4364-973f-ad9570748e0c",
+    image: "/images/figma/landscapes/barn.png",
   },
   {
     id: "cave",
     name: "Grotte",
-    image:
-      "https://www.figma.com/api/mcp/asset/5c1dcb9f-68ae-4ba7-b504-9a149a762614",
+    image: "/images/figma/landscapes/cave.png",
   },
   {
     id: "beach",
     name: "Plage",
-    image:
-      "https://www.figma.com/api/mcp/asset/3f267998-919b-4582-9fd4-815d3a4d7e27",
+    image: "/images/figma/landscapes/beach.png",
   },
   {
     id: "desert",
     name: "Désert",
-    image:
-      "https://www.figma.com/api/mcp/asset/39107bf0-b2b8-4c53-ad51-544fafd34336",
+    image: "/images/figma/landscapes/desert.png",
   },
   {
     id: "castle",
     name: "Château",
-    image:
-      "https://www.figma.com/api/mcp/asset/7151a2e4-2de4-4139-9d71-8133e22ea7d4",
+    image: "/images/figma/landscapes/castle.png",
   },
   {
     id: "forest",
     name: "Forêt",
-    image:
-      "https://www.figma.com/api/mcp/asset/964b3b0e-917b-4e4d-a659-5ee9a0dd4e9e",
+    image: "/images/figma/landscapes/forest.png",
   },
 ];
 

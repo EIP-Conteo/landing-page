@@ -10,13 +10,10 @@ import { PhoneDemo } from "@/components/shared/PhoneDemo";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
-// Assets from Figma MCP
-const decorativeCircle =
-  "https://www.figma.com/api/mcp/asset/edd550ab-f8f7-4bd3-83ca-85072bd7a59a";
-const cowReading =
-  "https://www.figma.com/api/mcp/asset/81408f97-7dc8-4a18-915a-1584352b5dc3";
-const foxGaming =
-  "https://www.figma.com/api/mcp/asset/ba0ffe3a-9f3d-48e5-9ea3-6980f8ba293b";
+// Local assets
+const decorativeCircle = "/images/figma/decorative/circle.svg";
+const cowReading = "/images/figma/decorative/cow-reading.png";
+const foxGaming = "/images/figma/decorative/fox-gaming.png";
 
 export function HeroSection() {
   const [isLoaded, setIsLoaded] = useState(false);
