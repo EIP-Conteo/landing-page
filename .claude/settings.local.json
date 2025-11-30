@@ -1,0 +1,35 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__figma__whoami",
+      "mcp__figma__get_design_context",
+      "mcp__figma__get_screenshot",
+      "mcp__next-devtools__init",
+      "mcp__shadcn__get_project_registries",
+      "mcp__shadcn__search_items_in_registries",
+      "mcp__shadcn__list_items_in_registries",
+      "mcp__shadcn__view_items_in_registries",
+      "mcp__shadcn__get_item_examples_from_registries",
+      "mcp__next-devtools__nextjs_docs",
+      "Bash(npx shadcn@latest add button card -y)",
+      "Bash(npm run lint)",
+      "Bash(npm run dev:*)",
+      "mcp__playwright__browser_navigate",
+      "mcp__playwright__browser_take_screenshot",
+      "mcp__next-devtools__nextjs_index",
+      "mcp__next-devtools__nextjs_call",
+      "Bash(copy \"D:\\repositories\\Contéo\\landing-page\\public\\logo.png\" \"D:\\repositories\\Contéo\\landing-page\\src\\app\\icon.png\")",
+      "Bash(copy \"D:\\repositories\\Contéo\\landing-page\\public\\logo.png\" \"D:\\repositories\\Contéo\\landing-page\\src\\app\\apple-icon.png\")",
+      "mcp__vercel__deploy_to_vercel",
+      "Bash(npx vercel deploy:*)",
+      "mcp__vercel__list_teams"
+    ]
+  },
+  "enabledMcpjsonServers": [
+    "shadcn",
+    "next-devtools",
+    "figma",
+    "playwright",
+    "github"
+  ]
+}
