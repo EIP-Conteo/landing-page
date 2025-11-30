@@ -6,7 +6,11 @@ import { Heart } from "lucide-react";
 
 export function Footer() {
   return (
-    <footer className="relative bg-conteo-dark overflow-hidden">
+    <footer
+      role="contentinfo"
+      aria-label="Pied de page"
+      className="relative bg-conteo-dark overflow-hidden"
+    >
       {/* Decorative top border */}
       <div className="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-conteo-accent via-conteo-secondary to-conteo-accent" />
 

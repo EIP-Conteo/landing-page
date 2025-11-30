@@ -26,7 +26,11 @@ export function HeroSection() {
   }, []);
 
   return (
-    <section className="relative bg-conteo-dark min-h-screen overflow-hidden">
+    <section
+      id="accueil"
+      aria-label="Présentation de Contéo"
+      className="relative bg-conteo-dark min-h-screen overflow-hidden"
+    >
       {/* Static gradient background - no animation for perf */}
       <div className="absolute inset-0 bg-linear-to-br from-conteo-dark via-[#1e1e35] to-conteo-dark opacity-50" />
 

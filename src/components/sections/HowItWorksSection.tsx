@@ -71,6 +71,8 @@ export function HowItWorksSection() {
 
   return (
     <section
+      id="comment-ca-marche"
+      aria-labelledby="how-it-works-title"
       ref={sectionRef}
       className="relative bg-white py-24 overflow-hidden"
     >
@@ -95,7 +97,10 @@ export function HowItWorksSection() {
           <span className="inline-block px-4 py-1.5 bg-conteo-accent/20 text-conteo-dark text-sm font-medium rounded-full mb-4">
             Simple comme 1, 2, 3
           </span>
-          <h2 className="font-heading font-extrabold text-3xl md:text-4xl lg:text-5xl text-conteo-dark mb-4">
+          <h2
+            id="how-it-works-title"
+            className="font-heading font-extrabold text-3xl md:text-4xl lg:text-5xl text-conteo-dark mb-4"
+          >
             Comment ça{" "}
             <span className="relative inline-block">
               <span className="text-conteo-accent">marche</span>

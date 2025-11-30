@@ -78,6 +78,7 @@ export function TestimonialsSection() {
 
   return (
     <section
+      id="temoignages"
       ref={sectionRef}
       className="relative bg-conteo-dark py-24 overflow-hidden"
     >

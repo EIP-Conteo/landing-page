@@ -70,8 +70,10 @@ export function FeaturesSection() {
 
   return (
     <section
+      id="fonctionnalites"
+      aria-labelledby="features-title"
       ref={sectionRef}
-      className="relative bg-linear-to-b from-conteo-light to-white overflow-hidden"
+      className="relative bg-linear-to-b from-conteo-light to-white overflow-hidden py-24"
     >
       {/* Background decoration */}
       <div className="absolute top-0 left-0 w-full h-32 bg-linear-to-b from-conteo-dark to-transparent opacity-5" />
@@ -95,7 +97,10 @@ export function FeaturesSection() {
           <span className="inline-block px-4 py-1.5 bg-conteo-secondary/10 text-conteo-secondary text-sm font-medium rounded-full mb-4">
             Fonctionnalités
           </span>
-          <h2 className="font-heading font-extrabold text-3xl md:text-4xl lg:text-5xl text-conteo-dark mb-4">
+          <h2
+            id="features-title"
+            className="font-heading font-extrabold text-3xl md:text-4xl lg:text-5xl text-conteo-dark mb-4"
+          >
             Tout ce qu&apos;il faut pour des{" "}
             <span className="relative">
               <span className="text-conteo-secondary">moments magiques</span>
