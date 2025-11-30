@@ -1,8 +1,13 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { ChevronDown } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 const faqs = [
   {
@@ -34,7 +39,6 @@ const faqs = [
 
 export function FAQSection() {
   const [isVisible, setIsVisible] = useState(false);
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -95,76 +99,29 @@ export function FAQSection() {
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           )}
         >
-          {faqs.map((faq, index) => (
-            <FAQItem
-              key={index}
-              question={faq.question}
-              answer={faq.answer}
-              isOpen={openIndex === index}
-              onClick={() => setOpenIndex(openIndex === index ? null : index)}
-              index={index}
-            />
-          ))}
+          <Accordion
+            type="single"
+            collapsible
+            defaultValue="item-0"
+            className="space-y-3"
+          >
+            {faqs.map((faq, index) => (
+              <AccordionItem
+                key={index}
+                value={`item-${index}`}
+                className="bg-white/80 backdrop-blur-sm rounded-2xl border-none px-6 shadow-sm hover:shadow-md transition-shadow duration-300 data-[state=open]:bg-white data-[state=open]:shadow-lg"
+              >
+                <AccordionTrigger className="text-lg font-semibold text-conteo-dark hover:text-conteo-secondary hover:no-underline py-5 data-[state=open]:text-conteo-secondary">
+                  {faq.question}
+                </AccordionTrigger>
+                <AccordionContent className="text-conteo-text-muted leading-relaxed pb-5">
+                  {faq.answer}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
         </div>
       </div>
     </section>
-  );
-}
-
-function FAQItem({
-  question,
-  answer,
-  isOpen,
-  onClick,
-  index,
-}: Readonly<{
-  question: string;
-  answer: string;
-  isOpen: boolean;
-  onClick: () => void;
-  index: number;
-}>) {
-  return (
-    <div
-      className={cn(
-        "mb-3 rounded-2xl overflow-hidden transition-all duration-300",
-        isOpen ? "bg-white shadow-lg" : "bg-white/50 hover:bg-white/80"
-      )}
-    >
-      <button
-        onClick={onClick}
-        className="w-full px-6 py-5 flex items-center justify-between text-left"
-        aria-expanded={isOpen}
-        aria-controls={`faq-answer-${index}`}
-      >
-        <span
-          className={cn(
-            "font-sans font-semibold text-lg transition-colors duration-300",
-            isOpen ? "text-conteo-secondary" : "text-conteo-dark"
-          )}
-        >
-          {question}
-        </span>
-        <ChevronDown
-          className={cn(
-            "w-5 h-5 shrink-0 ml-4 transition-all duration-300",
-            isOpen
-              ? "rotate-180 text-conteo-secondary"
-              : "rotate-0 text-conteo-text-muted"
-          )}
-        />
-      </button>
-      <div
-        id={`faq-answer-${index}`}
-        className={cn(
-          "overflow-hidden transition-all duration-300",
-          isOpen ? "max-h-48 opacity-100" : "max-h-0 opacity-0"
-        )}
-      >
-        <p className="px-6 pb-5 font-sans text-conteo-text-muted leading-relaxed">
-          {answer}
-        </p>
-      </div>
-    </div>
   );
 }
