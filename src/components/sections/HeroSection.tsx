@@ -8,9 +8,11 @@ import {
 } from "@/components/shared/MagicalBackground";
 import { DecorativeBlob } from "@/components/shared/FloatingElements";
 import { PhoneDemo } from "@/components/shared/PhoneDemo";
+import { BetaSignupForm } from "@/components/shared/BetaSignupForm";
+import { Badge } from "@/components/ui/badge";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { Sparkle, Sparkles, ArrowDown, Star, Wand2 } from "lucide-react";
+import { Sparkle, Sparkles, Star, Wand2, Zap, Check } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 // Local assets
@@ -19,7 +21,13 @@ const cowReading = "/images/figma/decorative/cow-reading.png";
 const foxGaming = "/images/figma/decorative/fox-gaming.png";
 
 // Animated text component
-function AnimatedWord({ children, delay = 0 }: { children: string; delay?: number }) {
+function AnimatedWord({
+  children,
+  delay = 0,
+}: Readonly<{
+  children: string;
+  delay?: number;
+}>) {
   return (
     <span
       className="inline-block animate-text-reveal"
@@ -53,6 +61,7 @@ function FloatingSparkles() {
 export function HeroSection() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [subscriberCount, setSubscriberCount] = useState<number | null>(null);
 
   useEffect(() => {
     const frame = requestAnimationFrame(() => {
@@ -60,6 +69,25 @@ export function HeroSection() {
     });
     return () => cancelAnimationFrame(frame);
   }, []);
+
+  // Fetch subscriber count
+  useEffect(() => {
+    let isMounted = true;
+    fetch("/api/beta-signup")
+      .then((res) => res.ok && res.json())
+      .then((data) => isMounted && data && setSubscriberCount(data.count))
+      .catch(() => {});
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
+  const handleSignupSuccess = () => {
+    fetch("/api/beta-signup")
+      .then((res) => res.ok && res.json())
+      .then((data) => data && setSubscriberCount(data.count))
+      .catch(() => {});
+  };
 
   // Parallax effect on mouse move
   useEffect(() => {
@@ -69,15 +97,15 @@ export function HeroSection() {
       setMousePosition({ x, y });
     };
 
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
+    globalThis.addEventListener("mousemove", handleMouseMove);
+    return () => globalThis.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
   return (
     <section
       id="accueil"
       aria-label="Présentation de Contéo"
-      className="relative bg-conteo-dark min-h-screen overflow-hidden"
+      className="relative bg-conteo-dark overflow-hidden"
     >
       {/* Animated gradient background */}
       <div className="absolute inset-0 bg-linear-to-br from-conteo-dark via-[#1e1e35] to-[#2a2a52] opacity-100" />
@@ -102,7 +130,9 @@ export function HeroSection() {
       <div
         className="absolute -left-48 -top-24 w-[500px] h-[500px] opacity-15 transition-transform duration-300 ease-out"
         style={{
-          transform: `translate(${mousePosition.x * 0.5}px, ${mousePosition.y * 0.5}px)`,
+          transform: `translate(${mousePosition.x * 0.5}px, ${
+            mousePosition.y * 0.5
+          }px)`,
         }}
       >
         <Image
@@ -120,7 +150,9 @@ export function HeroSection() {
       <div
         className="absolute right-0 top-1/4 w-[300px] h-[300px] opacity-10 transition-transform duration-300 ease-out"
         style={{
-          transform: `translate(${mousePosition.x * -0.3}px, ${mousePosition.y * -0.3}px)`,
+          transform: `translate(${mousePosition.x * -0.3}px, ${
+            mousePosition.y * -0.3
+          }px)`,
         }}
       >
         <Image
@@ -167,7 +199,9 @@ export function HeroSection() {
           <p
             className={cn(
               "font-sans text-lg md:text-xl text-white/70 mb-10 leading-relaxed max-w-lg transition-all duration-1000 delay-500",
-              isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+              isLoaded
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-10"
             )}
           >
             Votre enfant choisit ses personnages, objets et décors préférés.
@@ -176,8 +210,8 @@ export function HeroSection() {
               texte
               <Sparkles className="inline w-4 h-4 ml-1 animate-twinkle" />
             </span>
-            ,{" "}
-            <span className="text-conteo-secondary font-medium">audio</span> et{" "}
+            , <span className="text-conteo-secondary font-medium">audio</span>{" "}
+            et{" "}
             <span className="text-conteo-accent font-medium relative">
               visuels
               <Wand2 className="inline w-4 h-4 ml-1 animate-magical-bounce" />
@@ -189,7 +223,9 @@ export function HeroSection() {
           <div
             className={cn(
               "transition-all duration-1000 delay-700",
-              isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+              isLoaded
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-10"
             )}
           >
             <div className="relative">
@@ -203,7 +239,9 @@ export function HeroSection() {
           <div
             className={cn(
               "flex gap-8 mt-10 transition-all duration-1000 delay-1000",
-              isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+              isLoaded
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-10"
             )}
           >
             {[
@@ -236,29 +274,52 @@ export function HeroSection() {
           )}
           style={{
             transform: isLoaded
-              ? `translate(${mousePosition.x * -0.2}px, ${mousePosition.y * -0.2}px)`
+              ? `translate(${mousePosition.x * -0.2}px, ${
+                  mousePosition.y * -0.2
+                }px)`
               : undefined,
           }}
         >
           {/* Animated glow effect behind phone */}
           <div className="absolute inset-0 scale-75">
             <div className="absolute inset-0 bg-conteo-secondary/30 blur-3xl rounded-full animate-pulse" />
-            <div className="absolute inset-0 bg-conteo-accent/20 blur-3xl rounded-full animate-pulse delay-500" style={{ transform: "scale(0.8)" }} />
+            <div
+              className="absolute inset-0 bg-conteo-accent/20 blur-3xl rounded-full animate-pulse delay-500"
+              style={{ transform: "scale(0.8)" }}
+            />
           </div>
 
           {/* Orbiting sparkles around phone */}
-          <div className="absolute inset-0 animate-orbit" style={{ animationDuration: "20s" }}>
-            <Sparkle className="w-6 h-6 text-conteo-accent" fill="currentColor" />
+          <div
+            className="absolute inset-0 animate-orbit"
+            style={{ animationDuration: "20s" }}
+          >
+            <Sparkle
+              className="w-6 h-6 text-conteo-accent"
+              fill="currentColor"
+            />
           </div>
-          <div className="absolute inset-0 animate-orbit" style={{ animationDuration: "25s", animationDelay: "-10s" }}>
-            <Star className="w-4 h-4 text-conteo-secondary" fill="currentColor" />
+          <div
+            className="absolute inset-0 animate-orbit"
+            style={{ animationDuration: "25s", animationDelay: "-10s" }}
+          >
+            <Star
+              className="w-4 h-4 text-conteo-secondary"
+              fill="currentColor"
+            />
           </div>
-          <div className="absolute inset-0 animate-orbit" style={{ animationDuration: "30s", animationDelay: "-5s" }}>
+          <div
+            className="absolute inset-0 animate-orbit"
+            style={{ animationDuration: "30s", animationDelay: "-5s" }}
+          >
             <Sparkle className="w-5 h-5 text-white/70" fill="currentColor" />
           </div>
 
           {/* Interactive Phone Demo with glow */}
-          <div className="relative animate-magical-bounce" style={{ animationDuration: "6s" }}>
+          <div
+            className="relative animate-magical-bounce"
+            style={{ animationDuration: "6s" }}
+          >
             <PhoneDemo />
           </div>
 
@@ -266,37 +327,100 @@ export function HeroSection() {
           <div
             className="absolute -left-16 top-1/4 w-24 h-24 hidden lg:block animate-character-float"
             style={{
-              transform: `translate(${mousePosition.x * 0.3}px, ${mousePosition.y * 0.3}px)`,
+              transform: `translate(${mousePosition.x * 0.3}px, ${
+                mousePosition.y * 0.3
+              }px)`,
             }}
           >
             <div className="relative w-full h-full">
               <div className="absolute inset-0 bg-conteo-accent/20 blur-xl rounded-full animate-pulse" />
-              <Image src={cowReading} alt="" fill className="object-contain drop-shadow-2xl" />
+              <Image
+                src={cowReading}
+                alt=""
+                fill
+                className="object-contain drop-shadow-2xl"
+              />
             </div>
           </div>
           <div
             className="absolute -right-12 bottom-1/3 w-20 h-20 hidden lg:block animate-character-float delay-300"
             style={{
-              transform: `translate(${mousePosition.x * -0.3}px, ${mousePosition.y * -0.3}px)`,
+              transform: `translate(${mousePosition.x * -0.3}px, ${
+                mousePosition.y * -0.3
+              }px)`,
               animationDirection: "reverse",
             }}
           >
             <div className="relative w-full h-full">
               <div className="absolute inset-0 bg-conteo-secondary/20 blur-xl rounded-full animate-pulse delay-500" />
-              <Image src={foxGaming} alt="" fill className="object-contain drop-shadow-2xl" />
+              <Image
+                src={foxGaming}
+                alt=""
+                fill
+                className="object-contain drop-shadow-2xl"
+              />
             </div>
           </div>
         </div>
       </div>
 
-      {/* Animated scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-scroll-bounce">
-        <span className="text-white/40 text-xs uppercase tracking-widest font-medium">
-          Découvrir
-        </span>
-        <div className="relative">
-          <div className="absolute inset-0 bg-conteo-accent/30 blur-lg rounded-full animate-pulse" />
-          <ArrowDown className="w-5 h-5 text-conteo-accent relative" strokeWidth={2} />
+      {/* Beta Signup Section */}
+      <div id="beta" className="relative container mx-auto px-6 py-16">
+        <div
+          className={cn(
+            "max-w-2xl mx-auto text-center transition-all duration-1000",
+            isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+          )}
+        >
+          <Badge
+            variant="secondary"
+            className="bg-conteo-accent/20 text-conteo-accent border-none px-4 py-1.5 text-sm mb-6"
+          >
+            <Sparkles className="w-3.5 h-3.5 mr-1.5" />
+            Beta privée
+          </Badge>
+
+          <h2 className="font-heading font-extrabold text-3xl md:text-4xl lg:text-5xl text-white mb-4">
+            Soyez parmi les <span className="text-conteo-accent">premiers</span>
+          </h2>
+
+          <p className="font-sans text-white/70 text-lg mb-8 max-w-lg mx-auto">
+            Inscrivez-vous pour un accès anticipé et aidez-nous à créer la
+            meilleure expérience pour vos enfants.
+          </p>
+
+          <BetaSignupForm onSuccess={handleSignupSuccess} className="mx-auto" />
+
+          {/* Benefits */}
+          <div className="flex flex-wrap justify-center gap-4 mt-8">
+            {[
+              { icon: Zap, text: "Accès anticipé gratuit" },
+              { icon: Sparkles, text: "Influence sur le produit" },
+            ].map((benefit, index) => (
+              <div
+                key={index}
+                className="flex items-center gap-2 text-sm text-white/60"
+              >
+                <div className="flex items-center justify-center w-5 h-5 rounded-full bg-conteo-accent/20">
+                  <Check className="w-3 h-3 text-conteo-accent" />
+                </div>
+                {benefit.text}
+              </div>
+            ))}
+          </div>
+
+          {/* Subscriber count */}
+          {subscriberCount !== null && subscriberCount > 0 && (
+            <p className="text-white/50 text-sm mt-8">
+              🎉{" "}
+              <span className="text-conteo-accent font-semibold">
+                {subscriberCount}
+              </span>{" "}
+              {subscriberCount === 1
+                ? "famille inscrite"
+                : "familles déjà inscrites"}
+            </p>
+          )}
         </div>
       </div>
     </section>
