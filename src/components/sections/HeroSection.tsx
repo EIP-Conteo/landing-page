@@ -183,8 +183,11 @@ export function HeroSection() {
             <AnimatedWord delay={100}>Des</AnimatedWord>{" "}
             <AnimatedWord delay={200}>histoires</AnimatedWord>{" "}
             <span className="relative inline-block">
-              <span className="shimmer-text">
-                <AnimatedWord delay={300}>magiques</AnimatedWord>
+              <span
+                className="shimmer-text inline-block animate-text-reveal"
+                style={{ animationDelay: "300ms" }}
+              >
+                magiques
               </span>
               {/* Multiple sparkle decorations */}
               <FloatingSparkles />
