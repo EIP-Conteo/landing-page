@@ -10,7 +10,6 @@ import type { ReactElement } from "react";
 export function Footer(): ReactElement {
   return (
     <footer
-      role="contentinfo"
       aria-label="Pied de page"
       className="relative bg-conteo-dark overflow-hidden"
     >
@@ -45,7 +44,7 @@ export function Footer(): ReactElement {
               href="/feedback"
               className="flex items-center gap-1.5 text-white/50 hover:text-conteo-accent text-xs transition-colors"
             >
-              <MessageSquare className="w-3.5 h-3.5" />
+              <MessageSquare className="size-3.5" />
               <span>Feedback</span>
             </Link>
 
@@ -53,7 +52,7 @@ export function Footer(): ReactElement {
               href="/delete-account"
               className="flex items-center gap-1.5 text-white/50 hover:text-conteo-accent text-xs transition-colors"
             >
-              <Trash2 className="w-3.5 h-3.5" />
+              <Trash2 className="size-3.5" />
               <span>Suppression de compte</span>
             </Link>
 
@@ -61,13 +60,13 @@ export function Footer(): ReactElement {
               href="/privacy"
               className="flex items-center gap-1.5 text-white/50 hover:text-conteo-accent text-xs transition-colors"
             >
-              <Shield className="w-3.5 h-3.5" />
+              <Shield className="size-3.5" />
               <span>Confidentialité</span>
             </Link>
 
             <div className="flex items-center gap-1 text-white/30 text-xs">
               <span>Fait avec</span>
-              <Heart className="w-3 h-3 text-conteo-accent fill-conteo-accent animate-pulse" />
+              <Heart className="size-3 text-conteo-accent fill-conteo-accent animate-pulse" />
               <span>pour les petits rêveurs</span>
             </div>
           </div>

@@ -1,7 +1,16 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { useEffect, useState, useCallback } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+
+function seededRandom(seed: number): number {
+  const x = Math.sin(seed) * 10000;
+  return x - Math.floor(x);
+}
+
+function cssNumber(value: number): number {
+  return Number(value.toPrecision(6));
+}
 
 // ============================================
 // SHOOTING STARS
@@ -18,28 +27,22 @@ interface ShootingStar {
 function generateShootingStars(count: number): ShootingStar[] {
   return Array.from({ length: count }).map((_, i) => ({
     id: `shooting-${i}`,
-    startX: Math.random() * 70,
-    startY: Math.random() * 40,
-    delay: i * 1.5 + Math.random() * 2,
-    duration: 1.2 + Math.random() * 1,
-    size: 1.5 + Math.random() * 1.5,
+    startX: cssNumber(seededRandom(i + 1) * 70),
+    startY: cssNumber(seededRandom(i + 11) * 40),
+    delay: cssNumber(i * 1.5 + seededRandom(i + 21) * 2),
+    duration: cssNumber(1.2 + seededRandom(i + 31) * 1),
+    size: cssNumber(1.5 + seededRandom(i + 41) * 1.5),
   }));
 }
 
-export function ShootingStars({
+function ShootingStars({
   count = 5,
   className,
 }: Readonly<{
   count?: number;
   className?: string;
 }>) {
-  const [stars, setStars] = useState<ShootingStar[] | null>(null);
-
-  useEffect(() => {
-    setStars(generateShootingStars(count));
-  }, [count]);
-
-  if (!stars) return null;
+  const stars = useMemo(() => generateShootingStars(count), [count]);
 
   return (
     <div
@@ -84,12 +87,14 @@ const sparkleColors: Sparkle["color"][] = ["accent", "secondary", "white"];
 function generateSparkles(count: number): Sparkle[] {
   return Array.from({ length: count }).map((_, i) => ({
     id: `sparkle-${i}`,
-    x: Math.random() * 100,
-    y: Math.random() * 100,
-    size: 4 + Math.random() * 12,
-    delay: Math.random() * 8,
-    duration: 2 + Math.random() * 4,
-    color: sparkleColors[Math.floor(Math.random() * sparkleColors.length)],
+    x: cssNumber(seededRandom(i + 101) * 100),
+    y: cssNumber(seededRandom(i + 111) * 100),
+    size: cssNumber(4 + seededRandom(i + 121) * 12),
+    delay: cssNumber(seededRandom(i + 131) * 8),
+    duration: cssNumber(2 + seededRandom(i + 141) * 4),
+    color: sparkleColors[
+      Math.floor(seededRandom(i + 151) * sparkleColors.length)
+    ],
   }));
 }
 
@@ -100,13 +105,7 @@ export function MagicalSparkles({
   count?: number;
   className?: string;
 }>) {
-  const [sparkles, setSparkles] = useState<Sparkle[] | null>(null);
-
-  useEffect(() => {
-    setSparkles(generateSparkles(count));
-  }, [count]);
-
-  if (!sparkles) return null;
+  const sparkles = useMemo(() => generateSparkles(count), [count]);
 
   const colorClasses = {
     accent: "text-conteo-accent",
@@ -170,29 +169,23 @@ const orbColors = [
 function generateOrbs(count: number): Orb[] {
   return Array.from({ length: count }).map((_, i) => ({
     id: `orb-${i}`,
-    x: Math.random() * 100,
-    y: Math.random() * 100,
-    size: 80 + Math.random() * 200,
-    color: orbColors[Math.floor(Math.random() * orbColors.length)],
-    delay: Math.random() * 10,
-    blur: 40 + Math.random() * 60,
+    x: cssNumber(seededRandom(i + 201) * 100),
+    y: cssNumber(seededRandom(i + 211) * 100),
+    size: cssNumber(80 + seededRandom(i + 221) * 200),
+    color: orbColors[Math.floor(seededRandom(i + 231) * orbColors.length)],
+    delay: cssNumber(seededRandom(i + 241) * 10),
+    blur: cssNumber(40 + seededRandom(i + 251) * 60),
   }));
 }
 
-export function FloatingOrbs({
+function FloatingOrbs({
   count = 6,
   className,
 }: Readonly<{
   count?: number;
   className?: string;
 }>) {
-  const [orbs, setOrbs] = useState<Orb[] | null>(null);
-
-  useEffect(() => {
-    setOrbs(generateOrbs(count));
-  }, [count]);
-
-  if (!orbs) return null;
+  const orbs = useMemo(() => generateOrbs(count), [count]);
 
   return (
     <div
@@ -236,12 +229,12 @@ interface Star {
 function generateStarField(count: number): Star[] {
   return Array.from({ length: count }).map((_, i) => ({
     id: `star-${i}`,
-    x: Math.random() * 100,
-    y: Math.random() * 100,
-    size: 1 + Math.random() * 3,
-    delay: Math.random() * 5,
-    duration: 2 + Math.random() * 3,
-    brightness: 0.3 + Math.random() * 0.7,
+    x: cssNumber(seededRandom(i + 301) * 100),
+    y: cssNumber(seededRandom(i + 311) * 100),
+    size: cssNumber(1 + seededRandom(i + 321) * 3),
+    delay: cssNumber(seededRandom(i + 331) * 5),
+    duration: cssNumber(2 + seededRandom(i + 341) * 3),
+    brightness: cssNumber(0.3 + seededRandom(i + 351) * 0.7),
   }));
 }
 
@@ -252,13 +245,7 @@ export function StarField({
   count?: number;
   className?: string;
 }>) {
-  const [stars, setStars] = useState<Star[] | null>(null);
-
-  useEffect(() => {
-    setStars(generateStarField(count));
-  }, [count]);
-
-  if (!stars) return null;
+  const stars = useMemo(() => generateStarField(count), [count]);
 
   return (
     <div
@@ -279,9 +266,6 @@ export function StarField({
             opacity: star.brightness,
             animationDelay: `${star.delay}s`,
             animationDuration: `${star.duration}s`,
-            boxShadow: `0 0 ${star.size * 2}px ${
-              star.size
-            }px rgba(255, 255, 255, 0.3)`,
           }}
         />
       ))}
@@ -304,28 +288,22 @@ interface Particle {
 function generateDustParticles(count: number): Particle[] {
   return Array.from({ length: count }).map((_, i) => ({
     id: `dust-${i}`,
-    x: Math.random() * 100,
-    size: 2 + Math.random() * 4,
-    delay: Math.random() * 20,
-    duration: 15 + Math.random() * 25,
-    drift: -20 + Math.random() * 40,
+    x: cssNumber(seededRandom(i + 401) * 100),
+    size: cssNumber(2 + seededRandom(i + 411) * 4),
+    delay: cssNumber(seededRandom(i + 421) * 20),
+    duration: cssNumber(15 + seededRandom(i + 431) * 25),
+    drift: cssNumber(-20 + seededRandom(i + 441) * 40),
   }));
 }
 
-export function MagicalDust({
+function MagicalDust({
   count = 30,
   className,
 }: Readonly<{
   count?: number;
   className?: string;
 }>) {
-  const [particles, setParticles] = useState<Particle[] | null>(null);
-
-  useEffect(() => {
-    setParticles(generateDustParticles(count));
-  }, [count]);
-
-  if (!particles) return null;
+  const particles = useMemo(() => generateDustParticles(count), [count]);
 
   return (
     <div
@@ -365,7 +343,7 @@ interface TrailSparkle {
 
 export function CursorSparkles() {
   const [sparkles, setSparkles] = useState<TrailSparkle[]>([]);
-  const [isActive, setIsActive] = useState(false);
+  const isActive = useRef(false);
 
   const addSparkle = useCallback((x: number, y: number) => {
     const newSparkle: TrailSparkle = {
@@ -387,6 +365,10 @@ export function CursorSparkles() {
     const throttleMs = 50;
 
     const handleMouseMove = (e: MouseEvent) => {
+      if (!isActive.current) {
+        return;
+      }
+
       const now = Date.now();
       if (now - lastTime >= throttleMs) {
         addSparkle(e.clientX, e.clientY);
@@ -394,8 +376,13 @@ export function CursorSparkles() {
       }
     };
 
-    const handleMouseEnter = () => setIsActive(true);
-    const handleMouseLeave = () => setIsActive(false);
+    const handleMouseEnter = () => {
+      isActive.current = true;
+    };
+    const handleMouseLeave = () => {
+      isActive.current = false;
+      setSparkles([]);
+    };
 
     document.addEventListener("mousemove", handleMouseMove);
     document.addEventListener("mouseenter", handleMouseEnter);
@@ -408,7 +395,7 @@ export function CursorSparkles() {
     };
   }, [addSparkle]);
 
-  if (!isActive) return null;
+  if (!sparkles.length) return null;
 
   return (
     <div className="fixed inset-0 pointer-events-none z-9999">

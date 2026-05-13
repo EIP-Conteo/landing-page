@@ -8,9 +8,9 @@ interface LogoProps {
 }
 
 const sizes = {
-  sm: { box: "w-12 h-12", text: "text-xl" },
-  md: { box: "w-20 h-20", text: "text-3xl" },
-  lg: { box: "w-28 h-28", text: "text-4xl" },
+  sm: { box: "size-12", image: "48px", text: "text-xl" },
+  md: { box: "size-20", image: "80px", text: "text-3xl" },
+  lg: { box: "size-28", image: "112px", text: "text-4xl" },
 };
 
 export function Logo({
@@ -18,7 +18,7 @@ export function Logo({
   className,
   showText = true,
 }: Readonly<LogoProps>) {
-  const { box, text } = sizes[size];
+  const { box, image, text } = sizes[size];
 
   return (
     <div className={cn("flex flex-col items-center", className)}>
@@ -27,6 +27,7 @@ export function Logo({
           src="/logo.png"
           alt="Contéo"
           fill
+          sizes={image}
           className="object-contain"
           priority
         />

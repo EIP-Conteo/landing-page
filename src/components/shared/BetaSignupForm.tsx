@@ -140,9 +140,8 @@ export function BetaSignupForm({
 
   return (
     <form
-      onSubmit={(e) => {
-        e.preventDefault();
-        form.handleSubmit();
+      action={() => {
+        void form.handleSubmit();
       }}
       className={cn("w-full max-w-md", className)}
     >

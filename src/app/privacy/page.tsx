@@ -77,7 +77,7 @@ export default function PrivacyPage() {
               Politique de confidentialité
             </div>
 
-            <h1 className="mt-6 font-heading text-3xl font-extrabold md:text-5xl">
+            <h1 className="mt-6 font-heading text-3xl font-semibold md:text-5xl">
               Politique de confidentialité de {SITE_NAME}
             </h1>
 
@@ -88,7 +88,7 @@ export default function PrivacyPage() {
             </p>
 
             <section className="mt-10">
-              <h2 className="font-heading text-2xl font-extrabold">
+              <h2 className="font-heading text-2xl font-semibold">
                 Données que nous utilisons
               </h2>
               <ul className="mt-5 space-y-3 text-base leading-7 text-conteo-dark/80">
@@ -102,7 +102,7 @@ export default function PrivacyPage() {
             </section>
 
             <section className="mt-10">
-              <h2 className="font-heading text-2xl font-extrabold">
+              <h2 className="font-heading text-2xl font-semibold">
                 Pourquoi ces données sont utilisées
               </h2>
               <ul className="mt-5 space-y-3 text-base leading-7 text-conteo-dark/80">
@@ -120,7 +120,7 @@ export default function PrivacyPage() {
             </section>
 
             <section className="mt-10">
-              <h2 className="font-heading text-2xl font-extrabold">
+              <h2 className="font-heading text-2xl font-semibold">
                 Services utilisés
               </h2>
               <div className="mt-5 grid gap-4">
@@ -129,7 +129,7 @@ export default function PrivacyPage() {
                     key={service.name}
                     className="rounded-[24px] bg-conteo-light/70 p-5"
                   >
-                    <h3 className="font-heading text-lg font-extrabold">
+                    <h3 className="font-heading text-lg font-semibold">
                       {service.name}
                     </h3>
                     <p className="mt-2 text-base leading-7 text-conteo-dark/80">
@@ -141,7 +141,7 @@ export default function PrivacyPage() {
             </section>
 
             <section className="mt-10">
-              <h2 className="font-heading text-2xl font-extrabold">
+              <h2 className="font-heading text-2xl font-semibold">
                 Conservation des données
               </h2>
               <p className="mt-4 text-base leading-7 text-conteo-dark/80">
@@ -157,7 +157,7 @@ export default function PrivacyPage() {
             </section>
 
             <section className="mt-10">
-              <h2 className="font-heading text-2xl font-extrabold">
+              <h2 className="font-heading text-2xl font-semibold">
                 Suppression du compte et des données
               </h2>
               <p className="mt-4 text-base leading-7 text-conteo-dark/80">
@@ -181,7 +181,7 @@ export default function PrivacyPage() {
             </section>
 
             <section className="mt-10">
-              <h2 className="font-heading text-2xl font-extrabold">
+              <h2 className="font-heading text-2xl font-semibold">
                 Vos droits
               </h2>
               <p className="mt-4 text-base leading-7 text-conteo-dark/80">
@@ -195,7 +195,7 @@ export default function PrivacyPage() {
               <div className="flex items-start gap-3">
                 <Mail className="mt-0.5 size-5 shrink-0 text-conteo-secondary" />
                 <div>
-                  <h2 className="font-heading text-xl font-extrabold">
+                  <h2 className="font-heading text-xl font-semibold">
                     Contact
                   </h2>
                   <p className="mt-3 text-base leading-7 text-conteo-dark/80">

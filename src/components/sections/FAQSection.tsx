@@ -75,15 +75,15 @@ export function FAQSection() {
       </div>
 
       {/* Animated background decoration */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-conteo-secondary/10 rounded-full blur-3xl animate-orb-float" />
-      <div className="absolute bottom-0 left-0 w-64 h-64 bg-conteo-accent/10 rounded-full blur-3xl animate-orb-float delay-1000" style={{ animationDirection: "reverse" }} />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-white/30 rounded-full blur-3xl" />
+      <div className="absolute top-0 right-0 size-96 bg-conteo-secondary/10 rounded-full blur-3xl animate-orb-float" />
+      <div className="absolute bottom-0 left-0 size-64 bg-conteo-accent/10 rounded-full blur-3xl animate-orb-float delay-1000" style={{ animationDirection: "reverse" }} />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 size-[500px] bg-white/30 rounded-full blur-3xl" />
 
       <div className="container mx-auto px-6 relative z-10">
         {/* Section header */}
         <div
           className={cn(
-            "text-center mb-12 transition-all duration-1000",
+            "text-center mb-12 transition-all duration-700",
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           )}
         >
@@ -91,18 +91,18 @@ export function FAQSection() {
             variant="secondary"
             className="bg-conteo-secondary/10 text-conteo-secondary border-none px-4 py-1.5 text-sm mb-4"
           >
-            <HelpCircle className="w-3 h-3 mr-1 inline" />
+            <HelpCircle className="size-3 mr-1 inline" />
             Questions fréquentes
           </Badge>
           <h2
             id="faq-title"
-            className="font-heading font-extrabold text-3xl md:text-4xl lg:text-5xl text-conteo-dark mb-4"
+            className="font-heading font-semibold text-3xl md:text-4xl lg:text-5xl text-conteo-dark mb-4"
           >
             Vous avez des{" "}
             <span className="relative inline-block">
               <span className="shimmer-text">questions</span>
-              <Sparkles className="absolute -top-2 -right-6 w-6 h-6 text-conteo-accent animate-rotate-glow" />
-              <Star className="absolute -bottom-1 -left-3 w-4 h-4 text-conteo-secondary animate-twinkle delay-300" fill="currentColor" />
+              <Sparkles className="absolute -top-2 -right-6 size-6 text-conteo-accent animate-rotate-glow" />
+              <Star className="absolute -bottom-1 -left-3 size-4 text-conteo-secondary animate-twinkle delay-300" fill="currentColor" />
             </span>{" "}
             ?
           </h2>
@@ -114,7 +114,7 @@ export function FAQSection() {
         {/* FAQ Accordion with magical styling */}
         <div
           className={cn(
-            "max-w-2xl mx-auto transition-all duration-1000 delay-200",
+            "max-w-2xl mx-auto transition-all duration-700 delay-200",
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           )}
         >
@@ -126,7 +126,7 @@ export function FAQSection() {
           >
             {faqs.map((faq, index) => (
               <AccordionItem
-                key={index}
+                key={faq.question}
                 value={`item-${index}`}
                 className={cn(
                   "group relative bg-white/80 backdrop-blur-sm rounded-2xl border-none px-6 transition-all duration-500",
@@ -140,7 +140,7 @@ export function FAQSection() {
                 <div className="absolute inset-0 rounded-2xl bg-linear-to-r from-conteo-accent/20 via-conteo-secondary/20 to-conteo-accent/20 opacity-0 group-hover:opacity-100 data-[state=open]:opacity-100 transition-opacity duration-500 -z-10 blur-sm" />
 
                 {/* Question number indicator */}
-                <div className="absolute -left-3 top-1/2 -translate-y-1/2 w-6 h-6 rounded-full bg-conteo-accent/80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-lg">
+                <div className="absolute -left-3 top-1/2 -translate-y-1/2 size-6 rounded-full bg-conteo-accent/80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-lg">
                   <span className="text-xs font-bold text-conteo-dark">{index + 1}</span>
                 </div>
 
@@ -152,7 +152,7 @@ export function FAQSection() {
                 <AccordionContent className="text-conteo-text-muted leading-relaxed pb-5">
                   <div className="relative">
                     {/* Decorative sparkle */}
-                    <Sparkles className="absolute -left-6 top-0 w-4 h-4 text-conteo-accent/50 animate-twinkle" />
+                    <Sparkles className="absolute -left-6 top-0 size-4 text-conteo-accent/50 animate-twinkle" />
                     {faq.answer}
                   </div>
                 </AccordionContent>

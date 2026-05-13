@@ -232,16 +232,7 @@ export default function RootLayout({
   return (
     <html lang="fr" dir="ltr">
       <head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
+        <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
       </head>
       <body className={`${nunito.variable} ${rubik.variable} antialiased`}>
         {children}

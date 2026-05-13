@@ -94,9 +94,9 @@ export function HowItWorksSection() {
       </div>
 
       {/* Animated gradient orbs */}
-      <div className="absolute top-0 left-1/4 w-64 h-64 bg-pink-200/20 rounded-full blur-3xl animate-orb-float" />
+      <div className="absolute top-0 left-1/4 size-64 bg-pink-200/20 rounded-full blur-3xl animate-orb-float" />
       <div
-        className="absolute bottom-0 right-1/4 w-80 h-80 bg-conteo-accent/10 rounded-full blur-3xl animate-orb-float delay-700"
+        className="absolute bottom-0 right-1/4 size-80 bg-conteo-accent/10 rounded-full blur-3xl animate-orb-float delay-700"
         style={{ animationDirection: "reverse" }}
       />
 
@@ -114,7 +114,7 @@ export function HowItWorksSection() {
         {/* Section header */}
         <div
           className={cn(
-            "text-center mb-20 transition-all duration-1000",
+            "text-center mb-20 transition-all duration-700",
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           )}
         >
@@ -122,19 +122,19 @@ export function HowItWorksSection() {
             variant="secondary"
             className="bg-conteo-accent/20 text-conteo-dark border-none px-4 py-1.5 text-sm mb-4"
           >
-            <Sparkles className="w-3 h-3 mr-1 inline animate-twinkle" />
+            <Sparkles className="size-3 mr-1 inline animate-twinkle" />
             Simple comme 1, 2, 3
           </Badge>
           <h2
             id="how-it-works-title"
-            className="font-heading font-extrabold text-3xl md:text-4xl lg:text-5xl text-conteo-dark mb-4"
+            className="font-heading font-semibold text-3xl md:text-4xl lg:text-5xl text-conteo-dark mb-4"
           >
             Comment ça{" "}
             <span className="relative inline-block">
               <span className="shimmer-text">marche</span>
-              <Sparkles className="absolute -top-2 -right-8 w-8 h-8 text-conteo-accent animate-rotate-glow" />
+              <Sparkles className="absolute -top-2 -right-8 size-8 text-conteo-accent animate-rotate-glow" />
               <Star
-                className="absolute -bottom-2 -left-4 w-5 h-5 text-conteo-secondary animate-twinkle delay-500"
+                className="absolute -bottom-2 -left-4 size-5 text-conteo-secondary animate-twinkle delay-500"
                 fill="currentColor"
               />
             </span>{" "}
@@ -160,7 +160,7 @@ export function HowItWorksSection() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
             {steps.map((step, index) => (
               <StepCard
-                key={index}
+                key={step.title}
                 step={step}
                 index={index}
                 isVisible={isVisible}
@@ -191,7 +191,8 @@ function StepCard({
   const Icon = step.icon;
 
   return (
-    <div
+    <button
+      type="button"
       className={cn(
         "relative flex flex-col items-center text-center cursor-pointer transition-all duration-700",
         isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
@@ -215,18 +216,18 @@ function StepCard({
           <>
             <div
               className="absolute inset-0 animate-orbit"
-              style={{ animationDuration: "4s" }}
+              style={{ animationDuration: "900ms" }}
             >
               <Star
-                className="w-3 h-3 text-conteo-accent"
+                className="size-3 text-conteo-accent"
                 fill="currentColor"
               />
             </div>
             <div
               className="absolute inset-0 animate-orbit"
-              style={{ animationDuration: "6s", animationDelay: "-2s" }}
+              style={{ animationDuration: "900ms", animationDelay: "-200ms" }}
             >
-              <Sparkles className="w-2 h-2 text-conteo-secondary" />
+              <Sparkles className="size-2 text-conteo-secondary" />
             </div>
           </>
         )}
@@ -234,14 +235,14 @@ function StepCard({
         {/* Main icon container */}
         <div
           className={cn(
-            "relative w-24 h-24 rounded-[1.75rem] flex items-center justify-center transition-all duration-500",
+            "relative size-24 rounded-[1.75rem] flex items-center justify-center transition-all duration-500",
             step.bgColor,
             isActive ? "scale-110 shadow-2xl" : "scale-100"
           )}
         >
           <Icon
             className={cn(
-              "w-10 h-10 transition-all duration-500",
+              "size-10 transition-all duration-500",
               step.iconColor,
               isActive && "animate-magical-bounce"
             )}
@@ -251,7 +252,7 @@ function StepCard({
         {/* Number badge with glow */}
         <div
           className={cn(
-            "absolute -top-2 -left-2 w-10 h-10 rounded-full flex items-center justify-center font-heading font-extrabold text-lg transition-all duration-500",
+            "absolute -top-2 -left-2 size-10 rounded-full flex items-center justify-center font-heading font-semibold text-lg transition-all duration-500",
             isActive
               ? `bg-linear-to-br ${step.color} text-white shadow-lg scale-110 animate-glow-pulse`
               : "bg-conteo-accent text-conteo-dark"
@@ -266,14 +267,14 @@ function StepCard({
             <div
               className="absolute inset-0 rounded-[1.75rem] border-2 border-current animate-ping"
               style={{
-                animationDuration: "1.5s",
+                animationDuration: "900ms",
                 borderColor: step.glowColor,
               }}
             />
             <div
               className="absolute inset-0 rounded-[1.75rem] border border-current animate-ping delay-300"
               style={{
-                animationDuration: "2s",
+                animationDuration: "900ms",
                 borderColor: step.glowColor,
               }}
             />
@@ -298,6 +299,6 @@ function StepCard({
       >
         {step.description}
       </p>
-    </div>
+    </button>
   );
 }

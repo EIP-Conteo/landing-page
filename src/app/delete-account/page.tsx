@@ -64,7 +64,7 @@ export default function DeleteAccountPage() {
               Demande de suppression de compte
             </div>
 
-            <h1 className="mt-6 font-heading text-3xl font-extrabold md:text-5xl">
+            <h1 className="mt-6 font-heading text-3xl font-semibold md:text-5xl">
               Suppression du compte {SITE_NAME} et des données associées
             </h1>
 
@@ -89,7 +89,7 @@ export default function DeleteAccountPage() {
                   key={section.title}
                   className="rounded-[28px] border border-white/10 bg-black/10 p-6"
                 >
-                  <h2 className="font-heading text-xl font-extrabold text-conteo-accent">
+                  <h2 className="font-heading text-xl font-semibold text-conteo-accent">
                     {section.title}
                   </h2>
                   <ul className="mt-4 space-y-3 text-sm leading-7 text-white/78 md:text-base">

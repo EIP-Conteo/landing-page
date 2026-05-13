@@ -87,18 +87,24 @@ export function FeaturesSection() {
       <div className="absolute top-0 left-0 w-full h-32 bg-linear-to-b from-conteo-dark to-transparent opacity-5" />
 
       {/* Static decorative characters */}
-      <div className="absolute -left-16 top-32 w-32 h-32 opacity-20 hidden lg:block">
-        <Image src={teddyBear} alt="" fill className="object-contain" />
+      <div className="absolute -left-16 top-32 size-32 opacity-20 hidden lg:block">
+        <Image
+          src={teddyBear}
+          alt=""
+          fill
+          sizes="128px"
+          className="object-contain"
+        />
       </div>
-      <div className="absolute -right-12 top-1/2 w-24 h-24 opacity-20 hidden lg:block">
-        <Image src={frog} alt="" fill className="object-contain" />
+      <div className="absolute -right-12 top-1/2 size-24 opacity-20 hidden lg:block">
+        <Image src={frog} alt="" fill sizes="96px" className="object-contain" />
       </div>
 
       <div className="container mx-auto px-6 relative z-10">
         {/* Section header */}
         <div
           className={cn(
-            "text-center mb-16 transition-all duration-1000",
+            "text-center mb-16 transition-all duration-700",
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           )}
         >
@@ -110,7 +116,7 @@ export function FeaturesSection() {
           </Badge>
           <h2
             id="features-title"
-            className="font-heading font-extrabold text-3xl md:text-4xl lg:text-5xl text-conteo-dark mb-4"
+            className="font-heading font-semibold text-3xl md:text-4xl lg:text-5xl text-conteo-dark mb-4"
           >
             Tout ce qu&apos;il faut pour des{" "}
             <span className="relative">
@@ -140,7 +146,7 @@ export function FeaturesSection() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {features.map((feature, index) => (
             <FeatureCard
-              key={index}
+              key={feature.title}
               feature={feature}
               index={index}
               isVisible={isVisible}
@@ -194,11 +200,11 @@ function FeatureCard({
         {/* Icon */}
         <div
           className={cn(
-            "w-14 h-14 rounded-2xl flex items-center justify-center mb-2 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3",
+            "size-14 rounded-2xl flex items-center justify-center mb-2 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3",
             feature.iconBg
           )}
         >
-          <Icon className={cn("w-7 h-7", feature.iconColor)} />
+          <Icon className={cn("size-7", feature.iconColor)} />
         </div>
         <CardTitle className="font-sans text-xl text-conteo-dark group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-linear-to-r group-hover:from-conteo-dark group-hover:to-conteo-secondary transition-all duration-300">
           {feature.title}

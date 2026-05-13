@@ -188,17 +188,18 @@ export function PhoneDemo() {
             /* Teaser Screen */
             <div className="flex flex-col items-center justify-center flex-1 text-center px-2">
               {/* Logo */}
-              <div className="relative w-24 h-24 mb-4">
+              <div className="relative size-24 mb-4">
                 <Image
                   src="/logo.png"
                   alt="Contéo"
                   fill
+                  sizes="96px"
                   className="object-contain"
                 />
               </div>
 
               {/* Message */}
-              <h3 className="font-heading font-bold text-xl text-conteo-dark mb-2">
+              <h3 className="font-heading font-semibold text-xl text-conteo-dark mb-2">
                 Votre histoire est prête à naître !
               </h3>
               <p className="text-sm text-conteo-text-muted mb-6 leading-relaxed">
@@ -214,7 +215,7 @@ export function PhoneDemo() {
                 onClick={handleRestart}
                 className="flex items-center gap-2 text-sm text-conteo-secondary hover:text-conteo-secondary/80 transition-colors"
               >
-                <RotateCcw className="w-4 h-4" />
+                <RotateCcw className="size-4" />
                 Recommencer la démo
               </button>
             </div>
@@ -226,23 +227,23 @@ export function PhoneDemo() {
                 {currentStep > 0 && (
                   <button
                     onClick={handleBack}
-                    className="w-6 h-6 flex items-center justify-center text-conteo-dark/60 hover:text-conteo-dark transition-colors"
+                    className="size-6 flex items-center justify-center text-conteo-dark/60 hover:text-conteo-dark transition-colors"
                   >
-                    <ChevronLeft className="w-5 h-5" />
+                    <ChevronLeft className="size-5" />
                   </button>
                 )}
                 <span className="text-sm font-medium text-conteo-dark">
                   {step.name}
                 </span>
                 <div className="flex gap-1 flex-1 justify-end">
-                  {steps.map((_, index) => (
+                  {steps.map((progressStep, index) => (
                     <div
-                      key={index}
+                      key={progressStep.name}
                       className={cn(
                         "h-1 rounded-full transition-all duration-300",
                         index <= currentStep
                           ? "bg-conteo-secondary w-6"
-                          : "bg-gray-200 w-6"
+                          : "bg-conteo-light w-6"
                       )}
                     />
                   ))}
@@ -268,11 +269,12 @@ export function PhoneDemo() {
                         src={item.image}
                         alt={item.name}
                         fill
+                        sizes="140px"
                         className="object-contain p-2"
                       />
                       {isSelected && (
-                        <div className="absolute top-1.5 right-1.5 w-5 h-5 bg-white rounded-full flex items-center justify-center shadow-sm">
-                          <Check className="w-3 h-3 text-conteo-secondary" />
+                        <div className="absolute top-1.5 right-1.5 size-5 bg-white rounded-full flex items-center justify-center shadow-sm">
+                          <Check className="size-3 text-conteo-secondary" />
                         </div>
                       )}
                     </button>
@@ -281,7 +283,7 @@ export function PhoneDemo() {
               </div>
 
               {/* Bottom bar */}
-              <div className="flex items-center justify-between mt-4 pt-3 border-t border-gray-100">
+              <div className="flex items-center justify-between mt-4 pt-3 border-t border-conteo-light/70">
                 <span className="text-sm text-conteo-dark font-medium">
                   {selectedCount} sélectionné{selectedCount > 1 ? "s" : ""}
                 </span>
