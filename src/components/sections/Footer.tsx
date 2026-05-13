@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { Logo } from "@/components/shared/Logo";
 import { AppStoreBadges } from "@/components/shared/AppStoreBadges";
-import { Heart, MessageSquare } from "lucide-react";
+import { Heart, MessageSquare, Shield, Trash2 } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import type { ReactElement } from "react";
 
@@ -47,6 +47,22 @@ export function Footer(): ReactElement {
             >
               <MessageSquare className="w-3.5 h-3.5" />
               <span>Feedback</span>
+            </Link>
+
+            <Link
+              href="/delete-account"
+              className="flex items-center gap-1.5 text-white/50 hover:text-conteo-accent text-xs transition-colors"
+            >
+              <Trash2 className="w-3.5 h-3.5" />
+              <span>Suppression de compte</span>
+            </Link>
+
+            <Link
+              href="/privacy"
+              className="flex items-center gap-1.5 text-white/50 hover:text-conteo-accent text-xs transition-colors"
+            >
+              <Shield className="w-3.5 h-3.5" />
+              <span>Confidentialité</span>
             </Link>
 
             <div className="flex items-center gap-1 text-white/30 text-xs">
