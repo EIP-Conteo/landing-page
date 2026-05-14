@@ -1,4 +1,4 @@
-import { Contact, Resend } from "resend";
+import { Resend } from "resend";
 import { NextResponse } from "next/server";
 import { z } from "zod";
 
@@ -17,21 +17,16 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Email invalide" }, { status: 400 });
     }
 
-    const { email } = result.data;
+    const email: string = result.data.email.trim().toLowerCase();
 
-    const { data, error } = await resend.contacts.list();
+    const { data: contact, error } = await resend.contacts.get({ email });
 
-    if (error) {
-      console.error("Resend list error:", error);
+    if (error && error.statusCode !== 404) {
+      console.error("Resend contact lookup error:", error);
       return NextResponse.json({ error: "Failed to verify" }, { status: 500 });
     }
 
-    const emailLower: string = email.toLowerCase();
-    const exists: boolean = data?.data?.some(
-      (contact: Contact): boolean => contact.email.toLowerCase() === emailLower
-    );
-
-    return NextResponse.json({ verified: exists });
+    return NextResponse.json({ verified: !!contact });
   } catch (error) {
     console.error("Verify beta error:", error);
     return NextResponse.json(

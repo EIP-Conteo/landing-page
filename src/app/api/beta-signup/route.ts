@@ -174,7 +174,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: errorMessage }, { status: 400 });
     }
 
-    const { email } = result.data;
+    const email: string = result.data.email.trim().toLowerCase();
 
     const { data: existingContact } = await resend.contacts.get({ email });
 
