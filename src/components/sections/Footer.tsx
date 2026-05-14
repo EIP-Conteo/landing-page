@@ -7,7 +7,11 @@ import { Heart, MessageSquare, Shield, Trash2 } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import type { ReactElement } from "react";
 
-export function Footer(): ReactElement {
+interface FooterProps {
+  currentYear: number;
+}
+
+export function Footer({ currentYear }: Readonly<FooterProps>): ReactElement {
   return (
     <footer
       aria-label="Pied de page"
@@ -36,7 +40,7 @@ export function Footer(): ReactElement {
         <Separator className="bg-white/10 mb-6" />
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="font-sans text-white/30 text-xs text-center sm:text-left">
-            © {new Date().getFullYear()} Contéo. Tous droits réservés.
+            © {currentYear} Contéo. Tous droits réservés.
           </p>
 
           <div className="flex items-center gap-6">

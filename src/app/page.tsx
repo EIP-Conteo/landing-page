@@ -6,6 +6,8 @@ import { Footer } from "@/components/sections/Footer";
 import { CursorSparklesWrapper } from "@/components/shared/CursorSparklesWrapper";
 
 export default function Home() {
+  const currentYear: number = new Date().getFullYear();
+
   return (
     <main>
       <CursorSparklesWrapper />
@@ -13,7 +15,7 @@ export default function Home() {
       <FeaturesSection />
       <HowItWorksSection />
       <FAQSection />
-      <Footer />
+      <Footer currentYear={currentYear} />
     </main>
   );
 }
