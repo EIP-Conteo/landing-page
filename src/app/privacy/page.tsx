@@ -350,7 +350,7 @@ export default function PrivacyPage() {
 
           <LegalTable
             caption="Sous-traitants et services tiers utilisés"
-            headers={["Service", "Rôle", "Données traitées"]}
+            headers={["Service", "Rôle", "Données traitées", "Région"]}
             rows={[
               [
                 "Supabase",
