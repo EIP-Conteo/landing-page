@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { Logo } from "@/components/shared/Logo";
 import { AppStoreBadges } from "@/components/shared/AppStoreBadges";
-import { Heart, MessageSquare, Shield, Trash2 } from "lucide-react";
+import { Heart, MessageSquare, Shield, Trash2, FileText } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import type { ReactElement } from "react";
 
@@ -58,6 +58,14 @@ export function Footer({ currentYear }: Readonly<FooterProps>): ReactElement {
             >
               <Trash2 className="size-3.5" />
               <span>Suppression de compte</span>
+            </Link>
+
+            <Link
+              href="/terms-of-service"
+              className="flex items-center gap-1.5 text-white/50 hover:text-conteo-accent text-xs transition-colors"
+            >
+              <FileText className="size-3.5" />
+              <span>CGU</span>
             </Link>
 
             <Link
