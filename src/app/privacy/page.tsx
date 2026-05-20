@@ -535,18 +535,7 @@ export default function PrivacyPage() {
           </ul>
           <p>
             Pour exercer ces droits, écrivez-nous à{" "}
-            <a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a>. En cas de
-            désaccord persistant, vous avez le droit d&apos;introduire une
-            réclamation auprès de la <strong>CNIL</strong> (Commission Nationale
-            de l&apos;Informatique et des Libertés) –{" "}
-            <a
-              href="https://www.cnil.fr"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              www.cnil.fr
-            </a>
-            .
+            <a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a>.
           </p>
         </LegalSection>
 
@@ -692,18 +681,6 @@ export default function PrivacyPage() {
             >
               {SUPPORT_EMAIL}
             </a>
-          </p>
-          <p>
-            Vous pouvez également contacter ou saisir la <strong>CNIL</strong>{" "}
-            en tant qu&apos;autorité de contrôle française compétente :{" "}
-            <a
-              href="https://www.cnil.fr"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              www.cnil.fr
-            </a>
-            .
           </p>
         </LegalSection>
       </LegalLayout>
