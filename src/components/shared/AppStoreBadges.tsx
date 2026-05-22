@@ -38,7 +38,12 @@ export function AppStoreBadges({
   const styles = sizeStyles[size];
 
   return (
-    <div className={cn("flex flex-col sm:flex-row gap-3", className)}>
+    <div
+      className={cn(
+        "flex flex-row flex-wrap items-center justify-center lg:justify-start gap-x-5 gap-y-3",
+        className
+      )}
+    >
       {/* App Store Badge */}
       <div className="relative">
         <Button

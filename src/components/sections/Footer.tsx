@@ -33,48 +33,50 @@ export function Footer({ currentYear }: Readonly<FooterProps>): ReactElement {
             <h4 className="font-sans font-semibold text-white mb-3 text-sm">
               Bientôt disponible
             </h4>
-            <AppStoreBadges size="sm" />
+            <AppStoreBadges size="sm" className="md:justify-end" />
           </div>
         </div>
 
         <Separator className="bg-white/10 mb-6" />
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="font-sans text-white/30 text-xs text-center sm:text-left">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
+          <p className="font-sans text-white/30 text-xs text-center lg:text-left order-last lg:order-first">
             © {currentYear} Contéo. Tous droits réservés.
           </p>
 
-          <div className="flex items-center gap-6">
-            <Link
-              href="/feedback"
-              className="flex items-center gap-1.5 text-white/50 hover:text-conteo-accent text-xs transition-colors"
-            >
-              <MessageSquare className="size-3.5" />
-              <span>Feedback</span>
-            </Link>
+          <div className="flex flex-col items-center lg:items-end gap-6">
+            <div className="flex flex-wrap items-center justify-center lg:justify-end gap-x-6 gap-y-4">
+              <Link
+                href="/feedback"
+                className="flex items-center gap-1.5 text-white/50 hover:text-conteo-accent text-xs transition-colors"
+              >
+                <MessageSquare className="size-3.5" />
+                <span>Feedback</span>
+              </Link>
 
-            <Link
-              href="/delete-account"
-              className="flex items-center gap-1.5 text-white/50 hover:text-conteo-accent text-xs transition-colors"
-            >
-              <Trash2 className="size-3.5" />
-              <span>Suppression de compte</span>
-            </Link>
+              <Link
+                href="/delete-account"
+                className="flex items-center gap-1.5 text-white/50 hover:text-conteo-accent text-xs transition-colors"
+              >
+                <Trash2 className="size-3.5" />
+                <span>Suppression de compte</span>
+              </Link>
 
-            <Link
-              href="/terms-of-service"
-              className="flex items-center gap-1.5 text-white/50 hover:text-conteo-accent text-xs transition-colors"
-            >
-              <FileText className="size-3.5" />
-              <span>CGU</span>
-            </Link>
+              <Link
+                href="/terms-of-service"
+                className="flex items-center gap-1.5 text-white/50 hover:text-conteo-accent text-xs transition-colors"
+              >
+                <FileText className="size-3.5" />
+                <span>CGU</span>
+              </Link>
 
-            <Link
-              href="/privacy"
-              className="flex items-center gap-1.5 text-white/50 hover:text-conteo-accent text-xs transition-colors"
-            >
-              <Shield className="size-3.5" />
-              <span>Confidentialité</span>
-            </Link>
+              <Link
+                href="/privacy"
+                className="flex items-center gap-1.5 text-white/50 hover:text-conteo-accent text-xs transition-colors"
+              >
+                <Shield className="size-3.5" />
+                <span>Confidentialité</span>
+              </Link>
+            </div>
 
             <div className="flex items-center gap-1 text-white/30 text-xs">
               <span>Fait avec</span>
