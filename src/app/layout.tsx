@@ -34,11 +34,11 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
     default:
-      "Contéo - Histoires personnalisées pour enfants | App iOS & Android",
+      "Contéo : Histoires Personnalisées & Contes pour Enfants (IA)",
     template: "%s | Contéo",
   },
   description:
-    "Contéo crée des histoires magiques personnalisées pour vos enfants de 3 à 12 ans. Choisissez personnages, objets et décors. Texte, narration audio et illustrations uniques générés par IA.",
+    "Créez des histoires personnalisées pour vos enfants avec Contéo. Choisissez personnages et décors pour générer contes audio et illustrations par IA. (3-12 ans)",
   keywords: [
     "histoires pour enfants",
     "contes personnalisés",
@@ -154,7 +154,7 @@ export default function RootLayout({
         operatingSystem: "iOS, Android",
         applicationCategory: "EducationalApplication",
         description:
-          "Contéo crée des histoires magiques personnalisées pour vos enfants. Choisissez personnages, objets et décors pour générer texte, audio et illustrations uniques.",
+          "Contéo crée des histoires personnalisées et des contes magiques pour vos enfants. Choisissez personnages et décors pour générer texte, narration audio et illustrations uniques par IA.",
         offers: {
           "@type": "Offer",
           price: "0",
@@ -174,10 +174,10 @@ export default function RootLayout({
         screenshot: `${SITE_URL}/og-image.png`,
         featureList: [
           "Histoires personnalisées",
-          "Narration audio",
-          "Illustrations générées par IA",
-          "Personnages adorables",
-          "Pour enfants de 3 à 12 ans",
+          "Contes magiques",
+          "Livre audio interactif",
+          "Illustrations par Intelligence Artificielle",
+          "Histoires du soir pour enfants de 3 à 12 ans",
         ],
       },
       {
@@ -222,6 +222,14 @@ export default function RootLayout({
             acceptedAnswer: {
               "@type": "Answer",
               text: "Une connexion internet est nécessaire pour générer de nouvelles histoires. Cependant, les histoires déjà créées peuvent être sauvegardées et écoutées hors ligne.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "Est-ce adapté pour l'histoire du soir ?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Absolument ! La narration audio douce et les thèmes bienveillants font de Contéo le compagnon idéal pour le rituel du coucher et l'histoire du soir.",
             },
           },
         ],

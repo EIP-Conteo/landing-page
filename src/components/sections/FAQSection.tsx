@@ -38,6 +38,11 @@ const faqs = [
     answer:
       "Une connexion internet est nécessaire pour générer de nouvelles histoires. Cependant, les histoires déjà créées peuvent être sauvegardées et écoutées hors ligne.",
   },
+  {
+    question: "Est-ce adapté pour l'histoire du soir ?",
+    answer:
+      "Absolument ! La narration audio douce et les thèmes bienveillants font de Contéo le compagnon idéal pour le rituel du coucher et l'histoire du soir.",
+  },
 ];
 
 export function FAQSection() {

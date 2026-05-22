@@ -30,16 +30,16 @@ const features = [
     icon: Sparkles,
     title: "Histoires générées par IA",
     description:
-      "Chaque histoire est unique, créée spécialement selon les choix de votre enfant.",
+      "Chaque conte est unique, créé par notre Intelligence Artificielle selon les choix de votre enfant.",
     gradient: "from-conteo-secondary to-indigo-600",
     iconBg: "bg-conteo-light",
     iconColor: "text-conteo-secondary",
   },
   {
     icon: Volume2,
-    title: "Narration audio",
+    title: "Livre audio interactif",
     description:
-      "Une voix douce raconte l'histoire, parfaite pour le coucher ou les moments calmes.",
+      "Une narration douce transforme chaque création en livre audio, parfait pour s'endormir.",
     gradient: "from-amber-500 to-orange-500",
     iconBg: "bg-amber-100",
     iconColor: "text-amber-600",
