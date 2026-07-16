@@ -28,7 +28,7 @@ export function Logo({
           alt="Contéo"
           fill
           sizes={image}
-          className="object-contain"
+          className="object-contain rounded-[22.5%]"
           priority
         />
       </div>

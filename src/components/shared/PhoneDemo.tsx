@@ -194,7 +194,7 @@ export function PhoneDemo() {
                   alt="Contéo"
                   fill
                   sizes="96px"
-                  className="object-contain"
+                  className="object-contain rounded-[22.5%]"
                 />
               </div>
 
