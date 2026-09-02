@@ -11,8 +11,7 @@ import type { TocItem } from "@/components/legal/legal-types";
 const SUPPORT_EMAIL = "theo.fabianomattei@gmail.com";
 const SITE_NAME = "Contéo";
 const UPDATED_AT = "20 mai 2026";
-const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL || "https://conteo-landing.vercel.app";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://www.conteo.xyz/";
 
 export const metadata: Metadata = {
   title: "Politique de confidentialité",

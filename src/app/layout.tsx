@@ -17,7 +17,7 @@ const rubik = Rubik({
 });
 
 const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL || "https://conteo-landing.vercel.app";
+  process.env.NEXT_PUBLIC_SITE_URL || "https://www.conteo.xyz/";
 const SITE_NAME = "Contéo";
 
 export const viewport: Viewport = {
