@@ -229,7 +229,7 @@ export async function POST(request: Request) {
             embeds: [
               {
                 title: "🚀 Nouvelle inscription à la Beta",
-                description: `Un nouvel utilisateur vient de rejoindre la liste d'attente. **Veuillez copier l'adresse e-mail ci-dessous pour l'ajouter manuellement dans la section Tests Fermés de la Google Play Console (Android) ou TestFlight (iOS).**\n\n[👉 Cliquez ici pour ouvrir le Dashboard Admin](${process.env.NEXT_PUBLIC_APP_URL || "https://www.conteo.xyz"}/admin?token=${process.env.ADMIN_TOKEN})`,
+                description: `Un nouvel utilisateur vient de rejoindre la liste d'attente. **Veuillez copier l'adresse e-mail ci-dessous pour l'ajouter manuellement dans la section Tests Fermés de la Google Play Console (Android) ou TestFlight (iOS).**\n\n[👉 Cliquez ici pour ouvrir le Dashboard Admin](${process.env.NEXT_PUBLIC_APP_URL || "https://www.conteo.xyz"}/admin?token=${process.env.ADMIN_TOKEN}&email=${encodeURIComponent(email)})`,
                 color: 13235552, // Couleur d'accent Contéo (c9f560)
                 fields: [
                   {

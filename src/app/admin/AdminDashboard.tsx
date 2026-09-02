@@ -19,15 +19,17 @@ type Contact = {
 export function AdminDashboard({
   initialContacts,
   token,
+  initialEmail,
 }: {
   initialContacts: Contact[];
   token: string;
+  initialEmail?: string;
 }) {
   const [contacts, setContacts] = useState(initialContacts);
   const [loadingId, setLoadingId] = useState<string | null>(null);
 
-  const [searchQuery, setSearchQuery] = useState("");
-  const [debouncedQuery, setDebouncedQuery] = useState("");
+  const [searchQuery, setSearchQuery] = useState(initialEmail || "");
+  const [debouncedQuery, setDebouncedQuery] = useState(initialEmail || "");
   const [isSearchingServer, setIsSearchingServer] = useState(false);
 
   useEffect(() => {

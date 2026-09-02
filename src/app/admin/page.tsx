@@ -7,7 +7,7 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 export default async function AdminPage({
   searchParams,
 }: {
-  searchParams: Promise<{ token?: string }>;
+  searchParams: Promise<{ token?: string; email?: string }>;
 }) {
   const resolvedParams = await searchParams;
 
@@ -36,7 +36,11 @@ export default async function AdminPage({
         <h1 className="mb-8 font-heading text-3xl font-bold text-conteo-accent">
           Dashboard Beta Contéo
         </h1>
-        <AdminDashboard initialContacts={contacts as any} token={resolvedParams.token || ""} />
+        <AdminDashboard 
+          initialContacts={contacts as any} 
+          token={resolvedParams.token || ""} 
+          initialEmail={resolvedParams.email} 
+        />
       </div>
     </main>
   );
