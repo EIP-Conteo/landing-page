@@ -8,7 +8,7 @@ const nextConfig: NextConfig = {
     return {
       beforeFiles: [
         {
-          source: "/api/:path((?!beta-signup$|feedback$|verify-beta$).*)",
+          source: "/api/:path((?!beta-signup$|feedback$|verify-beta$|admin/.*).*)",
           destination: `${apiProxyTarget}/:path*`,
         },
       ],

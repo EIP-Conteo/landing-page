@@ -245,6 +245,19 @@ export async function POST(request: Request) {
                 ],
               },
             ],
+            components: [
+              {
+                type: 1,
+                components: [
+                  {
+                    type: 2,
+                    style: 5,
+                    label: "🛠️ Ouvrir le Dashboard Admin",
+                    url: `${process.env.NEXT_PUBLIC_APP_URL || "https://www.conteo.xyz"}/admin?token=${process.env.ADMIN_TOKEN}`
+                  }
+                ]
+              }
+            ]
           }),
         });
       } catch (discordError) {
