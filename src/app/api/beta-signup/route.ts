@@ -213,6 +213,36 @@ export async function POST(request: Request) {
       // Don't fail the signup if email fails, contact was already created
     }
 
+    // Notification Discord
+    const discordWebhookUrl = process.env.DISCORD_WEBHOOK_URL;
+    if (discordWebhookUrl) {
+      try {
+        await fetch(discordWebhookUrl, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            embeds: [
+              {
+                title: "🚀 Nouvelle inscription à la Beta",
+                description: "Un nouvel utilisateur vient de rejoindre la liste d'attente. **Veuillez copier l'adresse e-mail ci-dessous pour l'ajouter manuellement dans la section Tests Fermés de la Google Play Console.**",
+                color: 13235552, // Couleur d'accent Contéo (c9f560)
+                fields: [
+                  {
+                    name: "E-mail à ajouter",
+                    value: `\`${email}\``,
+                    inline: false
+                  }
+                ]
+              }
+            ]
+          }),
+        });
+      } catch (discordError) {
+        console.error("Erreur Webhook Discord:", discordError);
+        // On ne bloque pas l'inscription si le webhook échoue
+      }
+    }
+
     return NextResponse.json({ success: true, contactId: contact?.id });
   } catch (error) {
     console.error("Beta signup error:", error);
