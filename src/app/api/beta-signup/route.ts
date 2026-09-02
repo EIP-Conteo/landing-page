@@ -181,7 +181,7 @@ export async function POST(request: Request) {
     if (existingContact) {
       return NextResponse.json(
         { error: "Cet email est déjà inscrit" },
-        { status: 409 }
+        { status: 409 },
       );
     }
 
@@ -189,20 +189,20 @@ export async function POST(request: Request) {
       {
         email,
         unsubscribed: false,
-      }
+      },
     );
 
     if (contactError) {
       console.error("Resend contact error:", contactError);
       return NextResponse.json(
         { error: "Failed to add contact" },
-        { status: 500 }
+        { status: 500 },
       );
     }
 
     // Send welcome email with beta access links
     const { error: emailError } = await resend.emails.send({
-      from: process.env.RESEND_FROM_EMAIL ?? "Contéo <noreply@conteo.app>",
+      from: process.env.RESEND_FROM_EMAIL ?? "Contéo <noreply@conteo.xyz>",
       to: email,
       subject: "🎉 Bienvenue dans la beta Contéo !",
       html: getBetaWelcomeEmailHtml(),
@@ -224,17 +224,18 @@ export async function POST(request: Request) {
             embeds: [
               {
                 title: "🚀 Nouvelle inscription à la Beta",
-                description: "Un nouvel utilisateur vient de rejoindre la liste d'attente. **Veuillez copier l'adresse e-mail ci-dessous pour l'ajouter manuellement dans la section Tests Fermés de la Google Play Console.**",
+                description:
+                  "Un nouvel utilisateur vient de rejoindre la liste d'attente. **Veuillez copier l'adresse e-mail ci-dessous pour l'ajouter manuellement dans la section Tests Fermés de la Google Play Console.**",
                 color: 13235552, // Couleur d'accent Contéo (c9f560)
                 fields: [
                   {
                     name: "E-mail à ajouter",
                     value: `\`${email}\``,
-                    inline: false
-                  }
-                ]
-              }
-            ]
+                    inline: false,
+                  },
+                ],
+              },
+            ],
           }),
         });
       } catch (discordError) {
@@ -248,7 +249,7 @@ export async function POST(request: Request) {
     console.error("Beta signup error:", error);
     return NextResponse.json(
       { error: "Internal server error" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -261,7 +262,7 @@ export async function GET() {
       console.error("Resend list error:", error);
       return NextResponse.json(
         { error: "Failed to get count" },
-        { status: 500 }
+        { status: 500 },
       );
     }
 
@@ -270,7 +271,7 @@ export async function GET() {
     console.error("Beta count error:", error);
     return NextResponse.json(
       { error: "Internal server error" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
