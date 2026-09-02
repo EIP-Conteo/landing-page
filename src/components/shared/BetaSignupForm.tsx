@@ -15,9 +15,19 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Field, FieldError } from "@/components/ui/field";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
-const emailSchema = z.object({
+const signupSchema = z.object({
   email: z.email("Veuillez entrer une adresse email valide"),
+  os: z.enum(["iOS", "Android"], {
+    message: "Veuillez préciser votre appareil",
+  }),
 });
 
 type FormState =
@@ -42,9 +52,10 @@ export function BetaSignupForm({
   const form = useForm({
     defaultValues: {
       email: "",
+      os: "iOS" as "iOS" | "Android",
     },
     validators: {
-      onSubmit: emailSchema,
+      onSubmit: signupSchema,
     },
     onSubmit: async ({ value }) => {
       setFormState("loading");
@@ -54,7 +65,7 @@ export function BetaSignupForm({
         const response = await fetch("/api/beta-signup", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ email: value.email }),
+          body: JSON.stringify({ email: value.email, os: value.os }),
         });
 
         const data = await response.json();
@@ -83,7 +94,7 @@ export function BetaSignupForm({
       <div
         className={cn(
           "flex flex-col items-center gap-4 text-center",
-          className
+          className,
         )}
       >
         <div className="flex size-12 items-center justify-center rounded-full bg-conteo-accent/20">
@@ -113,7 +124,7 @@ export function BetaSignupForm({
       <div
         className={cn(
           "flex flex-col items-center gap-4 text-center",
-          className
+          className,
         )}
       >
         <div className="flex size-12 items-center justify-center rounded-full bg-conteo-secondary/20">
@@ -146,6 +157,50 @@ export function BetaSignupForm({
       className={cn("w-full max-w-md", className)}
     >
       <div className="flex flex-col gap-3 sm:flex-row">
+        <form.Field name="os">
+          {(field) => {
+            const isInvalid: boolean =
+              field.state.meta.isTouched && !field.state.meta.isValid;
+            return (
+              <Field className="sm:w-37 shrink-0" data-invalid={isInvalid}>
+                <Select
+                  name={field.name}
+                  value={field.state.value}
+                  onValueChange={(value) => field.handleChange(value as any)}
+                  disabled={formState === "loading"}
+                >
+                  <SelectTrigger
+                    id={field.name}
+                    aria-invalid={isInvalid}
+                    className="h-12! w-full rounded-xl border-white/20 bg-white/10 text-white focus:ring-conteo-accent/30 focus-visible:border-conteo-accent focus-visible:ring-1 focus-visible:ring-offset-0 data-[state=open]:bg-white/10"
+                  >
+                    <SelectValue placeholder="OS" />
+                  </SelectTrigger>
+                  <SelectContent className="border-white/20 bg-conteo-dark text-white">
+                    <SelectItem
+                      value="iOS"
+                      className="focus:bg-white/10 focus:text-white"
+                    >
+                      iOS (IPhone)
+                    </SelectItem>
+                    <SelectItem
+                      value="Android"
+                      className="focus:bg-white/10 focus:text-white"
+                    >
+                      Android (Autre)
+                    </SelectItem>
+                  </SelectContent>
+                </Select>
+                {isInvalid && (
+                  <FieldError
+                    errors={field.state.meta.errors}
+                    className="text-red-400"
+                  />
+                )}
+              </Field>
+            );
+          }}
+        </form.Field>
         <form.Field name="email">
           {(field) => {
             const isInvalid: boolean =

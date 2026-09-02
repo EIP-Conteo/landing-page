@@ -4,8 +4,11 @@ import { z } from "zod";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-const emailSchema = z.object({
+const signupSchema = z.object({
   email: z.email("Format d'email invalide"),
+  os: z.enum(["iOS", "Android"], {
+    message: "Veuillez préciser votre appareil",
+  }),
 });
 
 const BETA_DOWNLOAD_URL: string = process.env.BETA_DOWNLOAD_URL ?? "";
@@ -97,7 +100,6 @@ function getBetaWelcomeEmailHtml(): string {
               </table>
             </td>
           </tr>
-
           <!-- Info Box -->
           <tr>
             <td style="padding: 0 40px 30px;">
@@ -168,7 +170,7 @@ export async function POST(request: Request) {
   try {
     const body = await request.json();
 
-    const result = emailSchema.safeParse(body);
+    const result = signupSchema.safeParse(body);
     if (!result.success) {
       const errorMessage: string =
         result.error.issues[0]?.message || "Email invalide";
@@ -176,6 +178,7 @@ export async function POST(request: Request) {
     }
 
     const email: string = result.data.email.trim().toLowerCase();
+    const os = result.data.os;
 
     const { data: existingContact } = await resend.contacts.get({ email });
 
@@ -189,6 +192,7 @@ export async function POST(request: Request) {
     const { data: contact, error: contactError } = await resend.contacts.create(
       {
         email,
+        firstName: os,
         unsubscribed: false,
       },
     );
@@ -225,13 +229,17 @@ export async function POST(request: Request) {
             embeds: [
               {
                 title: "🚀 Nouvelle inscription à la Beta",
-                description:
-                  "Un nouvel utilisateur vient de rejoindre la liste d'attente. **Veuillez copier l'adresse e-mail ci-dessous pour l'ajouter manuellement dans la section Tests Fermés de la Google Play Console.**",
+                description: `Un nouvel utilisateur vient de rejoindre la liste d'attente. **Veuillez copier l'adresse e-mail ci-dessous pour l'ajouter manuellement dans la section Tests Fermés de la Google Play Console (Android) ou TestFlight (iOS).**`,
                 color: 13235552, // Couleur d'accent Contéo (c9f560)
                 fields: [
                   {
                     name: "E-mail à ajouter",
                     value: `\`${email}\``,
+                    inline: false,
+                  },
+                  {
+                    name: "Appareil",
+                    value: os,
                     inline: false,
                   },
                 ],
