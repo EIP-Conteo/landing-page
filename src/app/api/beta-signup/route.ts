@@ -147,7 +147,8 @@ function getBetaWelcomeEmailHtml(): string {
           <tr>
             <td style="padding: 20px 40px 40px; text-align: center; border-top: 1px solid #e0dfef;">
               <p style="margin: 0 0 8px; font-size: 14px; color: #858494;">
-                Une question ? Répondez simplement à cet email.
+                Un bug, une suggestion ou une remarque ?<br>
+                Rendez-vous sur <a href="https://www.conteo.xyz/feedback" style="color: #6a5ae0; text-decoration: underline;">https://www.conteo.xyz/feedback</a>
               </p>
               <p style="margin: 0; font-size: 12px; color: #858494;">
                 © ${new Date().getFullYear()} Contéo. Tous droits réservés.
