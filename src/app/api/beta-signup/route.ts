@@ -71,10 +71,10 @@ function getBetaWelcomeEmailHtml(): string {
           <tr>
             <td style="padding: 20px 40px;">
               <h2 style="margin: 0 0 16px; font-size: 24px; font-weight: 600; color: #2a2a42; text-align: center;">
-                Vous êtes sur la liste ! 🎉
+                Inscription validée ! 🎉
               </h2>
               <p style="margin: 0 0 24px; font-size: 16px; line-height: 1.6; color: #2a2a42;">
-                Merci de rejoindre l'aventure Contéo ! Vous faites partie des premiers à vouloir découvrir notre application de création d'histoires personnalisées pour enfants.
+                Merci de rejoindre l'aventure Contéo ! L'application est disponible sur <strong>Android et iOS</strong>.
               </p>
             </td>
           </tr>
@@ -86,11 +86,11 @@ function getBetaWelcomeEmailHtml(): string {
                 <tr>
                   <td style="padding: 24px; text-align: center;">
                     <p style="margin: 0 0 8px; font-size: 18px; font-weight: 600; color: #2a2a42;">
-                      🚀 La beta arrive très bientôt !
+                      ⏳ Préparation de votre accès...
                     </p>
                     <p style="margin: 0; font-size: 14px; line-height: 1.5; color: #2a2a42;">
-                      Nous mettons les dernières touches à l'application.<br>
-                      Vous recevrez un email avec le lien de téléchargement dès que la beta sera disponible.
+                      Pour vous garantir la meilleure expérience, nous ajoutons manuellement chaque nouveau testeur.<br><br>
+                      <strong>Vous recevrez un nouvel email très prochainement avec votre lien d'accès exclusif !</strong>
                     </p>
                   </td>
                 </tr>
