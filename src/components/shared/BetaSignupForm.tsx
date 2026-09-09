@@ -10,6 +10,7 @@ import {
   Check,
   MessageSquare,
   UserCheck,
+  Info,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -243,6 +244,13 @@ export function BetaSignupForm({
             </>
           )}
         </Button>
+      </div>
+
+      <div className="mt-3 flex items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/5 px-3.5 py-2.5 text-xs text-white/80 text-center">
+        <Info className="size-4 shrink-0 text-conteo-accent" />
+        <span>
+          {"Veillez à bien utiliser l'adresse email reliée à votre compte Play Store ou compte Apple."}
+        </span>
       </div>
 
       {formState === "error" && errorMessage && (
