@@ -112,7 +112,7 @@ function getBetaWelcomeEmailHtml(os: "iOS" | "Android" = "Android"): string {
                       ⏳ La version iOS arrive très bientôt !
                     </p>
                     <p style="margin: 0; font-size: 14px; line-height: 1.5; color: #2a2a42;">
-                      La beta est actuellement ouverte sur Android. Nous finalisons les derniers réglages pour iPhone.<br><br>
+                      La beta fermée est actuellement accessible sur Android. Nous finalisons la version iOS pour TestFlight.<br><br>
                       <strong>Vous recevrez un email dès l'ouverture des accès sur TestFlight et l'App Store !</strong>
                     </p>
                   </td>
