@@ -403,13 +403,13 @@ function BetaSignup({
           className="mb-6 border-none bg-conteo-accent/20 px-4 py-1.5 text-sm text-conteo-accent"
         >
           <Sparkles className="mr-1.5 size-3.5" />
-          Beta privée
+          Beta ouverte
         </Badge>
         <h2 className="mb-4 font-heading text-3xl font-semibold text-white md:text-4xl lg:text-5xl">
           Soyez parmi les <span className="text-conteo-accent">premiers</span>
         </h2>
         <p className="mx-auto mb-8 max-w-xl font-sans text-lg text-white/70">
-          {"Inscrivez-vous pour un accès anticipé et aidez-nous à créer la meilleure expérience pour vos enfants. Veillez à bien utiliser l'adresse email reliée à votre compte Play Store ou à votre compte Apple."}
+          {"Accès immédiat sur Android via notre groupe de test • Bientôt disponible sur iPhone. Rejoignez l'aventure Contéo !"}
         </p>
         <BetaSignupForm onSuccess={onSignupSuccess} className="mx-auto" />
         <BetaBenefits />

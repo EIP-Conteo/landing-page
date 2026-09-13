@@ -13,71 +13,91 @@ const signupSchema = z.object({
 
 const BETA_DOWNLOAD_URL: string = process.env.BETA_DOWNLOAD_URL ?? "";
 
-function getBetaWelcomeEmailHtml(): string {
-  const isBetaAvailable = BETA_DOWNLOAD_URL.length > 0;
-
-  const contentSection = isBetaAvailable
-    ? `
-          <!-- Content -->
+function getBetaWelcomeEmailHtml(os: "iOS" | "Android" = "Android"): string {
+  const contentSection =
+    os === "Android"
+      ? `
+          <!-- Content Android -->
           <tr>
-            <td style="padding: 20px 40px;">
-              <h2 style="margin: 0 0 16px; font-size: 24px; font-weight: 600; color: #2a2a42; text-align: center;">
-                Bienvenue dans la beta ! 🎉
+            <td style="padding: 20px 40px 10px;">
+              <h2 style="margin: 0 0 16px; font-size: 24px; font-weight: 700; color: #2a2a42; text-align: center;">
+                Votre accès Android est prêt ! 🚀
               </h2>
-              <p style="margin: 0 0 24px; font-size: 16px; line-height: 1.6; color: #2a2a42;">
-                Merci de rejoindre l'aventure Contéo ! Vous faites partie des premiers à découvrir notre application de création d'histoires personnalisées pour enfants.
-              </p>
-              <p style="margin: 0 0 24px; font-size: 16px; line-height: 1.6; color: #2a2a42;">
-                Téléchargez l'application sur votre téléphone Android et commencez à créer des histoires uniques avec vos enfants :
+              <p style="margin: 0 0 20px; font-size: 16px; line-height: 1.6; color: #2a2a42;">
+                Merci de rejoindre l'aventure Contéo ! Suivez ces <strong>3 étapes simples</strong> depuis votre smartphone Android pour installer l'application :
               </p>
             </td>
           </tr>
 
-          <!-- Download Button -->
+          <!-- Steps Card -->
           <tr>
-            <td style="padding: 0 40px 30px; text-align: center;">
-              <a href="${BETA_DOWNLOAD_URL}" target="_blank" style="display: inline-block; padding: 18px 32px; background-color: #c9f560; color: #2a2a42; text-decoration: none; border-radius: 16px; font-weight: 700; font-size: 18px;">
-                📲 Télécharger l'app
-              </a>
-            </td>
-          </tr>
-
-          <!-- Info Box -->
-          <tr>
-            <td style="padding: 0 40px 30px;">
-              <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="background-color: #2a2a42; border-radius: 16px;">
+            <td style="padding: 0 40px 24px;">
+              <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="background-color: #2a2a42; border-radius: 20px; color: #ffffff;">
                 <tr>
-                  <td style="padding: 20px;">
-                    <p style="margin: 0; font-size: 14px; line-height: 1.5; color: #ffffff;">
-                      <strong style="color: #c9f560;">💡 En tant que beta testeur :</strong><br>
-                      • Vous avez accès à toutes les fonctionnalités en avant-première<br>
-                      • Vos retours nous aident à améliorer l'app<br>
-                      • Vous bénéficierez d'avantages exclusifs au lancement
+                  <td style="padding: 24px;">
+                    <!-- Step 1 -->
+                    <p style="margin: 0 0 6px; font-size: 15px; font-weight: 700; color: #c9f560;">
+                      1. Rejoindre le groupe Google des testeurs
                     </p>
+                    <p style="margin: 0 0 12px; font-size: 13px; line-height: 1.5; color: #d6d5e6;">
+                      Rejoignez le groupe avec l'adresse Google reliée à votre Play Store pour débloquer votre accès.
+                    </p>
+                    <div style="margin-bottom: 20px;">
+                      <a href="https://groups.google.com/g/conteo-testers" target="_blank" style="display: inline-block; padding: 10px 20px; background-color: #c9f560; color: #2a2a42; text-decoration: none; border-radius: 12px; font-weight: 700; font-size: 14px;">
+                        👉 Rejoindre le groupe Google
+                      </a>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <p style="margin: 0 0 6px; font-size: 15px; font-weight: 700; color: #c9f560;">
+                      2. Activer votre statut de testeur
+                    </p>
+                    <p style="margin: 0 0 12px; font-size: 13px; line-height: 1.5; color: #d6d5e6;">
+                      Sur la page officielle Google Play, cliquez sur le bouton <strong>« Devenir testeur »</strong>.
+                    </p>
+                    <div style="margin-bottom: 20px;">
+                      <a href="https://play.google.com/apps/testing/com.theoewzzer.conteo" target="_blank" style="display: inline-block; padding: 10px 20px; background-color: #ffffff; color: #2a2a42; text-decoration: none; border-radius: 12px; font-weight: 700; font-size: 14px;">
+                        ✅ Devenir testeur Google Play
+                      </a>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <p style="margin: 0 0 6px; font-size: 15px; font-weight: 700; color: #c9f560;">
+                      3. Télécharger Contéo sur le Play Store
+                    </p>
+                    <p style="margin: 0 0 12px; font-size: 13px; line-height: 1.5; color: #d6d5e6;">
+                      L'application est maintenant disponible sur votre store !
+                    </p>
+                    <div>
+                      <a href="https://play.google.com/store/apps/details?id=com.theoewzzer.conteo" target="_blank" style="display: inline-block; padding: 12px 24px; background-color: #6a5ae0; color: #ffffff; text-decoration: none; border-radius: 12px; font-weight: 700; font-size: 14px;">
+                        📲 Télécharger sur Google Play
+                      </a>
+                    </div>
                   </td>
                 </tr>
               </table>
             </td>
           </tr>
 
-          <!-- Android Notice -->
+          <!-- Warning Notice -->
           <tr>
-            <td style="padding: 0 40px 30px;">
-              <p style="margin: 0; font-size: 13px; line-height: 1.5; color: #858494; text-align: center;">
-                <strong>Note :</strong> La beta est actuellement disponible sur Android uniquement.<br>
-                La version iOS arrive bientôt !
-              </p>
+            <td style="padding: 0 40px 24px;">
+              <div style="background-color: rgba(234, 179, 8, 0.15); border-left: 4px solid #eab308; padding: 14px; border-radius: 0 12px 12px 0;">
+                <p style="margin: 0; font-size: 13px; line-height: 1.5; color: #854d0e;">
+                  <strong>Note importante :</strong> Si Google Play affiche <em>« Application introuvable »</em>, vérifiez que vous avez bien validé l'Étape 1 et l'Étape 2 avec la même adresse Google que celle reliée à votre Play Store.
+                </p>
+              </div>
             </td>
           </tr>`
-    : `
-          <!-- Content - Beta not yet available -->
+      : `
+          <!-- Content iOS -->
           <tr>
             <td style="padding: 20px 40px;">
               <h2 style="margin: 0 0 16px; font-size: 24px; font-weight: 600; color: #2a2a42; text-align: center;">
-                Inscription validée ! 🎉
+                Inscription validée pour iPhone ! 🎉
               </h2>
               <p style="margin: 0 0 24px; font-size: 16px; line-height: 1.6; color: #2a2a42;">
-                Merci de rejoindre l'aventure Contéo ! L'application est disponible sur <strong>Android et iOS</strong>.
+                Merci de rejoindre l'aventure Contéo ! Vous faites partie des premiers inscrits pour découvrir notre application d'histoires personnalisées.
               </p>
             </td>
           </tr>
@@ -89,17 +109,18 @@ function getBetaWelcomeEmailHtml(): string {
                 <tr>
                   <td style="padding: 24px; text-align: center;">
                     <p style="margin: 0 0 8px; font-size: 18px; font-weight: 600; color: #2a2a42;">
-                      ⏳ Préparation de votre accès...
+                      ⏳ La version iOS arrive très bientôt !
                     </p>
                     <p style="margin: 0; font-size: 14px; line-height: 1.5; color: #2a2a42;">
-                      Pour vous garantir la meilleure expérience, nous ajoutons manuellement chaque nouveau testeur.<br><br>
-                      <strong>Vous recevrez un nouvel email très prochainement avec votre lien d'accès exclusif !</strong>
+                      La beta est actuellement ouverte sur Android. Nous finalisons les derniers réglages pour iPhone.<br><br>
+                      <strong>Vous recevrez un email dès l'ouverture des accès sur TestFlight et l'App Store !</strong>
                     </p>
                   </td>
                 </tr>
               </table>
             </td>
           </tr>
+
           <!-- Info Box -->
           <tr>
             <td style="padding: 0 40px 30px;">
@@ -124,7 +145,7 @@ function getBetaWelcomeEmailHtml(): string {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bienvenue dans la beta Contéo !</title>
+  <title>${os === "Android" ? "Votre accès à la beta Android Contéo !" : "Bienvenue dans la beta Contéo !"}</title>
 </head>
 <body style="margin: 0; padding: 0; font-family: 'Rubik', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background-color: #2a2a42;">
   <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="background-color: #2a2a42;">
@@ -206,11 +227,16 @@ export async function POST(request: Request) {
     }
 
     // Send welcome email with beta access links
+    const emailSubject =
+      os === "Android"
+        ? "🚀 Votre accès à la beta Android Contéo est prêt !"
+        : "🎉 Bienvenue sur la liste d'attente Contéo (iOS)";
+
     const { error: emailError } = await resend.emails.send({
       from: process.env.RESEND_FROM_EMAIL ?? "Contéo <noreply@conteo.xyz>",
       to: email,
-      subject: "🎉 Bienvenue dans la beta Contéo !",
-      html: getBetaWelcomeEmailHtml(),
+      subject: emailSubject,
+      html: getBetaWelcomeEmailHtml(os),
     });
 
     if (emailError) {
@@ -222,25 +248,30 @@ export async function POST(request: Request) {
     const discordWebhookUrl = process.env.DISCORD_WEBHOOK_URL;
     if (discordWebhookUrl) {
       try {
+        const isAndroid = os === "Android";
         await fetch(discordWebhookUrl, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             embeds: [
               {
-                title: "🚀 Nouvelle inscription à la Beta",
-                description: `Un nouvel utilisateur vient de rejoindre la liste d'attente. **Veuillez copier l'adresse e-mail ci-dessous pour l'ajouter manuellement dans la section Tests Fermés de la Google Play Console (Android) ou TestFlight (iOS).**\n\n[👉 Cliquez ici pour ouvrir le Dashboard Admin](${process.env.NEXT_PUBLIC_APP_URL || "https://www.conteo.xyz"}/admin?token=${process.env.ADMIN_TOKEN}&email=${encodeURIComponent(email)})`,
-                color: 13235552, // Couleur d'accent Contéo (c9f560)
+                title: isAndroid
+                  ? "🚀 Nouveau testeur Beta Android"
+                  : "🍏 Nouvelle inscription Liste d'attente iOS",
+                description: isAndroid
+                  ? `Un nouvel utilisateur a rejoint la **Beta Android**. Les instructions d'accès au Google Group lui ont été envoyées automatiquement par email.`
+                  : `Un nouvel utilisateur a rejoint la **liste d'attente iOS**. Il sera prévenu lors du lancement TestFlight.\n\n[👉 Ouvrir le Dashboard Admin](${process.env.NEXT_PUBLIC_APP_URL || "https://www.conteo.xyz"}/admin?token=${process.env.ADMIN_TOKEN}&email=${encodeURIComponent(email)})`,
+                color: isAndroid ? 13235552 : 7001824, // Vert lime Contéo (c9f560) ou violet
                 fields: [
                   {
-                    name: "E-mail à ajouter",
+                    name: "E-mail",
                     value: `\`${email}\``,
-                    inline: false,
+                    inline: true,
                   },
                   {
                     name: "Appareil",
                     value: os,
-                    inline: false,
+                    inline: true,
                   },
                 ],
               },

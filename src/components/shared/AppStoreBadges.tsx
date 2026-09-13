@@ -81,38 +81,40 @@ export function AppStoreBadges({
       {/* Google Play Badge */}
       <div className="relative">
         <Button
+          asChild
           variant="ghost"
-          disabled
           className={cn(
-            "flex items-center gap-2 bg-conteo-dark text-white/70 cursor-not-allowed hover:bg-conteo-dark hover:text-white/70",
+            "flex items-center gap-2 bg-conteo-dark text-white hover:bg-white/10 hover:text-white transition-colors border border-white/10 shadow-sm",
             styles.container
           )}
         >
-          <svg
-            className={cn(styles.icon, size === "md" ? "w-6 h-6" : "")}
-            viewBox="0 0 24 24"
-            fill="currentColor"
-          >
-            <path d="M3 20.5v-17c0-.59.34-1.11.84-1.35L13.69 12l-9.85 9.85c-.5-.24-.84-.76-.84-1.35zm13.81-5.38L6.05 21.34l8.49-8.49 2.27 2.27zm3.35-4.31c.34.27.59.69.59 1.19s-.22.9-.57 1.18l-2.29 1.32-2.5-2.5 2.5-2.5 2.27 1.31zM6.05 2.66l10.76 6.22-2.27 2.27-8.49-8.49z" />
-          </svg>
-          <div className="flex flex-col items-start">
-            <span className={cn("leading-tight", styles.topText)}>
-              Bientôt sur
-            </span>
-            <span
-              className={cn("font-semibold leading-tight", styles.bottomText)}
+          <a href="#beta" aria-label="Accéder à la beta Android sur Google Play">
+            <svg
+              className={cn(styles.icon, size === "md" ? "w-6 h-6" : "")}
+              viewBox="0 0 24 24"
+              fill="currentColor"
             >
-              Google Play
-            </span>
-          </div>
+              <path d="M3 20.5v-17c0-.59.34-1.11.84-1.35L13.69 12l-9.85 9.85c-.5-.24-.84-.76-.84-1.35zm13.81-5.38L6.05 21.34l8.49-8.49 2.27 2.27zm3.35-4.31c.34.27.59.69.59 1.19s-.22.9-.57 1.18l-2.29 1.32-2.5-2.5 2.5-2.5 2.27 1.31zM6.05 2.66l10.76 6.22-2.27 2.27-8.49-8.49z" />
+            </svg>
+            <div className="flex flex-col items-start">
+              <span className={cn("leading-tight text-white/70", styles.topText)}>
+                Disponible sur
+              </span>
+              <span
+                className={cn("font-semibold leading-tight text-white", styles.bottomText)}
+              >
+                Google Play
+              </span>
+            </div>
+          </a>
         </Button>
         <Badge
           className={cn(
-            "absolute -top-2 -right-2 bg-conteo-secondary text-white font-medium border-none",
+            "absolute -top-2 -right-2 bg-conteo-accent text-conteo-dark font-bold border-none shadow-sm",
             styles.badge
           )}
         >
-          Bientôt
+          Beta ouverte
         </Badge>
       </div>
     </div>

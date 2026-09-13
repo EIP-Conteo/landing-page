@@ -39,6 +39,11 @@ const faqs = [
       "Une connexion internet est nécessaire pour générer de nouvelles histoires. Cependant, les histoires déjà créées peuvent être sauvegardées et écoutées hors ligne.",
   },
   {
+    question: "Comment installer la beta de Contéo sur Android ?",
+    answer:
+      "L'accès à la beta fermée Android se fait en 3 étapes rapides : 1. Rejoignez notre groupe Google de testeurs avec le compte relié à votre smartphone. 2. Cliquez sur le lien d'activation Google Play pour devenir testeur. 3. Téléchargez l'application sur le Play Store !",
+  },
+  {
     question: "Est-ce adapté pour l'histoire du soir ?",
     answer:
       "Absolument ! La narration audio douce et les thèmes bienveillants font de Contéo le compagnon idéal pour le rituel du coucher et l'histoire du soir.",
