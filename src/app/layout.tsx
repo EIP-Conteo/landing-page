@@ -16,8 +16,7 @@ const rubik = Rubik({
   display: "swap",
 });
 
-const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL || "https://www.conteo.xyz/";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://www.conteo.xyz/";
 const SITE_NAME = "Contéo";
 
 export const viewport: Viewport = {
@@ -33,12 +32,11 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default:
-      "Contéo : Histoires Personnalisées & Contes pour Enfants (IA)",
+    default: "Contéo : Histoires Personnalisées & Contes pour Enfants (IA)",
     template: "%s | Contéo",
   },
   description:
-    "Créez des histoires personnalisées pour vos enfants avec Contéo. Choisissez personnages et décors pour générer contes audio et illustrations par IA. (3-12 ans)",
+    "Créez des histoires personnalisées pour vos enfants avec Contéo. Choisissez personnages et décors pour générer contes audio et illustrations par IA. (0-12 ans)",
   keywords: [
     "histoires pour enfants",
     "contes personnalisés",
@@ -75,7 +73,7 @@ export const metadata: Metadata = {
     siteName: SITE_NAME,
     title: "Contéo - Histoires magiques créées par votre enfant",
     description:
-      "Votre enfant choisit ses personnages préférés, Contéo crée une histoire unique avec texte, narration audio et illustrations générés par IA. Pour les 3-12 ans.",
+      "Votre enfant choisit ses personnages préférés, Contéo crée une histoire unique avec texte, narration audio et illustrations générés par IA. Pour les 0-12 ans.",
     url: SITE_URL,
     locale: "fr_FR",
     images: [

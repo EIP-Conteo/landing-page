@@ -21,7 +21,7 @@ const foxGaming = "/images/figma/decorative/fox-gaming.png";
 
 const stats = [
   { value: "∞", label: "Histoires uniques", delay: 0 },
-  { value: "3-12", label: "ans", delay: 100 },
+  { value: "0-12", label: "ans", delay: 100 },
   { value: "100%", label: "Personnalisé", delay: 200 },
 ];
 
@@ -168,7 +168,7 @@ function HeroCopy({ isLoaded }: Readonly<{ isLoaded: boolean }>) {
     <div
       className={cn(
         "z-10 flex max-w-xl flex-col items-center text-center transition-all duration-700 lg:items-start lg:text-left",
-        isLoaded ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
+        isLoaded ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0",
       )}
     >
       <div className="relative mb-10">
@@ -224,7 +224,7 @@ function HeroSubtitle({ isLoaded }: Readonly<{ isLoaded: boolean }>) {
     <p
       className={cn(
         "mb-10 max-w-lg font-sans text-lg leading-relaxed text-white/70 transition-all duration-700 delay-500 md:text-xl",
-        isLoaded ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
+        isLoaded ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0",
       )}
     >
       Votre enfant choisit ses personnages, objets et décors préférés. Contéo
@@ -248,7 +248,7 @@ function AppStoreCallToAction({ isLoaded }: Readonly<{ isLoaded: boolean }>) {
     <div
       className={cn(
         "transition-all duration-700 delay-700",
-        isLoaded ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
+        isLoaded ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0",
       )}
     >
       <div className="relative">
@@ -264,7 +264,7 @@ function HeroStats({ isLoaded }: Readonly<{ isLoaded: boolean }>) {
     <div
       className={cn(
         "mt-10 flex gap-8 transition-all duration-700 delay-1000",
-        isLoaded ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
+        isLoaded ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0",
       )}
     >
       {stats.map((stat) => (
@@ -297,7 +297,7 @@ function HeroVisual({
     <div
       className={cn(
         "relative z-10 mt-16 w-full max-w-sm transition-all duration-700 delay-500 lg:mt-0",
-        isLoaded ? "translate-x-0 opacity-100" : "translate-x-10 opacity-0"
+        isLoaded ? "translate-x-0 opacity-100" : "translate-x-10 opacity-0",
       )}
       style={{
         transform: isLoaded
@@ -395,7 +395,7 @@ function BetaSignup({
       <div
         className={cn(
           "mx-auto max-w-2xl text-center transition-all duration-700",
-          isLoaded ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
+          isLoaded ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0",
         )}
       >
         <Badge
@@ -409,7 +409,9 @@ function BetaSignup({
           Soyez parmi les <span className="text-conteo-accent">premiers</span>
         </h2>
         <p className="mx-auto mb-8 max-w-xl font-sans text-lg text-white/70">
-          {"Accès direct sur Android (Tests fermés) • Inscription pour iPhone. Rejoignez l'aventure Contéo !"}
+          {
+            "Accès direct sur Android (Tests fermés) • Inscription pour iPhone. Rejoignez l'aventure Contéo !"
+          }
         </p>
         <BetaSignupForm onSuccess={onSignupSuccess} className="mx-auto" />
         <BetaBenefits />
