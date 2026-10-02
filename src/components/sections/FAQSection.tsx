@@ -16,7 +16,7 @@ const faqs = [
   {
     question: "Pour quel âge est Contéo ?",
     answer:
-      "Contéo est conçu pour les enfants de 3 à 12 ans. Les histoires s'adaptent automatiquement à l'âge de l'enfant pour offrir un contenu approprié et captivant.",
+      "Contéo est conçu pour les enfants de 0 à 8 ans. Les histoires s'adaptent automatiquement à l'âge de l'enfant pour offrir un contenu approprié et captivant.",
   },
   {
     question: "Comment fonctionne Contéo ?",

@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     template: "%s | Contéo",
   },
   description:
-    "Créez des histoires personnalisées pour vos enfants avec Contéo. Choisissez personnages et décors pour générer contes audio et illustrations par IA. (0-12 ans)",
+    "Créez des histoires personnalisées pour vos enfants avec Contéo. Choisissez personnages et décors pour générer contes audio et illustrations par IA. (0-8 ans)",
   keywords: [
     "histoires pour enfants",
     "contes personnalisés",
@@ -73,7 +73,7 @@ export const metadata: Metadata = {
     siteName: SITE_NAME,
     title: "Contéo - Histoires magiques créées par votre enfant",
     description:
-      "Votre enfant choisit ses personnages préférés, Contéo crée une histoire unique avec texte, narration audio et illustrations générés par IA. Pour les 0-12 ans.",
+      "Votre enfant choisit ses personnages préférés, Contéo crée une histoire unique avec texte, narration audio et illustrations générés par IA. Pour les 0-8 ans.",
     url: SITE_URL,
     locale: "fr_FR",
     images: [
@@ -175,7 +175,7 @@ export default function RootLayout({
           "Contes magiques",
           "Livre audio interactif",
           "Illustrations par Intelligence Artificielle",
-          "Histoires du soir pour enfants de 3 à 12 ans",
+          "Histoires du soir pour enfants de 0 à 8 ans",
         ],
       },
       {
@@ -187,7 +187,7 @@ export default function RootLayout({
             name: "Pour quel âge est Contéo ?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Contéo est conçu pour les enfants de 3 à 12 ans. Les histoires s'adaptent automatiquement à l'âge de l'enfant pour offrir un contenu approprié et captivant.",
+              text: "Contéo est conçu pour les enfants de 0 à 8 ans. Les histoires s'adaptent automatiquement à l'âge de l'enfant pour offrir un contenu approprié et captivant.",
             },
           },
           {

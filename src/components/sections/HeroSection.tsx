@@ -21,7 +21,7 @@ const foxGaming = "/images/figma/decorative/fox-gaming.png";
 
 const stats = [
   { value: "∞", label: "Histoires uniques", delay: 0 },
-  { value: "0-12", label: "ans", delay: 100 },
+  { value: "0-8", label: "ans", delay: 100 },
   { value: "100%", label: "Personnalisé", delay: 200 },
 ];
 

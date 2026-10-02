@@ -565,7 +565,7 @@ export default function PrivacyPage() {
             title="Une application pensée pour les enfants, validée par les parents"
           >
             <p>
-              {SITE_NAME} est destiné aux enfants de 0 à 12 ans, mais{" "}
+              {SITE_NAME} est destiné aux enfants de 0 à 8 ans, mais{" "}
               <strong>seuls les parents ou tuteurs légaux</strong> sont
               autorisés à créer le compte et à accepter la présente politique.
               Aucune donnée n&apos;est sciemment collectée auprès d&apos;un

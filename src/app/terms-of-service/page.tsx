@@ -156,7 +156,7 @@ export default function TermsOfServicePage() {
           >
             <p>
               {SITE_NAME} est destiné aux enfants âgés de{" "}
-              <strong>0 à 12 ans</strong>. L&apos;application ne doit jamais
+              <strong>0 à 8 ans</strong>. L&apos;application ne doit jamais
               être utilisée de manière autonome par un mineur. La création du
               compte, la validation des présentes CGU et toute interaction avec
               le service doivent être effectuées par un parent ou un
