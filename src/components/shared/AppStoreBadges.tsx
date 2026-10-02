@@ -50,7 +50,7 @@ export function AppStoreBadges({
           asChild
           variant="ghost"
           className={cn(
-            "flex items-center gap-2 bg-conteo-dark text-white hover:bg-white/10 hover:text-white transition-colors border border-white/10 shadow-sm",
+            "flex items-center gap-2 bg-conteo-dark text-white hover:bg-conteo-dark-hover hover:text-white transition-colors border border-white/10 hover:border-white/20 shadow-sm",
             styles.container
           )}
         >
@@ -86,7 +86,7 @@ export function AppStoreBadges({
           asChild
           variant="ghost"
           className={cn(
-            "flex items-center gap-2 bg-conteo-dark text-white hover:bg-white/10 hover:text-white transition-colors border border-white/10 shadow-sm",
+            "flex items-center gap-2 bg-conteo-dark text-white hover:bg-conteo-dark-hover hover:text-white transition-colors border border-white/10 hover:border-white/20 shadow-sm",
             styles.container
           )}
         >
