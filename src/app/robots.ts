@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://www.conteo.xyz/";
+const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || "https://www.conteo.xyz").replace(/\/+$/, "");
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -8,7 +8,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/api/", "/_next/", "/private/"],
+        disallow: ["/api/", "/_next/", "/private/", "/admin/"],
       },
       {
         userAgent: "Googlebot",

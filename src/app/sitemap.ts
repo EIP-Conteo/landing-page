@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://www.conteo.xyz/";
+const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || "https://www.conteo.xyz").replace(/\/+$/, "");
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
@@ -11,40 +11,28 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     {
-      url: `${SITE_URL}/#fonctionnalites`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${SITE_URL}/#comment-ca-marche`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${SITE_URL}/#temoignages`,
+      url: `${SITE_URL}/privacy`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.7,
     },
     {
-      url: `${SITE_URL}/#faq`,
+      url: `${SITE_URL}/terms-of-service`,
       lastModified: new Date(),
       changeFrequency: "monthly",
-      priority: 0.8,
+      priority: 0.7,
     },
     {
       url: `${SITE_URL}/delete-account`,
       lastModified: new Date(),
       changeFrequency: "yearly",
-      priority: 0.6,
+      priority: 0.5,
     },
     {
-      url: `${SITE_URL}/privacy`,
+      url: `${SITE_URL}/feedback`,
       lastModified: new Date(),
-      changeFrequency: "yearly",
-      priority: 0.6,
+      changeFrequency: "monthly",
+      priority: 0.5,
     },
   ];
 }

@@ -16,7 +16,7 @@ const rubik = Rubik({
   display: "swap",
 });
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://www.conteo.xyz/";
+const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || "https://www.conteo.xyz").replace(/\/+$/, "");
 const SITE_NAME = "Contéo";
 
 export const viewport: Viewport = {
@@ -32,7 +32,7 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Contéo : Histoires Personnalisées & Contes pour Enfants (IA)",
+    default: "Contéo : Histoires Personnalisées & Contes pour Enfants",
     template: "%s | Contéo",
   },
   description:
