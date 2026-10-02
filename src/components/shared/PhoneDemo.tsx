@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import logoImg from "../../../public/logo.png";
 import { cn } from "@/lib/utils";
 import { Check, ChevronLeft, RotateCcw } from "lucide-react";
 import { AppStoreBadges } from "@/components/shared/AppStoreBadges";
@@ -29,7 +30,7 @@ const characters: DemoItem[] = [
     id: "olga",
     name: "Olga la licorne",
     image: "/images/preview/characters/olga.png",
-    className: "scale-125 group-hover:scale-130",
+    className: "scale-120 group-hover:scale-125",
   },
   {
     id: "robin",
@@ -168,7 +169,7 @@ export function PhoneDemo() {
               {/* Logo */}
               <div className="relative size-24 mb-4">
                 <Image
-                  src="/logo.png"
+                  src={logoImg}
                   alt="Contéo"
                   fill
                   sizes="96px"

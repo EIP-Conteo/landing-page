@@ -1,5 +1,6 @@
 import { cn } from "@/lib/utils";
 import Image from "next/image";
+import logoImg from "../../../public/logo.png";
 
 interface LogoProps {
   size?: "sm" | "md" | "lg";
@@ -24,7 +25,7 @@ export function Logo({
     <div className={cn("flex flex-col items-center", className)}>
       <div className={cn("relative", box)}>
         <Image
-          src="/logo.png"
+          src={logoImg}
           alt="Contéo"
           fill
           sizes={image}
