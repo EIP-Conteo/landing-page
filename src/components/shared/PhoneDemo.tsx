@@ -6,105 +6,83 @@ import { cn } from "@/lib/utils";
 import { Check, ChevronLeft, RotateCcw } from "lucide-react";
 import { AppStoreBadges } from "@/components/shared/AppStoreBadges";
 
+interface DemoItem {
+  id: string;
+  name: string;
+  image: string;
+  className?: string;
+}
+
 // Characters assets
-const characters = [
+const characters: DemoItem[] = [
   {
-    id: "cow-sleeping",
-    name: "Vache endormie",
-    image: "/images/figma/characters/cow-sleeping.png",
+    id: "pablo",
+    name: "Pablo le renard",
+    image: "/images/preview/characters/pablo.png",
   },
   {
-    id: "cow-reading",
-    name: "Vache lisant",
-    image: "/images/figma/characters/cow-reading.png",
+    id: "marina",
+    name: "Marina la sirène",
+    image: "/images/preview/characters/marina.png",
   },
   {
-    id: "fox-gaming",
-    name: "Renard joueur",
-    image: "/images/figma/characters/fox-gaming.png",
+    id: "olga",
+    name: "Olga la licorne",
+    image: "/images/preview/characters/olga.png",
+    className: "scale-125 group-hover:scale-130",
   },
   {
-    id: "cracked-egg",
-    name: "Oeuf magique",
-    image: "/images/figma/characters/cracked-egg.png",
-  },
-  {
-    id: "teddy-bear",
-    name: "Ours en peluche",
-    image: "/images/figma/characters/teddy-bear.png",
-  },
-  {
-    id: "frog",
-    name: "Grenouille",
-    image: "/images/figma/characters/frog.png",
+    id: "robin",
+    name: "Robin le chevalier",
+    image: "/images/preview/characters/robin.png",
   },
 ];
 
 // Objects assets
-const objects = [
+const objects: DemoItem[] = [
   {
-    id: "key",
-    name: "Clé",
-    image: "/images/figma/objects/key.png",
+    id: "golden-key",
+    name: "Clé d'or",
+    image: "/images/preview/objects/golden-key.png",
   },
   {
-    id: "sword",
-    name: "Épée",
-    image: "/images/figma/objects/sword.png",
+    id: "enchanted-compass",
+    name: "Boussole enchantée",
+    image: "/images/preview/objects/enchanted-compass.png",
   },
   {
-    id: "shield",
-    name: "Bouclier",
-    image: "/images/figma/objects/shield.png",
+    id: "animal-flute",
+    name: "Flûte des animaux",
+    image: "/images/preview/objects/animal-flute.png",
   },
   {
-    id: "treasure",
-    name: "Trésor",
-    image: "/images/figma/objects/treasure.png",
-  },
-  {
-    id: "wand",
-    name: "Baguette",
-    image: "/images/figma/objects/wand.png",
-  },
-  {
-    id: "map",
-    name: "Carte",
-    image: "/images/figma/objects/map.png",
+    id: "time-hourglass",
+    name: "Sablier du temps",
+    image: "/images/preview/objects/time-hourglass.png",
   },
 ];
 
 // Landscapes assets
-const landscapes = [
+const landscapes: DemoItem[] = [
   {
-    id: "barn",
-    name: "Ferme",
-    image: "/images/figma/landscapes/barn.png",
+    id: "cloud-mountain",
+    name: "Montagne des nuages",
+    image: "/images/preview/landscapes/cloud-mountain.png",
   },
   {
-    id: "cave",
-    name: "Grotte",
-    image: "/images/figma/landscapes/cave.png",
+    id: "crystal-cave",
+    name: "Grotte aux cristaux",
+    image: "/images/preview/landscapes/crystal-cave.png",
   },
   {
-    id: "beach",
-    name: "Plage",
-    image: "/images/figma/landscapes/beach.png",
+    id: "treasure-island",
+    name: "Île aux trésors",
+    image: "/images/preview/landscapes/treasure-island.png",
   },
   {
-    id: "desert",
-    name: "Désert",
-    image: "/images/figma/landscapes/desert.png",
-  },
-  {
-    id: "castle",
-    name: "Château",
-    image: "/images/figma/landscapes/castle.png",
-  },
-  {
-    id: "forest",
-    name: "Forêt",
-    image: "/images/figma/landscapes/forest.png",
+    id: "undersea-kingdom",
+    name: "Royaume sous-marin",
+    image: "/images/preview/landscapes/undersea-kingdom.png",
   },
 ];
 
@@ -133,7 +111,7 @@ export function PhoneDemo() {
   const [currentStep, setCurrentStep] = useState(0);
   const [showTeaser, setShowTeaser] = useState(false);
   const [selections, setSelections] = useState<Record<number, Set<string>>>({
-    0: new Set(["cow-sleeping", "cracked-egg"]),
+    0: new Set(["pablo", "marina"]),
     1: new Set(),
     2: new Set(),
   });
@@ -173,7 +151,7 @@ export function PhoneDemo() {
     setShowTeaser(false);
     setCurrentStep(0);
     setSelections({
-      0: new Set(["cow-sleeping", "cracked-egg"]),
+      0: new Set(["pablo", "marina"]),
       1: new Set(),
       2: new Set(),
     });
@@ -243,7 +221,7 @@ export function PhoneDemo() {
                         "h-1 rounded-full transition-all duration-300",
                         index <= currentStep
                           ? "bg-conteo-secondary w-6"
-                          : "bg-conteo-light w-6"
+                          : "bg-conteo-light w-6",
                       )}
                     />
                   ))}
@@ -254,27 +232,34 @@ export function PhoneDemo() {
               <div className="grid grid-cols-2 gap-2 flex-1 overflow-hidden">
                 {step.items.slice(0, 4).map((item) => {
                   const isSelected = selectedItems.has(item.id);
+                  const isLandscape = currentStep === 2;
                   return (
                     <button
                       key={item.id}
                       onClick={() => toggleSelection(item.id)}
                       className={cn(
-                        "relative aspect-square rounded-2xl p-2 transition-all duration-200",
+                        "group relative aspect-square rounded-2xl p-2 transition-all duration-200 overflow-hidden cursor-pointer",
                         isSelected
                           ? "bg-conteo-secondary ring-2 ring-conteo-light"
-                          : "bg-conteo-light hover:bg-conteo-light/80"
+                          : "bg-conteo-light hover:bg-conteo-light/80",
                       )}
                     >
-                      <Image
-                        src={item.image}
-                        alt={item.name}
-                        fill
-                        sizes="140px"
-                        className="object-contain p-2"
-                      />
+                      <div className="relative size-full overflow-hidden rounded-xl">
+                        <Image
+                          src={item.image}
+                          alt={item.name}
+                          fill
+                          sizes="140px"
+                          className={cn(
+                            "transition-transform duration-300 group-hover:scale-105",
+                            isLandscape ? "object-cover" : "object-contain p-1",
+                            item.className,
+                          )}
+                        />
+                      </div>
                       {isSelected && (
-                        <div className="absolute top-1.5 right-1.5 size-5 bg-white rounded-full flex items-center justify-center shadow-sm">
-                          <Check className="size-3 text-conteo-secondary" />
+                        <div className="absolute top-1.5 right-1.5 size-5 bg-white rounded-full flex items-center justify-center shadow-md z-10">
+                          <Check className="size-3 text-conteo-secondary stroke-[3]" />
                         </div>
                       )}
                     </button>
