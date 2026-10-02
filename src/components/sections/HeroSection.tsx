@@ -11,19 +11,13 @@ import {
 import { PhoneDemo } from "@/components/shared/PhoneDemo";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
-import { Check, Sparkle, Sparkles, Star, Wand2, Zap } from "lucide-react";
+import { Check, Infinity, Sparkle, Sparkles, Star, Wand2, Zap } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
 const decorativeCircle = "/images/figma/decorative/circle.svg";
 const cowReading = "/images/figma/decorative/cow-reading.png";
 const foxGaming = "/images/figma/decorative/fox-gaming.png";
-
-const stats = [
-  { value: "∞", label: "Histoires uniques", delay: 0 },
-  { value: "0-8", label: "ans", delay: 100 },
-  { value: "100%", label: "Personnalisé", delay: 200 },
-];
 
 const benefits = [
   { icon: Zap, text: "Accès anticipé gratuit" },
@@ -263,25 +257,58 @@ function HeroStats({ isLoaded }: Readonly<{ isLoaded: boolean }>) {
   return (
     <div
       className={cn(
-        "mt-10 flex gap-8 transition-all duration-700 delay-1000",
+        "mt-10 w-full max-w-xl rounded-2xl sm:rounded-3xl border border-white/10 bg-white/[0.04] p-2.5 sm:p-4 backdrop-blur-md shadow-xl shadow-black/15 transition-all duration-700 delay-1000",
         isLoaded ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0",
       )}
     >
-      {stats.map((stat) => (
-        <div
-          key={stat.label}
-          className="group cursor-default text-center lg:text-left"
-          style={{ animationDelay: `${stat.delay}ms` }}
-        >
-          <div className="font-heading text-2xl font-semibold text-conteo-accent transition-transform duration-300 group-hover:scale-110">
-            <span className="relative">
-              {stat.value}
-              <span className="absolute -inset-2 rounded-full bg-conteo-accent/10 opacity-0 blur-lg transition-opacity group-hover:opacity-100" />
-            </span>
+      <div className="grid grid-cols-3 divide-x divide-white/10">
+        {/* Stat 1: Histoires infinies */}
+        <div className="group relative flex flex-col items-center justify-center px-1.5 sm:px-3 py-1 sm:py-2 text-center transition-all duration-300 hover:bg-white/[0.04] rounded-xl cursor-default">
+          <div className="relative flex items-center justify-center h-9 sm:h-10 text-conteo-accent">
+            <div className="relative transition-transform duration-300 group-hover:scale-110">
+              <Infinity className="size-8 sm:size-9 stroke-[2.5] drop-shadow-[0_0_10px_rgba(201,245,96,0.4)]" />
+              <Sparkles className="absolute -top-1 -right-2.5 size-3 text-conteo-accent/80 animate-twinkle pointer-events-none" />
+            </div>
+            <span className="absolute -inset-2 rounded-full bg-conteo-accent/15 opacity-0 blur-lg transition-opacity duration-300 group-hover:opacity-100 pointer-events-none" />
           </div>
-          <div className="text-sm text-white/50">{stat.label}</div>
+          <p className="mt-1.5 font-heading text-xs sm:text-sm font-bold text-white leading-snug">
+            Histoires infinies
+          </p>
+          <p className="text-[10px] sm:text-xs text-white/60 leading-tight">
+            Toutes 100% uniques
+          </p>
         </div>
-      ))}
+
+        {/* Stat 2: 0-8 ans */}
+        <div className="group relative flex flex-col items-center justify-center px-1.5 sm:px-3 py-1 sm:py-2 text-center transition-all duration-300 hover:bg-white/[0.04] rounded-xl cursor-default">
+          <div className="relative flex items-center justify-center h-9 sm:h-10 font-heading font-extrabold text-2xl sm:text-3xl text-conteo-accent transition-transform duration-300 group-hover:scale-105">
+            <span className="drop-shadow-[0_0_10px_rgba(201,245,96,0.3)]">0 - 8</span>
+            <span className="ml-1 text-xs sm:text-sm font-semibold text-white/70">ans</span>
+            <span className="absolute -inset-2 rounded-full bg-conteo-accent/15 opacity-0 blur-lg transition-opacity duration-300 group-hover:opacity-100 pointer-events-none" />
+          </div>
+          <p className="mt-1.5 font-heading text-xs sm:text-sm font-bold text-white leading-snug">
+            Âge idéal
+          </p>
+          <p className="text-[10px] sm:text-xs text-white/60 leading-tight">
+            Dès les tout-petits
+          </p>
+        </div>
+
+        {/* Stat 3: 100% Personnalisé */}
+        <div className="group relative flex flex-col items-center justify-center px-1.5 sm:px-3 py-1 sm:py-2 text-center transition-all duration-300 hover:bg-white/[0.04] rounded-xl cursor-default">
+          <div className="relative flex items-center justify-center h-9 sm:h-10 font-heading font-extrabold text-2xl sm:text-3xl text-conteo-accent transition-transform duration-300 group-hover:scale-105">
+            <span className="drop-shadow-[0_0_10px_rgba(201,245,96,0.3)]">100%</span>
+            <Wand2 className="absolute -top-1 -right-2.5 size-3.5 text-conteo-accent/80 animate-magical-bounce pointer-events-none" />
+            <span className="absolute -inset-2 rounded-full bg-conteo-accent/15 opacity-0 blur-lg transition-opacity duration-300 group-hover:opacity-100 pointer-events-none" />
+          </div>
+          <p className="mt-1.5 font-heading text-xs sm:text-sm font-bold text-white leading-snug">
+            Personnalisé
+          </p>
+          <p className="text-[10px] sm:text-xs text-white/60 leading-tight">
+            Héros, objets & lieux
+          </p>
+        </div>
+      </div>
     </div>
   );
 }
