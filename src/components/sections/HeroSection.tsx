@@ -315,17 +315,6 @@ function HeroVisual({
       <div className="relative animate-magical-bounce">
         <PhoneDemo />
       </div>
-      <DecorativeCharacter
-        src={cowReading}
-        className="absolute -left-16 top-1/4 hidden size-24 animate-character-float lg:block"
-        mousePosition={mousePosition}
-      />
-      <DecorativeCharacter
-        src={foxGaming}
-        className="absolute -right-12 bottom-1/3 hidden size-20 animate-character-float delay-300 lg:block"
-        mousePosition={{ x: -mousePosition.x, y: -mousePosition.y }}
-        reverse
-      />
     </div>
   );
 }
@@ -343,41 +332,6 @@ function OrbitingSparkles() {
         <Sparkle className="size-5 text-white/70" fill="currentColor" />
       </div>
     </>
-  );
-}
-
-function DecorativeCharacter({
-  src,
-  className,
-  mousePosition,
-  reverse = false,
-}: Readonly<{
-  src: string;
-  className: string;
-  mousePosition: MousePosition;
-  reverse?: boolean;
-}>) {
-  return (
-    <div
-      className={className}
-      style={{
-        transform: `translate(${mousePosition.x * 0.3}px, ${
-          mousePosition.y * 0.3
-        }px)`,
-        animationDirection: reverse ? "reverse" : undefined,
-      }}
-    >
-      <div className="relative size-full">
-        <div className="absolute inset-0 rounded-full bg-conteo-accent/20 blur-xl animate-pulse" />
-        <Image
-          src={src}
-          alt=""
-          fill
-          sizes="96px"
-          className="object-contain drop-shadow-2xl"
-        />
-      </div>
-    </div>
   );
 }
 
