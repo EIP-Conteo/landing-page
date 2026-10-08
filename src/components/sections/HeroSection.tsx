@@ -11,13 +11,26 @@ import {
 import { PhoneDemo } from "@/components/shared/PhoneDemo";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
-import { Check, Infinity, Sparkle, Sparkles, Star, Wand2, Zap } from "lucide-react";
+import {
+  Check,
+  Download,
+  ExternalLink,
+  Infinity,
+  Sparkle,
+  Sparkles,
+  Star,
+  Wand2,
+  Zap,
+} from "lucide-react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
 const decorativeCircle = "/images/figma/decorative/circle.svg";
 const cowReading = "/images/figma/decorative/cow-reading.png";
 const foxGaming = "/images/figma/decorative/fox-gaming.png";
+
+const PLAY_STORE_URL =
+  "https://play.google.com/store/apps/details?id=com.theoewzzer.conteo";
 
 const benefits = [
   { icon: Zap, text: "Accès anticipé gratuit" },
@@ -384,15 +397,28 @@ function BetaSignup({
           className="mb-6 border-none bg-conteo-accent/20 px-4 py-1.5 text-sm text-conteo-accent"
         >
           <Sparkles className="mr-1.5 size-3.5" />
-          Beta fermée
+          Beta ouverte sur Android
         </Badge>
         <h2 className="mb-4 font-heading text-3xl font-semibold text-white md:text-4xl lg:text-5xl">
           Soyez parmi les <span className="text-conteo-accent">premiers</span>
         </h2>
         <p className="mx-auto mb-8 max-w-xl font-sans text-lg text-white/70">
           {
-            "Accès direct sur Android (Tests fermés) • Inscription pour iPhone. Rejoignez l'aventure Contéo !"
+            "Téléchargement direct sur Android, sans inscription • Sur iPhone, inscrivez-vous pour être prévenu. Rejoignez l'aventure Contéo !"
           }
+        </p>
+        <a
+          href={PLAY_STORE_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mb-8 inline-flex items-center justify-center gap-2 rounded-xl bg-conteo-accent px-6 py-3 font-semibold text-conteo-dark transition-colors hover:bg-conteo-accent/90"
+        >
+          <Download className="size-4" />
+          Télécharger sur Google Play
+          <ExternalLink className="size-3.5" />
+        </a>
+        <p className="mb-4 text-sm font-medium text-white/80">
+          Sur iPhone ? Inscrivez-vous à la beta iOS :
         </p>
         <BetaSignupForm onSuccess={onSignupSuccess} className="mx-auto" />
         <BetaBenefits />
