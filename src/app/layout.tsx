@@ -1,5 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import { Nunito, Rubik } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
+import { faqs } from "@/content/faq";
+import { PLAY_STORE_URL, PRICING } from "@/lib/site";
 import "./globals.css";
 
 const nunito = Nunito({
@@ -32,11 +35,11 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Contéo : Histoires Personnalisées & Contes pour Enfants",
+    default: "Contéo : l'histoire du soir inventée par votre enfant",
     template: "%s | Contéo",
   },
   description:
-    "Créez des histoires personnalisées pour vos enfants avec Contéo. Choisissez personnages et décors pour générer contes audio et illustrations par IA. (0-8 ans)",
+    "Votre enfant choisit ses héros, un objet magique et un décor : Contéo crée une histoire unique, racontée d'une voix douce. Gratuit, sans publicité, de 0 à 8 ans.",
   keywords: [
     "histoires pour enfants",
     "contes personnalisés",
@@ -49,7 +52,7 @@ export const metadata: Metadata = {
     "narration audio enfants",
     "app éducative",
     "créativité enfants",
-    "histoires illustrées",
+    "histoire du soir audio",
     "personnages mignons",
     "application famille",
     "Contéo",
@@ -71,9 +74,9 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     siteName: SITE_NAME,
-    title: "Contéo - Histoires magiques créées par votre enfant",
+    title: "Contéo : ce soir, c'est votre enfant qui invente l'histoire",
     description:
-      "Votre enfant choisit ses personnages préférés, Contéo crée une histoire unique avec texte, narration audio et illustrations générés par IA. Pour les 0-8 ans.",
+      "Ses héros, un objet magique, un décor : Contéo en fait une histoire unique, racontée d'une voix douce. Gratuit, sans publicité, de 0 à 8 ans.",
     url: SITE_URL,
     locale: "fr_FR",
     images: [
@@ -88,9 +91,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Contéo - Histoires magiques créées par votre enfant",
+    title: "Contéo : ce soir, c'est votre enfant qui invente l'histoire",
     description:
-      "Votre enfant choisit ses personnages préférés, Contéo crée une histoire unique avec texte, audio et visuels générés par IA.",
+      "Ses héros, un objet magique, un décor : Contéo en fait une histoire unique, racontée d'une voix douce. Gratuit et sans publicité.",
     images: ["/og-image.png"],
     creator: "@conteo_app",
   },
@@ -149,88 +152,56 @@ export default function RootLayout({
         "@type": "MobileApplication",
         "@id": `${SITE_URL}/#app`,
         name: SITE_NAME,
-        operatingSystem: "iOS, Android",
+        operatingSystem: "Android",
         applicationCategory: "EducationalApplication",
+        installUrl: PLAY_STORE_URL,
+        contentRating: "PEGI 3",
         description:
-          "Contéo crée des histoires personnalisées et des contes magiques pour vos enfants. Choisissez personnages et décors pour générer texte, narration audio et illustrations uniques par IA.",
-        offers: {
-          "@type": "Offer",
-          price: "0",
-          priceCurrency: "EUR",
-          description: "Téléchargement gratuit",
-        },
-        aggregateRating: {
-          "@type": "AggregateRating",
-          ratingValue: "4.9",
-          ratingCount: "10000",
-          bestRating: "5",
-          worstRating: "1",
-        },
+          "Contéo crée des histoires personnalisées pour les enfants de 0 à 8 ans : l'enfant choisit ses héros, un objet et un décor, et l'application génère une histoire unique à lire, écouter ou vivre en roman visuel.",
+        offers: [
+          {
+            "@type": "Offer",
+            name: "Gratuit",
+            price: "0",
+            priceCurrency: "EUR",
+          },
+          {
+            "@type": "Offer",
+            name: "Premium mensuel",
+            price: PRICING.monthlyAmount,
+            priceCurrency: "EUR",
+          },
+          {
+            "@type": "Offer",
+            name: "Premium annuel",
+            price: PRICING.yearlyAmount,
+            priceCurrency: "EUR",
+          },
+        ],
         author: {
           "@id": `${SITE_URL}/#organization`,
         },
-        screenshot: `${SITE_URL}/og-image.png`,
+        screenshot: `${SITE_URL}/images/app/choix-heros.png`,
         featureList: [
-          "Histoires personnalisées",
-          "Contes magiques",
-          "Livre audio interactif",
-          "Illustrations par Intelligence Artificielle",
-          "Histoires du soir pour enfants de 0 à 8 ans",
+          "Histoires personnalisées pour enfants de 0 à 8 ans",
+          "Modes livre, audio et roman visuel",
+          "Narration audio douce à vitesse réglable",
+          "Mode sombre",
+          "Histoires téléchargeables hors ligne (Premium)",
+          "Sans publicité",
         ],
       },
       {
         "@type": "FAQPage",
         "@id": `${SITE_URL}/#faq`,
-        mainEntity: [
-          {
-            "@type": "Question",
-            name: "Pour quel âge est Contéo ?",
-            acceptedAnswer: {
-              "@type": "Answer",
-              text: "Contéo est conçu pour les enfants de 0 à 8 ans. Les histoires s'adaptent automatiquement à l'âge de l'enfant pour offrir un contenu approprié et captivant.",
-            },
+        mainEntity: faqs.map((faq) => ({
+          "@type": "Question",
+          name: faq.question,
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: faq.answer,
           },
-          {
-            "@type": "Question",
-            name: "Comment fonctionne Contéo ?",
-            acceptedAnswer: {
-              "@type": "Answer",
-              text: "Votre enfant choisit ses personnages, objets et décors préférés parmi notre galerie adorable. Contéo génère ensuite une histoire unique avec du texte, une narration audio et des illustrations personnalisées.",
-            },
-          },
-          {
-            "@type": "Question",
-            name: "Contéo est-il gratuit ?",
-            acceptedAnswer: {
-              "@type": "Answer",
-              text: "Contéo est gratuit à télécharger avec des histoires gratuites chaque jour. Un abonnement premium offre un accès illimité à toutes les fonctionnalités et personnages.",
-            },
-          },
-          {
-            "@type": "Question",
-            name: "Les histoires sont-elles sûres pour les enfants ?",
-            acceptedAnswer: {
-              "@type": "Answer",
-              text: "Absolument ! Toutes les histoires générées sont adaptées aux enfants, sans contenu inapproprié. Notre IA est spécialement entraînée pour créer des contes bienveillants et éducatifs.",
-            },
-          },
-          {
-            "@type": "Question",
-            name: "Puis-je utiliser Contéo hors connexion ?",
-            acceptedAnswer: {
-              "@type": "Answer",
-              text: "Une connexion internet est nécessaire pour générer de nouvelles histoires. Cependant, les histoires déjà créées peuvent être sauvegardées et écoutées hors ligne.",
-            },
-          },
-          {
-            "@type": "Question",
-            name: "Est-ce adapté pour l'histoire du soir ?",
-            acceptedAnswer: {
-              "@type": "Answer",
-              text: "Absolument ! La narration audio douce et les thèmes bienveillants font de Contéo le compagnon idéal pour le rituel du coucher et l'histoire du soir.",
-            },
-          },
-        ],
+        })),
       },
     ],
   };
@@ -242,6 +213,7 @@ export default function RootLayout({
       </head>
       <body className={`${nunito.variable} ${rubik.variable} antialiased`}>
         {children}
+        <Analytics />
       </body>
     </html>
   );

@@ -5,7 +5,7 @@ export default function manifest(): MetadataRoute.Manifest {
     name: "Contéo - Histoires magiques pour enfants",
     short_name: "Contéo",
     description:
-      "Créez des histoires personnalisées pour vos enfants avec personnages, narration audio et illustrations générés par IA.",
+      "Créez des histoires personnalisées pour vos enfants : ils choisissent les héros, Contéo écrit et raconte l'histoire.",
     start_url: "/",
     display: "standalone",
     background_color: "#2a2a42",

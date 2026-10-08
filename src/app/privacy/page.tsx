@@ -10,7 +10,7 @@ import type { TocItem } from "@/components/legal/legal-types";
 
 const SUPPORT_EMAIL = "theo.fabianomattei@gmail.com";
 const SITE_NAME = "Contéo";
-const UPDATED_AT = "20 mai 2026";
+const UPDATED_AT = "8 octobre 2026";
 const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || "https://www.conteo.xyz").replace(/\/+$/, "");
 
 export const metadata: Metadata = {
@@ -260,8 +260,10 @@ export default function PrivacyPage() {
               identifiant publicitaire (IDFA, AAID).
             </li>
             <li>
-              <strong>Aucun tracking tiers</strong>, aucun pixel, aucun outil
-              d&apos;analytics comportemental externe.
+              <strong>Aucun tracking tiers</strong> ni pixel publicitaire dans
+              l&apos;application. Le site web conteo.xyz utilise uniquement une
+              mesure d&apos;audience anonyme et sans cookies (Vercel Web
+              Analytics), qui ne permet pas d&apos;identifier un visiteur.
             </li>
             <li>
               <strong>Aucun profilage marketing</strong>, aucune revente ni
@@ -386,6 +388,12 @@ export default function PrivacyPage() {
                 "Mises à jour OTA de l'application et notifications locales",
                 "Identifiant technique anonyme, version de l'app",
                 "USA",
+              ],
+              [
+                "Vercel",
+                "Hébergement du site web et mesure d'audience anonyme du site (sans cookies)",
+                "Pages consultées, référent, type d'appareil et pays, agrégés et non nominatifs",
+                "UE / USA",
               ],
               [
                 "Apple App Store / Google Play",
