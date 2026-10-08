@@ -7,18 +7,17 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(request: Request) {
   try {
-    const { token, email, os, contactId, audienceId } = await request.json();
+    const { token, email, contactId, audienceId } = await request.json();
 
     if (token !== process.env.ADMIN_TOKEN) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    if (!email || !os || !contactId) {
+    if (!email || !contactId) {
       return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
-    const templateName = os.toLowerCase() === "ios" ? "ios-access.html" : "android-access.html";
-    const templatePath = path.join(process.cwd(), "email-templates", templateName);
+    const templatePath = path.join(process.cwd(), "email-templates", "ios-access.html");
     
     let htmlContent = "";
     try {
@@ -31,7 +30,7 @@ export async function POST(request: Request) {
     const { error: emailError } = await resend.emails.send({
       from: process.env.RESEND_FROM_EMAIL ?? "Contéo <noreply@conteo.xyz>",
       to: email,
-      subject: `🚀 Votre accès à la beta de Contéo est prêt ! (${os})`,
+      subject: "🚀 Votre accès à la beta iOS de Contéo est prêt !",
       html: htmlContent,
     });
 
@@ -43,11 +42,9 @@ export async function POST(request: Request) {
     const sentStatus = `Envoyé le ${new Date().toLocaleDateString("fr-FR")}`;
 
     // Met à jour le contact dans Resend pour marquer comme envoyé (via last_name)
-    // Et met à jour l'OS (first_name) au cas où il avait été renseigné manuellement via le prompt
     const { error: updateError } = await resend.contacts.update({
       id: contactId,
       audienceId: audienceId || process.env.RESEND_AUDIENCE_ID || "", 
-      firstName: os,
       lastName: sentStatus,
     });
 

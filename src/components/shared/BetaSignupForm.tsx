@@ -58,7 +58,7 @@ export function BetaSignupForm({
         const response = await fetch("/api/beta-signup", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ email: value.email, os: "iOS" }),
+          body: JSON.stringify({ email: value.email }),
         });
 
         const data = await response.json();

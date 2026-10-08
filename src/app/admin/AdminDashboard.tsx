@@ -68,21 +68,6 @@ export function AdminDashboard({
   };
 
   const sendAccess = async (contact: Contact) => {
-    let osToUse = contact.first_name;
-
-    if (!osToUse) {
-      const userInput = window.prompt("Cet utilisateur n'a pas précisé son appareil (OS manquant).\\nTapez 'iOS' ou 'Android' pour choisir quel email envoyer :");
-      if (!userInput) return;
-      
-      const normalized = userInput.trim().toLowerCase();
-      if (normalized === "ios") osToUse = "iOS";
-      else if (normalized === "android") osToUse = "Android";
-      else {
-        alert("Saisie invalide. Veuillez taper exactement iOS ou Android.");
-        return;
-      }
-    }
-
     setLoadingId(contact.id);
     try {
       const res = await fetch("/api/admin/send-access", {
@@ -91,7 +76,6 @@ export function AdminDashboard({
         body: JSON.stringify({
           token,
           email: contact.email,
-          os: osToUse,
           contactId: contact.id,
           audienceId: contact.audience_id,
         }),
@@ -111,7 +95,7 @@ export function AdminDashboard({
 
       setContacts((prev) =>
         prev.map((c) =>
-          c.id === contact.id ? { ...c, last_name: data.status, first_name: osToUse } : c,
+          c.id === contact.id ? { ...c, last_name: data.status } : c,
         ),
       );
     } catch (error: any) {
@@ -141,9 +125,6 @@ export function AdminDashboard({
                 Email
               </th>
               <th className="pb-4 px-4 font-semibold text-conteo-text-muted">
-                OS
-              </th>
-              <th className="pb-4 px-4 font-semibold text-conteo-text-muted">
                 Date Inscription
               </th>
               <th className="pb-4 px-4 font-semibold text-conteo-text-muted">
@@ -163,11 +144,6 @@ export function AdminDashboard({
                   className="border-b border-white/5 last:border-0 hover:bg-white/5 transition-colors"
                 >
                   <td className="py-4 px-4 font-medium">{contact.email}</td>
-                  <td className="py-4 px-4">
-                    <span className="rounded-full bg-white/10 px-3 py-1 text-sm">
-                      {contact.first_name || "Inconnu"}
-                    </span>
-                  </td>
                   <td className="py-4 px-4 text-sm text-conteo-text-muted">
                     {new Date(contact.created_at).toLocaleDateString("fr-FR", {
                       day: "numeric",
@@ -215,7 +191,7 @@ export function AdminDashboard({
             {filteredContacts.length === 0 && (
               <tr>
                 <td
-                  colSpan={5}
+                  colSpan={4}
                   className="py-8 text-center text-conteo-text-muted"
                 >
                   {contacts.length === 0 ? (
