@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@800;900&family=Rubik:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1200px; height: 630px; overflow: hidden; }
+  body {
+    position: relative;
+    background:
+      radial-gradient(circle at 78% 40%, rgba(106,90,224,.55), transparent 55%),
+      radial-gradient(circle at 10% 110%, rgba(201,245,96,.12), transparent 45%),
+      linear-gradient(135deg, #24243a 0%, #2a2a42 50%, #342f5c 100%);
+    font-family: 'Rubik', sans-serif;
+    color: #fff;
+  }
+  .star { position: absolute; border-radius: 50%; background: #fff; }
+  .spark { position: absolute; color: #c9f560; font-size: 18px; line-height: 1; }
+  .moon {
+    position: absolute; top: -70px; left: 420px; width: 150px; height: 150px; border-radius: 50%;
+    background: #fff6c8; box-shadow: 0 0 60px 20px rgba(255,246,200,.18); opacity: .9;
+  }
+  .left { position: absolute; left: 76px; top: 0; bottom: 0; width: 560px; display: flex; flex-direction: column; justify-content: center; }
+  .brand { display: flex; align-items: center; gap: 16px; margin-bottom: 26px; }
+  .brand img { width: 84px; height: 84px; border-radius: 22.5%; box-shadow: 0 10px 30px rgba(0,0,0,.35); }
+  .brand span { font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 58px; color: #c9f560; letter-spacing: -1px; }
+  h1 { font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 50px; line-height: 1.08; letter-spacing: -.5px; }
+  h1 em { font-style: normal; color: #c9f560; position: relative; white-space: nowrap; }
+  h1 em svg { position: absolute; left: 0; bottom: -8px; width: 100%; height: 12px; color: rgba(201,245,96,.5); }
+  p { margin-top: 22px; font-size: 21px; color: rgba(255,255,255,.72); line-height: 1.45; }
+  .pills { margin-top: 22px; display: flex; gap: 10px; }
+  .pill { white-space: nowrap; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.12); border-radius: 999px; padding: 8px 16px; font-size: 16px; font-weight: 500; color: rgba(255,255,255,.85); }
+
+  .phone {
+    position: absolute; left: 770px; top: 60px; width: 280px; height: 600px;
+    border-radius: 46px; background: #111; padding: 10px;
+    box-shadow: 0 30px 70px rgba(0,0,0,.5), 0 0 0 2px rgba(255,255,255,.08);
+    transform: rotate(6deg);
+  }
+  .phone img { width: 100%; border-radius: 37px; display: block; }
+  .char { position: absolute; filter: drop-shadow(0 18px 24px rgba(0,0,0,.4)); }
+</style>
+</head>
+<body>
+  
+
+  <div class="left">
+    <div class="brand">
+      <img src="file:///E:/Conteo/landing-page/public/logo.png" alt="">
+      <span>Contéo</span>
+    </div>
+    <h1>Ce soir, c'est votre enfant qui <em>invente l'histoire<svg viewBox="0 0 300 14" preserveAspectRatio="none"><path d="M2 10 C 80 2, 220 2, 298 9" stroke="currentColor" stroke-width="4" fill="none" stroke-linecap="round"/></svg></em>.</h1>
+    <p>Ses héros, un objet magique, un décor&nbsp;: une histoire unique, illustrée et racontée d'une voix douce.</p>
+    <div class="pills">
+      <div class="pill">📖 Histoires uniques</div>
+      <div class="pill">🎧 Narration audio</div>
+      <div class="pill">🎨 Illustrations</div>
+    </div>
+  </div>
+
+  <div class="phone"><img src="file:///E:/Conteo/landing-page/public/images/app/lecture-audio.png" alt=""></div>
+
+  <img class="char" src="file:///E:/Conteo/landing-page/public/images/figma/characters/fox-gaming.png" style="left:660px; top:370px; width:205px; transform: rotate(-6deg);">
+  <img class="char" src="file:///E:/Conteo/landing-page/public/images/figma/characters/cow-reading.png" style="left:975px; top:360px; width:205px;">
+  <img class="char" src="file:///E:/Conteo/landing-page/public/images/figma/characters/frog.png" style="left:1020px; top:50px; width:150px; transform: rotate(10deg);">
+
+  <script>
+    const stars = [[40,40,2],[180,24,1.5],[300,70,2],[560,30,2],[620,120,1.5],[610,220,1.5],[1140,30,2],[1170,260,1.5],[360,590,1.5],[30,300,1.5],[560,590,2],[540,180,1.5]];
+    for (const [x,y,s] of stars) { const d=document.createElement('div'); d.className='star'; Object.assign(d.style,{left:x+'px',top:y+'px',width:s*2+'px',height:s*2+'px',opacity:.7}); document.body.appendChild(d); }
+    for (const [x,y,s] of [[600,80,16],[1110,300,14],[250,40,12]]) { const d=document.createElement('div'); d.className='spark'; d.textContent='✦'; Object.assign(d.style,{left:x+'px',top:y+'px',fontSize:s+'px'}); document.body.appendChild(d); }
+  </script>
+</body>
+</html>
