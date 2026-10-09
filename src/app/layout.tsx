@@ -186,6 +186,7 @@ export default function RootLayout({
           "Histoires personnalisées pour enfants de 0 à 8 ans",
           "Modes livre, audio et roman visuel",
           "Narration audio douce à vitesse réglable",
+          "Personnages et objets dessinés par l'enfant, intégrés au roman visuel (Premium)",
           "Mode sombre",
           "Histoires téléchargeables hors ligne (Premium)",
           "Sans publicité",

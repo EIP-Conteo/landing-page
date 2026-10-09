@@ -19,7 +19,12 @@ export const faqs: FaqItem[] = [
   },
   {
     question: "Combien ça coûte ?",
-    answer: `Contéo se télécharge gratuitement et permet de créer plusieurs histoires gratuites chaque jour. L'abonnement Premium (${PRICING.monthly} par mois ou ${PRICING.yearly} par an) débloque les histoires illimitées, le roman visuel, les mini-jeux et le téléchargement hors ligne. Il se gère et se résilie à tout moment depuis votre compte Google Play.`,
+    answer: `Contéo se télécharge gratuitement et permet de créer plusieurs histoires gratuites chaque jour. L'abonnement Premium (${PRICING.monthly} par mois ou ${PRICING.yearly} par an) débloque les histoires illimitées, le roman visuel, les mini-jeux, les personnages et objets dessinés par votre enfant, et le téléchargement hors ligne. Il se gère et se résilie à tout moment depuis votre compte Google Play.`,
+  },
+  {
+    question: "Mon enfant peut-il dessiner ses propres personnages ?",
+    answer:
+      "Oui, avec Premium. Votre enfant dessine ses personnages et ses objets, Contéo les intègre à l'histoire et il les retrouve à l'écran dans le mode roman visuel.",
   },
   {
     question: "Les histoires sont-elles adaptées aux enfants ?",

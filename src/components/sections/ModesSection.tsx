@@ -26,7 +26,7 @@ const modes = [
     title: "Roman visuel",
     tagline: "Pour s'émerveiller",
     description:
-      "Personnages, décors et dialogues animés, scène après scène, avec un mini-jeu tiré de l'histoire si vous le souhaitez.",
+      "Personnages, décors et dialogues animés, scène après scène, avec ses propres dessins en vedette et un mini-jeu tiré de l'histoire si vous le souhaitez.",
     tint: "bg-[#ffe4ec] text-[#c2416b]",
     premium: true,
   },
