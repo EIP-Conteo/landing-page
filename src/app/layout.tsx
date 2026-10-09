@@ -81,7 +81,7 @@ export const metadata: Metadata = {
     locale: "fr_FR",
     images: [
       {
-        url: "/og-image.png",
+        url: "/og-image.png?v=2",
         width: 1200,
         height: 630,
         alt: "Contéo - Application d'histoires personnalisées pour enfants",
@@ -94,7 +94,7 @@ export const metadata: Metadata = {
     title: "Contéo : ce soir, c'est votre enfant qui invente l'histoire",
     description:
       "Ses héros, un objet magique, un décor : Contéo en fait une histoire unique, racontée d'une voix douce. Gratuit et sans publicité.",
-    images: ["/og-image.png"],
+    images: ["/og-image.png?v=2"],
     creator: "@conteo_app",
   },
   robots: {
