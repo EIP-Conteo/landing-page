@@ -1,0 +1,15 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls",
+      "delegate_permission/common.get_login_creds"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.theoewzzer.conteo",
+      "sha256_cert_fingerprints": [
+        "35:0E:61:56:AB:38:68:45:1B:30:B0:C5:3B:0C:03:EB:09:98:09:62:C1:0B:4E:01:85:3C:63:02:D1:C1:BE:48"
+      ]
+    }
+  }
+]
