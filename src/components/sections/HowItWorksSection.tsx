@@ -8,7 +8,7 @@ const steps = [
     description:
       "Il compose son équipe de héros, puis ajoute un objet magique et un décor dans la galerie.",
     image: "/images/app/choix-heros.png",
-    alt: "Écran Contéo « Choisis tes héros » avec Luna la Fée et Merlin le Sorcier sélectionnés",
+    alt: "Écran Contéo « Choisis tes héros » avec Marina la Sirène et Robin le Chevalier sélectionnés",
   },
   {
     title: "Vous réglez l'histoire",
